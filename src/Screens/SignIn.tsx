@@ -4,16 +4,25 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
   TouchableOpacity,
 } from "react-native";
-import { useFonts } from "expo-font";
 import Kakaotalk from "../../assets/svg/kakaotalk.svg";
 import Naver from "../../assets/svg/naver.svg";
 import Google from "../../assets/svg/google.svg";
 import LeftArrow from "../../assets/svg/leftArrow.svg";
 import { colors } from "../styles/color";
+import { useNavigation } from "@react-navigation/native";
+
+export type RootStackParamList = {
+  LoginScreen: undefined;
+  ChatRoomScreen: undefined;
+  ChatScreen: { room: string };
+};
 
 function SignIn() {
+  const navigation = useNavigation();
+
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
@@ -28,9 +37,13 @@ function SignIn() {
       </View>
       <View style={styles.icons}>
         <View style={styles.signInTop}>
-          <TouchableOpacity onPress={}>
+          <Pressable
+            onPress={() => {
+              navigation.navigate("Kakao", { id: "Kakao" });
+            }}
+          >
             <Kakaotalk style={{ width: 40, height: 40 }} />
-          </TouchableOpacity>
+          </Pressable>
 
           <Naver />
           <Google />

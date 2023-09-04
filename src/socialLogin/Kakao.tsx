@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import WebView from "react-native-webview";
 import axios from "axios";
 const REST_API_KEY =
@@ -47,10 +47,13 @@ const getCode = (target: string) => {
 // };
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('message from webView')`;
 
-function Kakao() {
+function Kakao({ route }: any) {
+  console.log(route.params.id);
   return (
     <View>
+      <Text>{route.params.id}</Text>
       <WebView
+        name="Kakao"
         style={{ flex: 1 }}
         source={{
           uri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`,
