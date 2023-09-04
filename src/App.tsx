@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import SignIn from "./Screens/SignIn";
+import SignIn from "./screens/SignIn";
 import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
