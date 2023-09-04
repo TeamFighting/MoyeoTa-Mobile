@@ -18,8 +18,8 @@ export default function App() {
   if (!fontsLoaded) return null;
   return (
     <View style={styles.container}>
-      <SignIn />
       <StatusBar style="auto" />
+      <SignIn />
     </View>
   );
 }
