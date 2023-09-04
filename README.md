@@ -5,6 +5,6 @@
 ## 실행방법
 
 ```
-npm install pnpm
-pnpm start
+yarn
+yarn start
 ```
