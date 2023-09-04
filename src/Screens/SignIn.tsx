@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import { useFonts } from "expo-font";
 import Kakaotalk from "../../assets/svg/kakaotalk.svg";
 import Naver from "../../assets/svg/naver.svg";
@@ -22,7 +28,10 @@ function SignIn() {
       </View>
       <View style={styles.icons}>
         <View style={styles.signInTop}>
-          <Kakaotalk style={{ width: 40, height: 40 }} />
+          <TouchableOpacity onPress={}>
+            <Kakaotalk style={{ width: 40, height: 40 }} />
+          </TouchableOpacity>
+
           <Naver />
           <Google />
         </View>
