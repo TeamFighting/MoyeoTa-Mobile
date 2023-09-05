@@ -35,12 +35,20 @@ const styles = StyleSheet.create({
     height: 241.905,
   },
   title: {
+    marginTop: 37,
     fontSize: 26,
     fontFamily: "PretendardBold",
+    fontWeight: "700",
+    color: "#000",
+    textAlign: "center",
   },
   description: {
+    marginTop: 13,
     fontSize: 16,
     fontFamily: "Pretendard",
     color: "#7E7E7E",
+    fontWeight: "500",
+    textAlign: "center",
+    paddingHorizontal: 55,
   },
 });
