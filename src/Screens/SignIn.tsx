@@ -6,6 +6,7 @@ import Naver from "../../assets/svg/naver.svg";
 import Google from "../../assets/svg/google.svg";
 import LeftArrow from "../../assets/svg/leftArrow.svg";
 import { colors } from "../styles/color";
+import GoogleLogin from "../socialLogin/google";
 
 function SignIn() {
   return (
@@ -24,7 +25,9 @@ function SignIn() {
         <View style={styles.signInTop}>
           <Kakaotalk style={{ width: 40, height: 40 }} />
           <Naver />
-          <Google />
+          {/* <Google />
+           */}
+          <GoogleLogin />
         </View>
         <View style={styles.signInMiddle}>
           <Text
