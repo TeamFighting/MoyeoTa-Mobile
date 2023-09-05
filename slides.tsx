@@ -1,16 +1,17 @@
+import onboarding1 from "./assets/onboarding_images/onboarding1_image.svg";
 export default [
   {
     id: "1",
     title: "쉽고 빠른 매칭 서비스",
     description:
       "택시비 부담을 느끼는 사회초년생에게 안전하고 똑똑한 택시팟 매칭 서비스를 제공해요",
-    image: require("./assets/onboarding1.png"),
+    image: { onboarding1 },
   },
   {
     id: "2",
     title: "편리하고 안전한 신원확인",
     description: "동승자 신원 인증으로 미연에 피해를 예방하세요",
-    image: require("./assets/onboarding1.png"),
+    image: "./assets/onboarding1.png",
   },
   {
     id: "3",
