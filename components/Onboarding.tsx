@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, Animated } from "react-native";
 import React from "react";
 import slides from "../slides";
 import OnboardingItem from "../components/OnboardingItem";
@@ -8,6 +8,10 @@ export default function Onboarding() {
       <FlatList
         data={slides}
         renderItem={({ item }) => <OnboardingItem item={item} />}
+        horizontal
+        showsHorizontalScrollIndicator
+        pagingEnabled
+        bounces={false}
       />
     </View>
   );
