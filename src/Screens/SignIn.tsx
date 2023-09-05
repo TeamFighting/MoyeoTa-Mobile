@@ -20,9 +20,10 @@ export type RootStackParamList = {
   ChatScreen: { room: string };
 };
 
-function SignIn() {
-  const navigation = useNavigation();
-
+function SignIn({ route, navigation }: { route: any; navigation: any }) {
+  // const navigation = useNavigation();
+  console.log(route);
+  console.log(navigation);
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>

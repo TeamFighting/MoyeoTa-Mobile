@@ -1,68 +1,35 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import WebView from "react-native-webview";
 import axios from "axios";
-const REST_API_KEY =
-  "zfnfLTD4xRSl1J7by2p_5ITHFG6Y1_V00QwsPc_VCClcouKJpnJIibOiCOHxmrYhp0wszQorDKgAAAGKPsF-SQ";
-const REDIRECT_URI =
-  "https://kauth.kakao.com/oauth/authorize?client_id=3b7fe612c8054aa522c8728a78c2eb28&redirect_uri=http://localhost:8080&response_type=code";
 
-const getCode = (target: string) => {
-  const exp = "code=";
-  const condition = target.indexOf(exp);
-  if (condition !== -1) {
-    const requestCode = target.substring(condition + exp.length);
-    console.log(requestCode);
-    // requestToken(requestCode);
-  }
-};
-// const requestToken = async (code: string) => {
-//   const requestTokenUrl = "https://kauth.kakao.com/oauth/token";
-
-//   //   const options = qs.stringify({
-//   //     grant_type: "authorization_code",
-//   //     client_id: REST_API_KEY,
-//   //     redirect_uri: REDIRECT_URI,
-//   //     code,
-//   //   });
-
-//   try {
-//     const tokenResponse = await axios.post(requestTokenUrl, options);
-//     const ACCESS_TOKEN = tokenResponse.data.access_token;
-
-//     const body = {
-//       ACCESS_TOKEN,
-//     };
-//     const response = await axios.post(REDIRECT_URI, body);
-//     const value = response.data;
-//     // const result = await storeUser(value);
-//     // if (result === "stored") {
-//     //   const user = await getData("user");
-//     //   dispatch(read_S(user));
-//     //   await navigation.navigate("Main");
-//     // }
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
+import { useNavigation } from "@react-navigation/native";
+import OAuth2RedirectHandler from "./OAuth2RedirectHandler";
+const client_id = "3b7fe612c8054aa522c8728a78c2eb28";
+const REST_API_KEY = "25b39eb533332c2b9c961afdbc365d8c";
+const REDIRECT_URI = "http://localhost:19006/oauth/kakao";
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('message from webView')`;
 
 function Kakao({ route }: any) {
-  console.log(route.params.id);
+  const navigation = useNavigation();
   return (
-    <View>
+    <View style={{ flex: 1, marginTop: 24, backgroundColor: "#fff" }}>
       <Text>{route.params.id}</Text>
+      <Pressable onPress={() => navigation.goBack()}>
+        <Text style={{ paddingTop: 50 }}>뒤로</Text>
+      </Pressable>
       <WebView
-        name="Kakao"
         style={{ flex: 1 }}
         source={{
-          uri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`,
+          uri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}
+          `,
+          // uri: `http://localhost:19006/oauth/kakao?code=BEXY8LNguddpwiXe8BARKG0ajmza_w89EBsfkGmD7KKEO--3mMKF397E5-5hW7BnIVMdggo9c-sAAAGKZo9Kpg`,
         }}
         injectedJavaScript={INJECTED_JAVASCRIPT}
         javaScriptEnabled
         onMessage={(event) => {
-          const data = event.nativeEvent.url;
-          getCode(data);
+          const data = event.nativeEvent["url"];
+          OAuth2RedirectHandler(data);
         }}
       />
     </View>
