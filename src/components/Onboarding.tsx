@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, FlatList, Animated } from "react-native";
 import React, { useRef, useState } from "react";
-import slides from "../slides";
-import OnboardingItem from "../components/OnboardingItem";
-import Paginator from "../components/Paginator";
+import slides from "../../slides";
+import OnboardingItem from "./OnboardingItem";
+import Paginator from "./Paginator";
 
 export default function Onboarding() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,6 +36,30 @@ export default function Onboarding() {
           ref={slidesRef}
         />
         <Paginator data={slides} scrollX={scrollX} />
+        <View style={styles.buttonBottom}>
+          <View style={styles.button}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                fontFamily: "PretendardBold",
+              }}
+            >
+              시작하기
+            </Text>
+          </View>
+          <Text
+            style={{
+              fontFamily: "Pretendard",
+              textDecorationLine: "underline",
+              color: "#9A9A9A",
+              textAlign: "center",
+              bottom: 54,
+            }}
+          >
+            이미 계정이 있으신가요?
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -43,8 +67,21 @@ export default function Onboarding() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
     alignItem: "center",
+  },
+  button: {
+    backgroundColor: "#1EDD81",
+    width: 335,
+    height: 48,
+    flexShrink: 0,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    bottom: 76,
+  },
+  buttonBottom: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
