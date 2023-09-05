@@ -14,7 +14,7 @@ export default function OnboardingItem({ item }) {
     <View style={[styles.container, { width }]}>
       <Image
         source={item.image}
-        style={[styles.image, { width, resizeModel: "contain" }]}
+        style={[styles.image, { width, resizeMode: "contain" }]}
       />
       <View style={{ flex: 0.3 }}>
         <Text style={styles.title}> {item.title}</Text>
@@ -31,8 +31,10 @@ const styles = StyleSheet.create({
     alignItem: "center",
   },
   image: {
-    width: 246.333,
-    height: 241.905,
+    flex: 0.33,
+
+    justifyContent: "center",
+    alignItem: "center",
   },
   title: {
     marginTop: 37,
