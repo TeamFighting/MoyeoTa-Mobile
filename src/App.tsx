@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import SignIn from "./Screens/SignIn";
 import { useFonts } from "expo-font";
-import { useEffect, useState } from "react";
-import * as Font from "expo-font";
+import Onboarding from "./components/Onboarding";
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Pretendard: require("../assets/font/Pretendard-Medium.otf"),
@@ -20,13 +20,16 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <SignIn />
+      <Onboarding />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    alignItems: "flex-start",
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
