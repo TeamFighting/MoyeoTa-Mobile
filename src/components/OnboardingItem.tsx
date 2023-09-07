@@ -5,7 +5,7 @@ import {
   Image,
   useWindowDimensions,
 } from "react-native";
-import { useFonts } from "expo-font";
+
 import React from "react";
 
 export default function OnboardingItem({ item }) {
@@ -32,9 +32,10 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 0.33,
-
+    marginTop: 50,
+    width: 293,
+    height: 168,
     justifyContent: "center",
-    alignItem: "center",
   },
   title: {
     marginTop: 37,
@@ -51,6 +52,6 @@ const styles = StyleSheet.create({
     color: "#7E7E7E",
     fontWeight: "500",
     textAlign: "center",
-    paddingHorizontal: 55,
+    paddingHorizontal: 40,
   },
 });

@@ -54,7 +54,7 @@ export default function Onboarding() {
               textDecorationLine: "underline",
               color: "#9A9A9A",
               textAlign: "center",
-              bottom: 66,
+              bottom: 73,
             }}
           >
             이미 계정이 있으신가요?
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 90,
+    bottom: 117,
   },
   buttonBottom: {
     justifyContent: "center",
