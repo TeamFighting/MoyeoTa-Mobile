@@ -23,7 +23,7 @@ function Kakao({ route }: any) {
         injectedJavaScript={INJECTED_JAVASCRIPT}
         javaScriptEnabled
         onMessage={(event) => {
-s          const data = event.nativeEvent["url"];
+          const data = event.nativeEvent["url"];
           OAuth2RedirectHandler({ data, navigation });
         }}
         setSupportMultipleWindows={false}

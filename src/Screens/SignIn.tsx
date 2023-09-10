@@ -21,7 +21,7 @@ export type RootStackParamList = {
 
 function SignIn({ route, navigation }: { route: any; navigation: any }) {
   return (
-    <View style={{ width: "100%", height: "100%" }}>
+    <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
         <Pressable onPress={() => navigation.goBack()}>
           <LeftArrow />
@@ -70,7 +70,11 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
           <View
             style={[
               styles.button,
-              { backgroundColor: "#f1f1f1", marginBottom: 22 },
+              {
+                backgroundColor: "#f1f1f1",
+                marginBottom: 22,
+                borderRadius: 12,
+              },
             ]}
           >
             <Text
