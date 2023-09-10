@@ -1,20 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 import WebView from "react-native-webview";
 import OAuth2RedirectHandler from "./OAuth2RedirectHandler";
+const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('message from webView')`;
 
 function Naver() {
   const navigation = useNavigation();
-  const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('message from webView')`;
-  const naveridlogin = new naver_id_login('${process.env.EXPO_PUBLIC_NAVER_CLIENT_ID}', '${process.env.EXPO_PUBLIC_NAVER_REDIRECT_URI}'}')
+
   return (
     <View style={{ flex: 1, marginTop: 24, backgroundColor: "#fff" }}>
       <WebView
         style={{ flex: 1 }}
         source={{
-          uri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.EXPO_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.EXPO_PUBLIC_KAKAO_REDIRECT_URI}
-            `,
+          uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.EXPO_PUBLIC_NAVER_CLIENT_ID
+        }&redirect_uri=${process.env.EXPO_PUBLIC_REDIRECT_URI}&state=nid/me`,
         }}
         originWhitelist={["*"]}
         injectedJavaScript={INJECTED_JAVASCRIPT}
