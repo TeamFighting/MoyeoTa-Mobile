@@ -12,7 +12,6 @@ import Naver from "../../assets/svg/naver.svg";
 import Google from "../../assets/svg/google.svg";
 import LeftArrow from "../../assets/svg/leftArrow.svg";
 import { colors } from "../styles/color";
-import { useNavigation } from "@react-navigation/native";
 
 export type RootStackParamList = {
   LoginScreen: undefined;
@@ -21,7 +20,6 @@ export type RootStackParamList = {
 };
 
 function SignIn({ route, navigation }: { route: any; navigation: any }) {
-  // const navigation = useNavigation();
   console.log(route);
   console.log(navigation);
   return (

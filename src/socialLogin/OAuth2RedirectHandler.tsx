@@ -1,45 +1,46 @@
 import axios from "axios";
 import React from "react";
 import { Text, View } from "react-native";
+import { NavigationProp } from "@react-navigation/core";
+import { useNavigation } from "expo-router";
 
-const requestToken = async (code: string) => {
-  var AccessToken = "none";
-  axios({
-    method: "POST",
-    url: "https://kauth.kakao.com/oauth/token",
-    headers: {
-      grant_type: "authorization_code",
-      client_id: "25b39eb533332c2b9c961afdbc365d8c",
-      [AccessToken]: code,
-      redirect_uri: "http://localhost:19006/oauth/kakao",
-    },
-  })
-    .then((res) => {
-      AccessToken = res.data.access_token;
-      console.log("AccessToken", AccessToken);
+interface OAuth2RedirectHandlerProps {
+  data: string;
+  navigation: NavigationProp<ReactNavigation.RootParamList>;
+}
+
+async function requestToken(
+  code: string,
+  navigation: NavigationProp<ReactNavigation.RootParamList>
+) {
+  /*
+  서버 오픈 후에 사용할 코드
+  axios
+    .post("http://moyeota.shop:8080/api/users/kakao", {
+      authorizationCode: code,
     })
-    .catch((err) => {
-      console.log("err", err);
-    });
-};
+    .catch(function (e) {
+      console.log(e);
+    });*/
+  navigation.navigate("SignIn" as never);
+}
 
-function OAuth2RedirectHandler(target: string) {
+function OAuth2RedirectHandler({
+  data,
+  navigation,
+}: OAuth2RedirectHandlerProps) {
   const exp = "code=";
-  const condition = target.indexOf(exp);
+  const condition = data.indexOf(exp);
   console.log("condition", condition);
+
   if (condition !== -1) {
     console.log("this is oauthredirecthandler");
 
-    const requestCode = target.substring(condition + exp.length);
+    const requestCode = data.substring(condition + exp.length);
     console.log("requestCode", requestCode);
-    requestToken(requestCode);
-  }
 
-  return (
-    <View>
-      <Text>로딩중..</Text>
-    </View>
-  );
+    requestToken(requestCode, navigation);
+  }
 }
 
 export default OAuth2RedirectHandler;
