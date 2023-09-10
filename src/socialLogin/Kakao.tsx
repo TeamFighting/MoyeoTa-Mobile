@@ -11,8 +11,6 @@ function Kakao({ route }: any) {
   const navigation = useNavigation();
   return (
     <View style={{ flex: 1, marginTop: 24, backgroundColor: "#fff" }}>
-      <Text>{route.params.id}</Text>
-
       <WebView
         style={{ flex: 1 }}
         source={{
