@@ -20,12 +20,12 @@ export type RootStackParamList = {
 };
 
 function SignIn({ route, navigation }: { route: any; navigation: any }) {
-  console.log(route);
-  console.log(navigation);
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
-        <LeftArrow />
+        <Pressable onPress={() => navigation.goBack()}>
+          <LeftArrow />
+        </Pressable>
       </View>
       <View style={styles.introContainer}>
         <Text style={styles.intro}>반가워요!</Text>

@@ -1,8 +1,16 @@
-import { View, Text, StyleSheet, FlatList, Animated } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Animated,
+  Pressable,
+} from "react-native";
 import React, { useRef, useState } from "react";
 import slides from "../../slides";
 import OnboardingItem from "./OnboardingItem";
 import Paginator from "./Paginator";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Onboarding() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,6 +20,7 @@ export default function Onboarding() {
   }).current;
   const slidesRef = useRef(null);
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={{ flex: 3 }}>
@@ -37,15 +46,17 @@ export default function Onboarding() {
         <Paginator data={slides} scrollX={scrollX} />
         <View style={styles.buttonBottom}>
           <View style={styles.button}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 18,
-                fontFamily: "PretendardBold",
-              }}
-            >
-              시작하기
-            </Text>
+            <Pressable onPress={() => navigation.navigate("SignIn" as never)}>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  fontFamily: "PretendardBold",
+                }}
+              >
+                시작하기
+              </Text>
+            </Pressable>
           </View>
           <Text
             style={{

@@ -31,13 +31,9 @@ function OAuth2RedirectHandler({
 }: OAuth2RedirectHandlerProps) {
   const exp = "code=";
   const condition = data.indexOf(exp);
-  console.log("condition", condition);
 
   if (condition !== -1) {
-    console.log("this is oauthredirecthandler");
-
     const requestCode = data.substring(condition + exp.length);
-    console.log("requestCode", requestCode);
 
     requestToken(requestCode, navigation);
   }
