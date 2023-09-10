@@ -1,8 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
-import { useEffect, useState } from "react";
-import * as Font from "expo-font";
+import Onboarding from "./components/Onboarding";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Kakao from "./socialLogin/Kakao";
@@ -24,7 +23,12 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Onboarding">
+        <Stack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="SignIn"
           component={SignIn}
@@ -42,7 +46,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    alignItems: "flex-start",
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
