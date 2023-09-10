@@ -11,7 +11,6 @@ export default function Onboarding() {
     setCurrentIndex(viewableItems[0].index);
   }).current;
   const slidesRef = useRef(null);
-  console.log('thisis onboarding')
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
   return (
     <View style={styles.container}>
@@ -20,7 +19,7 @@ export default function Onboarding() {
           data={slides}
           renderItem={({ item }) => <OnboardingItem item={item} />}
           horizontal
-          showsHorizontalScrollIndicator
+          showsHorizontalScrollIndicator={false}
           pagingEnabled
           bounces={false}
           keyExtractor={(item) => item.id}
@@ -67,8 +66,9 @@ export default function Onboarding() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: "center",
-    alignItem: "center",
+    alignItems: "center",
   },
   button: {
     backgroundColor: "#1EDD81",
