@@ -15,11 +15,14 @@
     "@react-navigation/native-stack": "^6.9.13",
     "axios": "^1.5.0",
     "expo": "~49.0.5",
+    "expo-auth-session": "~5.0.2",
     "expo-constants": "~14.4.2",
     "expo-font": "^11.4.0",
     "expo-linking": "~5.0.2",
+    "expo-random": "~13.2.0",
     "expo-router": "2.0.0",
     "expo-status-bar": "~1.6.0",
+    "expo-web-browser": "~12.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.4",
@@ -34,6 +37,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.14",
+    "@types/react-native-dotenv": "^0.2.0",
     "react-native-svg-transformer": "^1.1.0",
     "typescript": "^5.1.3"
   },
