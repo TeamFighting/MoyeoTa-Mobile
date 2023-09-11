@@ -8,7 +8,7 @@ import {
 
 import React from "react";
 
-export default function OnboardingItem({ item }) {
+export default function OnboardingItem({ item }: any) {
   const { width } = useWindowDimensions();
   return (
     <View style={[styles.container, { width }]}>

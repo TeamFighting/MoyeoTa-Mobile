@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
-import { useFonts } from "expo-font";
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import Kakaotalk from "../../assets/svg/kakaotalk.svg";
 import Naver from "../../assets/svg/naver.svg";
 import Google from "../../assets/svg/google.svg";
 import LeftArrow from "../../assets/svg/leftArrow.svg";
 import { colors } from "../styles/color";
 
-function SignIn() {
+export type RootStackParamList = {
+  LoginScreen: undefined;
+  ChatRoomScreen: undefined;
+  ChatScreen: { room: string };
+};
+
+function SignIn({ route, navigation }: { route: any; navigation: any }) {
   return (
-    <View style={{ width: "100%", height: "100%" }}>
+    <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
-        <LeftArrow />
+        <Pressable onPress={() => navigation.goBack()}>
+          <LeftArrow />
+        </Pressable>
       </View>
       <View style={styles.introContainer}>
         <Text style={styles.intro}>반가워요!</Text>
@@ -22,7 +36,14 @@ function SignIn() {
       </View>
       <View style={styles.icons}>
         <View style={styles.signInTop}>
-          <Kakaotalk style={{ width: 40, height: 40 }} />
+          <Pressable
+            onPress={() => {
+              navigation.navigate("Kakao", { id: "Kakao" });
+            }}
+          >
+            <Kakaotalk style={{ width: 40, height: 40 }} />
+          </Pressable>
+
           <Naver />
           <Google />
         </View>
@@ -49,7 +70,11 @@ function SignIn() {
           <View
             style={[
               styles.button,
-              { backgroundColor: "#f1f1f1", marginBottom: 22 },
+              {
+                backgroundColor: "#f1f1f1",
+                marginBottom: 22,
+                borderRadius: 12,
+              },
             ]}
           >
             <Text

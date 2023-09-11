@@ -1,8 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import SignIn from "./Screens/SignIn";
 import { useFonts } from "expo-font";
 import Onboarding from "./components/Onboarding";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Kakao from "./socialLogin/Kakao";
+import SignIn from "./Screens/SignIn";
+import axios from "axios";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -14,14 +18,29 @@ export default function App() {
     PretendardRegular: require("../assets/font/Pretendard-Regular.otf"),
     PretendardSemiBold: require("../assets/font/Pretendard-SemiBold.otf"),
   });
-
   if (!fontsLoaded) return null;
+
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <SignIn />
-      <Onboarding />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Onboarding">
+        <Stack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SignIn"
+          component={SignIn}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Kakao"
+          component={Kakao}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
