@@ -29,18 +29,14 @@ function OAuth2RedirectHandler({
   data,
   navigation,
 }: OAuth2RedirectHandlerProps) {
-  // const exp = "code=";
-  // const condition = data.indexOf(exp);
+  const exp = "code=";
+  const condition = data.indexOf(exp);
 
-  // if (condition !== -1) {
-  //   const requestCode = data.substring(condition + exp.length);
-  //   console.log("request");
-  //   requestToken(requestCode, navigation);
-  //   console.log("r", requestCode);
-  // }
-
-  const code = new URL(window.location.href).searchParams.get("code");
-  console.log("code", code);
+  if (condition !== -1) {
+    console.log("condition", condition);
+    const requestCode = data.substring(condition + exp.length).split("&")[0];
+    requestToken(requestCode, navigation);
+  }
 }
 
 export default OAuth2RedirectHandler;
