@@ -5,6 +5,7 @@ import Onboarding from "./components/Onboarding";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Kakao from "./socialLogin/Kakao";
+import Google from "./socialLogin/Google";
 import SignIn from "./Screens/SignIn";
 import axios from "axios";
 
@@ -37,6 +38,11 @@ export default function App() {
         <Stack.Screen
           name="Kakao"
           component={Kakao}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Google"
+          component={Google}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

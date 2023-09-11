@@ -1,6 +1,4 @@
-import * as WebBrowser from "expo-web-browser";
-import * as GoogleAuth from "expo-auth-session/providers/google";
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -20,14 +18,8 @@ export type RootStackParamList = {
   ChatRoomScreen: undefined;
   ChatScreen: { room: string };
 };
-WebBrowser.maybeCompleteAuthSession();
 
 function SignIn({ route, navigation }: { route: any; navigation: any }) {
-  const [request, response, promptAsync] = GoogleAuth.useAuthRequest({
-    clientId:
-      //키 값,
-  });
-
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
@@ -53,14 +45,13 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
           </Pressable>
 
           <Naver />
-
-          <TouchableOpacity
+          <Pressable
             onPress={() => {
-              promptAsync();
+              navigation.navigate("Google", { id: "Google" });
             }}
           >
             <Google />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View style={styles.signInMiddle}>
           <Text
