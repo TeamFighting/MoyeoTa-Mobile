@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import OAuth2RedirectHandler from "./OAuth2RedirectHandler";
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('message from webView')`;
 
-function Kakao({ route }: any) {
+function Kakao() {
   const navigation = useNavigation();
   return (
     <View style={{ flex: 1, marginTop: 24, backgroundColor: "#fff" }}>

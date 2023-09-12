@@ -33,8 +33,8 @@ function OAuth2RedirectHandler({
   const condition = data.indexOf(exp);
 
   if (condition !== -1) {
-    const requestCode = data.substring(condition + exp.length);
-
+    console.log("condition", condition);
+    const requestCode = data.substring(condition + exp.length).split("&")[0];
     requestToken(requestCode, navigation);
   }
 }

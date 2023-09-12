@@ -44,7 +44,14 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
             <Kakaotalk style={{ width: 40, height: 40 }} />
           </Pressable>
 
-          <Naver />
+          <Pressable
+            onPress={() => {
+              navigation.navigate("Naver", { id: "Naver" });
+            }}
+          >
+            <Naver />
+          </Pressable>
+
           <Pressable
             onPress={() => {
               navigation.navigate("Google", { id: "Google" });

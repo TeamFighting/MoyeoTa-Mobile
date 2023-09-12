@@ -8,6 +8,7 @@ import Kakao from "./socialLogin/Kakao";
 import Google from "./socialLogin/Google";
 import SignIn from "./Screens/SignIn";
 import axios from "axios";
+import Naver from "./socialLogin/Naver";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -38,6 +39,11 @@ export default function App() {
         <Stack.Screen
           name="Kakao"
           component={Kakao}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Naver"
+          component={Naver}
           options={{ headerShown: false }}
         />
         <Stack.Screen
