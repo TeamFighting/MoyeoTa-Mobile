@@ -11,7 +11,7 @@ function Google() {
 
   const customUserAgent = "customUserAgent";
   return (
-    <View style={{ flex: 1, marginTop: 24, backgroundColor: "#fff" }}>
+    <View style={{ flex: 1, marginTop: 50, backgroundColor: "#fff" }}>
       <WebView
         style={{ flex: 1 }}
         source={{
