@@ -32,13 +32,12 @@ export default function App() {
       await SplashScreen.preventAutoHideAsync();
 
       await loadFonts();
-      await SplashScreen.hideAsync();
-
+      setTimeout(() => {
+        SplashScreen.hideAsync();
+      }, 3000);
       setIsReady(true);
     };
     inialize();
-
-    setTimeout(() => {}, 2000);
   }, []);
 
   if (!isReady) {
