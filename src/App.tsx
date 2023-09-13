@@ -8,9 +8,12 @@ import Kakao from "./socialLogin/Kakao";
 import SignIn from "./Screens/SignIn";
 import axios from "axios";
 import Naver from "./socialLogin/Naver";
+import { SplashScreen } from "expo-router";
+import { useEffect, useState } from "react";
+import * as Font from "expo-font";
 
-export default function App() {
-  const [fontsLoaded] = useFonts({
+const loadFonts = () => {
+  return Font.loadAsync({
     Pretendard: require("../assets/font/Pretendard-Medium.otf"),
     PretedardBlack: require("../assets/font/Pretendard-Black.otf"),
     PretendardBold: require("../assets/font/Pretendard-Bold.otf"),
@@ -19,9 +22,42 @@ export default function App() {
     PretendardRegular: require("../assets/font/Pretendard-Regular.otf"),
     PretendardSemiBold: require("../assets/font/Pretendard-SemiBold.otf"),
   });
-  if (!fontsLoaded) return null;
+};
+
+export default function App() {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const inialize = async () => {
+      await SplashScreen.preventAutoHideAsync();
+
+      await loadFonts();
+      await SplashScreen.hideAsync();
+
+      setIsReady(true);
+    };
+    inialize();
+
+    setTimeout(() => {}, 2000);
+  }, []);
+
+  if (!isReady) {
+    return null;
+  }
+
+  // const [fontsLoaded] = useFonts({
+  //   Pretendard: require("../assets/font/Pretendard-Medium.otf"),
+  //   PretedardBlack: require("../assets/font/Pretendard-Black.otf"),
+  //   PretendardBold: require("../assets/font/Pretendard-Bold.otf"),
+  //   PretendardExtraBold: require("../assets/font/Pretendard-ExtraBold.otf"),
+  //   PretendardLight: require("../assets/font/Pretendard-Light.otf"),
+  //   PretendardRegular: require("../assets/font/Pretendard-Regular.otf"),
+  //   PretendardSemiBold: require("../assets/font/Pretendard-SemiBold.otf"),
+  // });
+  // if (!fontsLoaded) return null;
 
   const Stack = createNativeStackNavigator();
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Onboarding">
