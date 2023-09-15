@@ -11,6 +11,7 @@ import Naver from "./Screens/SignIn/socialLogin/Naver";
 import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
+import Google from "./Screens/SignIn/socialLogin/Google";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -78,6 +79,11 @@ export default function App() {
         <Stack.Screen
           name="Naver"
           component={Naver}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Google"
+          component={Google}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
