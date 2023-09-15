@@ -11,7 +11,7 @@ import Kakaotalk from "../../assets/svg/kakaotalk.svg";
 import Naver from "../../assets/svg/naver.svg";
 import Google from "../../assets/svg/google.svg";
 import LeftArrow from "../../assets/svg/leftArrow.svg";
-import { colors } from "../styles/color";
+import { colors } from "../../styles/color";
 
 export type RootStackParamList = {
   LoginScreen: undefined;

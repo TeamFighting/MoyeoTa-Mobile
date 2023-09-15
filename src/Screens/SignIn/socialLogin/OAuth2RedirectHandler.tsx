@@ -1,8 +1,6 @@
-import axios from "axios";
+import { NavigationProp } from "@react-navigation/core";
 import React from "react";
 import { Text, View } from "react-native";
-import { NavigationProp } from "@react-navigation/core";
-import { useNavigation } from "expo-router";
 
 interface OAuth2RedirectHandlerProps {
   data: string;
