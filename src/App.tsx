@@ -4,14 +4,14 @@ import { useFonts } from "expo-font";
 import Onboarding from "./components/Onboarding";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Kakao from "./Screens/SignIn/socialLogin/Kakao";
+import Kakao from "./Screens/SignIn/SocialLogin/Kakao";
 import SignIn from "./Screens/SignIn/SignIn";
 import axios from "axios";
-import Naver from "./Screens/SignIn/socialLogin/Naver";
+import Naver from "./Screens/SignIn/SocialLogin/Naver";
 import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
-import Google from "./Screens/SignIn/socialLogin/Google";
+import Google from "./Screens/SignIn/SocialLogin/Google";
 
 const loadFonts = () => {
   return Font.loadAsync({

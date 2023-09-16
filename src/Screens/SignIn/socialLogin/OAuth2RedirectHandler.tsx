@@ -20,7 +20,7 @@ async function requestToken(
     .catch(function (e) {
       console.log(e);
     });*/
-  navigation.navigate("SignIn" as never);
+  navigation.navigate("MainPage" as never);
 }
 
 function OAuth2RedirectHandler({

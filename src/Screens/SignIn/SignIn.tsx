@@ -7,10 +7,6 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import Kakaotalk from "../../assets/svg/kakaotalk.svg";
-import Naver from "../../assets/svg/naver.svg";
-import Google from "../../assets/svg/google.svg";
-import LeftArrow from "../../assets/svg/leftArrow.svg";
 import { colors } from "../../styles/color";
 
 export type RootStackParamList = {
@@ -23,9 +19,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <LeftArrow />
-        </Pressable>
+        <Pressable onPress={() => navigation.goBack()}></Pressable>
       </View>
       <View style={styles.introContainer}>
         <Text style={styles.intro}>반가워요!</Text>
@@ -41,7 +35,8 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               navigation.navigate("Kakao", { id: "Kakao" });
             }}
           >
-            <Kakaotalk style={{ width: 40, height: 40 }} />
+            <Text>카카오</Text>
+            {/* <Kakaotalk style={{ width: 40, height: 40 }} /> */}
           </Pressable>
 
           <Pressable
@@ -49,7 +44,8 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               navigation.navigate("Naver", { id: "Naver" });
             }}
           >
-            <Naver />
+            <Text>네이버</Text>
+            {/* <Naver /> */}
           </Pressable>
 
           <Pressable
@@ -57,7 +53,8 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               navigation.navigate("Google", { id: "Google" });
             }}
           >
-            <Google />
+            <Text>구글</Text>
+            {/* <Google /> */}
           </Pressable>
         </View>
         <View style={styles.signInMiddle}>
