@@ -36,7 +36,7 @@ jobs:
           publish-dir: './src'
           #publish할 브랜치
           production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN }}
 
         #깃허브 해당 저장소 -> Settings -> Secrets -> Action에서 따로 설정이 필요하다.
         env:
