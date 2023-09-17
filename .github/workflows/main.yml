@@ -21,7 +21,7 @@ jobs:
 
       # package-lock.json && package.json file 동기화
       - name: Install
-        run: rm -f package-lock.json && npm install pnpm
+        run: npm install pnpm
 
       # 빌드
       - name: Build
