@@ -2,9 +2,11 @@
 name: Build and Deploy to Netlify
 
 on:
-  # master브랜치로 push하면 workflow 실행
+  # main push하면 workflow 실행
   push:
-    branches: ['master']
+    branches: ['main']
+  pull_request:
+    branches: ['main']
 
 jobs:
   # 현재 build라고 부르는 하나의 job이 존재한다.
