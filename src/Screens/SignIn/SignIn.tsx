@@ -8,6 +8,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { colors } from "../../styles/color";
+import Kakaotalk from "../../../assets/svg/kakaotalk.svg";
+import Naver from "../../../assets/svg/naver.svg";
+import Google from "../../../assets/svg/google.svg";
 
 export type RootStackParamList = {
   LoginScreen: undefined;
@@ -35,8 +38,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               navigation.navigate("Kakao", { id: "Kakao" });
             }}
           >
-            <Text>카카오</Text>
-            {/* <Kakaotalk style={{ width: 40, height: 40 }} /> */}
+            <Kakaotalk style={{ width: 40, height: 40 }} />
           </Pressable>
 
           <Pressable
@@ -44,17 +46,21 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               navigation.navigate("Naver", { id: "Naver" });
             }}
           >
-            <Text>네이버</Text>
-            {/* <Naver /> */}
+            <Naver />
           </Pressable>
-
+          <Pressable
+            onPress={() => {
+              navigation.navigate("MainPage", { id: "MainPage" });
+            }}
+          >
+            <Text>메인페이지</Text>
+          </Pressable>
           <Pressable
             onPress={() => {
               navigation.navigate("Google", { id: "Google" });
             }}
           >
-            <Text>구글</Text>
-            {/* <Google /> */}
+            <Google />
           </Pressable>
         </View>
         <View style={styles.signInMiddle}>

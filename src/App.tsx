@@ -4,14 +4,15 @@ import { useFonts } from "expo-font";
 import Onboarding from "./components/Onboarding";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Kakao from "./Screens/SignIn/SocialLogin/Kakao";
 import SignIn from "./Screens/SignIn/SignIn";
 import axios from "axios";
-import Naver from "./Screens/SignIn/SocialLogin/Naver";
 import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
-import Google from "./Screens/SignIn/SocialLogin/Google";
+import Kakao from "./Screens/SignIn/socialLogin/Kakao";
+import Naver from "./Screens/SignIn/socialLogin/Naver";
+import Google from "./Screens/SignIn/socialLogin/Google";
+import MainPage from "./Screens/MainPage/MainPage";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -60,7 +61,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onboarding">
+      <Stack.Navigator initialRouteName="MainPage">
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
@@ -84,6 +85,11 @@ export default function App() {
         <Stack.Screen
           name="Google"
           component={Google}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="MainPage"
+          component={MainPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

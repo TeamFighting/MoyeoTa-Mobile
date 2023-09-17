@@ -1,4 +1,5 @@
 import { NavigationProp } from "@react-navigation/core";
+import axios from "axios";
 import React from "react";
 import { Text, View } from "react-native";
 
@@ -11,15 +12,13 @@ async function requestToken(
   code: string,
   navigation: NavigationProp<ReactNavigation.RootParamList>
 ) {
-  /*
-  서버 오픈 후에 사용할 코드
-  axios
-    .post("http://moyeota.shop:8080/api/users/kakao", {
-      authorizationCode: code,
-    })
-    .catch(function (e) {
-      console.log(e);
-    });*/
+  // axios
+  //   .post("http://moyeota.shop:8080/api/users/kakao", {
+  //     authorizationCode: code,
+  //   })
+  //   .catch(function (e) {
+  //     console.log(e);
+  //   });
   navigation.navigate("MainPage" as never);
 }
 
