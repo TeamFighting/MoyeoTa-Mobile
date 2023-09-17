@@ -1,35 +1,42 @@
-name: 'CI/CD with GitHub Actions'
+# workflow 이름
+name: Build and Deploy to Netlify
 
 on:
+  # master브랜치로 push하면 workflow 실행
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches: ['master']
 
 jobs:
-  test: # job 이름 설정
-    name: Test lint, tsc, build
-    # 리눅스 환경에서 사용
+  # 현재 build라고 부르는 하나의 job이 존재한다.
+  build:
+    # runs-on은 job이 어떤 OS에서 실행될지 지정한다.
     runs-on: ubuntu-latest
 
+    # steps는 작업들을 순차적으로 실행한다.
     steps:
+      # $GITHUB_WORKSPACE에서 저장소를 체크아웃하여, 현재 job이 your 저장소에 접근할 수 있다.
       - uses: actions/checkout@v2
-      # 해당 환경을 Node.js 위에서 실행하겠다고 명시
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18.17.1
-      # 모듈 변화가 있을 때만 pnpm install
-      - name: Cache node modules
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: node_modules
-          key: pnpm-packages-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install pnpm -g && pnpm install
+      # package-lock.json && package.json file 동기화
+      - name: Install
+        run: rm -f package-lock.json && npm install pnpm
 
-      - run: pnpm dev
-        if: ${{ always() }}
+      # 빌드
+      - name: Build
+        run: pnpm build
+
+      # deploy
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+
+        with:
+          #publish할 디렉터리 경로
+          publish-dir: './src'
+          #publish할 브랜치
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+        #깃허브 해당 저장소 -> Settings -> Secrets -> Action에서 따로 설정이 필요하다.
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
