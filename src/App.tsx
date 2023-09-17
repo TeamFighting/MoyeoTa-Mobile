@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
 import Onboarding from "./components/Onboarding";
+import Slogan from "./Screens/Slogan";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Kakao from "./Screens/SignIn/socialLogin/Kakao";
@@ -60,7 +61,12 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onboarding">
+      <Stack.Navigator initialRouteName="Slogan">
+        <Stack.Screen
+          name="Slogan"
+          component={Slogan}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
