@@ -1,23 +1,26 @@
 name: 'test-every-push'
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  test:
-  	# job 이름 설정
+  test: # job 이름 설정
     name: Test lint, tsc, build
     # 리눅스 환경에서 사용
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-		
       # 해당 환경을 Node.js 위에서 실행하겠다고 명시
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18.17.1
-		
       # 모듈 변화가 있을 때만 pnpm install
       - name: Cache node modules
         uses: actions/cache@v2
