@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { MutableRefObject, useEffect, useRef } from 'react';
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    kakao: any;
-  }
-}
+
 
 function MainPage() {
   const mapRef = useRef<HTMLElement | null>(null);

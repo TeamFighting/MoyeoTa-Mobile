@@ -1,6 +1,7 @@
 import { MutableRefObject, useEffect, useRef } from 'react';
 
 function App() {
+  console.log('App', import.meta.env.VITE_KAKAOMAP_JAVASCRIPT_APP_KEY);
   const mapRef = useRef<HTMLElement | null>(null);
 
   const initMap = () => {
