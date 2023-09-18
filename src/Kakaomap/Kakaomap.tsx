@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-function Map() {
+function Kakaomap() {
   const mapRef = useRef<HTMLElement | null>(null);
 
   const initMap = () => {
@@ -26,7 +26,7 @@ function Map() {
     window.kakao.maps.load(() => initMap());
   }, [mapRef]);
 
-  return <div id="map" style={{ width: '500px', height: '400px' }}></div>;
+  return <div id="map" style={{ width: '100%', height: '400px' }}></div>;
 }
 
-export default Map;
+export default Kakaomap;
