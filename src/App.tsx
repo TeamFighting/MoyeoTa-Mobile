@@ -1,25 +1,25 @@
-import React from 'react';
-import { Map, useKakaoLoader } from 'react-kakao-maps-sdk';
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    kakao: any;
-  }
-}
-function App() {
-  console.log('env', import.meta.env.VITE_KAKAOMAP_JAVASCRIPT_APP_KEY);
+import { MutableRefObject, useEffect, useRef } from 'react';
 
-  const [loading, error] = useKakaoLoader({
-    appkey: '9390a5f4210490b4f089219e30f5cf0b',
-  });
-  return (
-    <Map
-      className="myMap"
-      style={{ width: '500px', height: '500px' }}
-      center={{ lat: 33.5563, lng: 126.79581 }}
-      level={3}
-    ></Map>
-  );
+function App() {
+  const mapRef = useRef<HTMLElement | null>(null);
+
+  const initMap = () => {
+    const container = document.getElementById('map');
+    const options = {
+      center: new kakao.maps.LatLng(37.483034, 126.902435),
+      level: 2,
+    };
+
+    const map = new kakao.maps.Map(container as HTMLElement, options);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (mapRef as MutableRefObject<any>).current = map;
+  };
+
+  useEffect(() => {
+    kakao.maps.load(() => initMap());
+  }, [mapRef]);
+
+  return <div id="map" style={{ width: '500px', height: '400px' }}></div>;
 }
 
 export default App;
