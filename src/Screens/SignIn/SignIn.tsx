@@ -80,6 +80,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               회원가입
             </Text>
           </View>
+
           <View
             style={[
               styles.button,

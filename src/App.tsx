@@ -9,6 +9,7 @@ import Kakao from "./Screens/SignIn/socialLogin/Kakao";
 import SignIn from "./Screens/SignIn/SignIn";
 import axios from "axios";
 import Naver from "./Screens/SignIn/socialLogin/Naver";
+import Guide from "./Screens/Guide";
 import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
@@ -90,6 +91,11 @@ export default function App() {
         <Stack.Screen
           name="Google"
           component={Google}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Guide"
+          component={Guide}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
