@@ -86,7 +86,6 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               </Text>
             </View>
           </Pressable>
-
           <View
             style={[
               styles.button,
