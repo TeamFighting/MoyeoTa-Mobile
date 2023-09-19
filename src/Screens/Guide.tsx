@@ -12,7 +12,7 @@ import Guide1 from "../../assets/svg/guide1.svg";
 import Guide2 from "../../assets/svg/guide2.svg";
 import Guide3 from "../../assets/svg/guide3.svg";
 
-export default function Slogan() {
+export default function Guide() {
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
   return (

@@ -14,6 +14,7 @@ import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
 import Google from "./Screens/SignIn/socialLogin/Google";
+import CreateProfile from "./Screens/CreatePot/CreateProfile";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -96,6 +97,11 @@ export default function App() {
         <Stack.Screen
           name="Guide"
           component={Guide}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreateProfile"
+          component={CreateProfile}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
