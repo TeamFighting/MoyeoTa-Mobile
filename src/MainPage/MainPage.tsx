@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-// import Kakaomap from '../Kakaomap/Kakaomap';
+import Kakaomap from './Kakaomap/Kakaomap';
 import Chevronleft from '../../public/svg/Chevronleft.svg';
-// import { useRef, useState } from 'react';
-import InfoWindow from '../InfoWindow';
-// import SlideModal from '../SlideModal/SlideModal';
+import { useRef } from 'react';
+import BottomSheet from './BottomSheet/BottomSheet';
 
 function MainPage() {
-  //   const mapRef = useRef<HTMLElement | null>(null);
-  //   const [open, setOpen] = useState(false);
+  const mapRef = useRef<HTMLElement | null>(null);
   return (
     <Container>
       <Header>
@@ -15,30 +13,28 @@ function MainPage() {
         <Location>서울시 노원구</Location>
       </Header>
       <Body>
-        {/* <Kakaomap mapRef={mapRef} />
+        <Kakaomap mapRef={mapRef} />
         <Bottom>
-          <TestButton open={open} onClick={() => setOpen(!open)}>
+          {/* <TestButton open={open} onClick={() => setOpen(!open)}>
             {open ? 'close' : 'open'}
           </TestButton>
-          <Drawer open={open}>hi</Drawer>
-          {/* <SlideModal isOpen={open} /> *
-        </Bottom> 
-        */}
-        <InfoWindow />
+          <Drawer open={open}>hi</Drawer> */}
+          <BottomSheet />
+        </Bottom>
       </Body>
     </Container>
   );
 }
 
-// const Bottom = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   position: absolute;
-//   z-index: 1000;
-//   width: 100%;
-//   bottom: 0;
-//   overflow: hidden;
-// `;
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+`;
 
 // const TestButton = styled.button<{ open: boolean }>`
 //   margin: 0 10px 10px 0;
