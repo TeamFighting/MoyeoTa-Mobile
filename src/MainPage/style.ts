@@ -53,17 +53,16 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  padding-top: 20px;
+  background-color: bisque;
 `;
-
-export const Content = styled.div`
-  width: 335px;
-  height: 200px;
+export const SingleContent = styled.div`
   background-color: #ffffff;
-  border-radius: 26px;
+  border-radius: 12px;
   display: flex;
   border: 2px solid #ebebeb;
   flex-direction: column;
-  justify-content: center;
+  padding: 15px 15px 0 16px;
 `;
 
 export const ContentTitle = styled.span`
@@ -73,11 +72,129 @@ export const ContentTitle = styled.span`
   font-style: normal;
   font-weight: 700;
   width: 100%;
-  margin-left: 20px;
 `;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+`;
+
 export const Line = styled.div`
   width: 304px;
   height: 1px;
   background-color: #ebebeb;
   margin-top: 100px;
+`;
+
+export const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+`;
+
+export const ProfileLeft = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+export const ProfileImg = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: black;
+`;
+
+export const ProfileName = styled.span`
+  color: #9a9a9a;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+`;
+export const ProfileSex = styled.span`
+  color: #9a9a9a;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+`;
+export const Dot = styled.div`
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #9a9a9a;
+`;
+export const ProfileTime = styled.span`
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-weight: 500;
+  color: #9a9a9a;
+`;
+export const ProfileRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+export const ProfileDistance = styled.span`
+  color: #9a9a9a;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+`;
+export const Route = styled.div`
+  display: flex;
+  flex-direction: columnn;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const StartTime = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  justify-content: flex-start;
+  font-weight: 500;
+`;
+export const Time = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+`;
+export const From = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+`;
+export const To = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
 `;

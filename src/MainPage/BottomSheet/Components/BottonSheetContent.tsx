@@ -1,13 +1,11 @@
 import * as S from '../../style';
+import Content from './SingleContent/SingleContent';
 
 const BottonSheetContent = () => {
   return (
     <S.ModalContent>
       <S.ContentWrapper>
-        <S.Content>
-          <S.ContentTitle>공덕팟</S.ContentTitle>
-          <S.Line />
-        </S.Content>
+        <Content />
       </S.ContentWrapper>
     </S.ModalContent>
   );

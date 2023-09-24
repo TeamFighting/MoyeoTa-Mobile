@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { BOTTOM_SHEET_HEIGHT } from '../../../Constants/constant';
 import useBottomSheet from '../Logics/useBottonSheet';
-import BottonSheetContent from './Content';
+import BottonSheetContent from './BottonSheetContent';
 import HeaderHandler from './HeaderHandler';
 
 function BottomSheet() {

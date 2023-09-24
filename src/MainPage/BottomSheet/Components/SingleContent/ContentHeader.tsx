@@ -1,9 +1,9 @@
-import * as S from '../../style';
+import * as S from '../../../style';
 import Calendar from '../../../../public/svg/Calendar.svg';
 import Switch from '../../../../public/svg/Switch.svg';
 import ChevronDown from '../../../../public/svg/ChevronDown.svg';
 
-function ContentHeder() {
+function ContentHeader() {
   return (
     <S.ContentHeader>
       <S.Left>
@@ -19,4 +19,4 @@ function ContentHeder() {
   );
 }
 
-export default ContentHeder;
+export default ContentHeader;
