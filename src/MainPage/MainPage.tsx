@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Kakaomap from './Kakaomap/Kakaomap';
 import Chevronleft from '../../public/svg/Chevronleft.svg';
 import { useRef } from 'react';
-import BottomSheet from './BottomSheet/BottomSheet';
+import BottomSheet from './BottomSheet/Components/BottomSheet';
 
 function MainPage() {
   const mapRef = useRef<HTMLElement | null>(null);

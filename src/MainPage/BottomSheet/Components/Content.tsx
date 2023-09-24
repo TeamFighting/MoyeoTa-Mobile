@@ -1,8 +1,6 @@
-import '../SlideModal/SlideModal.css';
 import styled from 'styled-components';
-import Calendar from '../../public/svg/Calendar.svg';
-import Switch from '../../public/svg/Switch.svg';
-
+import { Switch } from '@mui/material';
+import Calendar from '../../../../public/svg/Calendar.svg';
 const BottonSheetContent = () => {
   return (
     <ModalContent>

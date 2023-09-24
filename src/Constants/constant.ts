@@ -1,3 +1,4 @@
-export const MIN_Y = 60;
-export const MAX_Y = window.innerHeight - 80;
-export const BOTTOM_SHEET_HEIGHT = window.innerHeight - MIN_Y * 10;
+export const MIN_Y = 258;
+export const MAX_Y = window.innerHeight - 96;
+export const BOTTOM_SHEET_HEIGHT = window.innerHeight;
+export const MIN_TOP = BOTTOM_SHEET_HEIGHT;
