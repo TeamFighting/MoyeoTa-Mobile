@@ -1,36 +1,37 @@
-import Header from './Header';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { BOTTOM_SHEET_HEIGHT } from '../../../Constants/constant';
 import useBottomSheet from '../Logics/useBottonSheet';
 import BottonSheetContent from './Content';
+import HeaderHandler from './HeaderHandler';
 
 function BottomSheet() {
   const { sheet, content } = useBottomSheet();
   return (
-    <Wrpper ref={sheet}>
-      <Header />
+    <Wrapper ref={sheet}>
+      <HeaderHandler />
       <BottomSheetContent ref={content}>
         <BottonSheetContent />
       </BottomSheetContent>
-    </Wrpper>
+    </Wrapper>
   );
 }
 
-const Wrpper = styled(motion.div)`
+const Wrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   position: fixed;
   z-index: 1;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  border-radius: 26px 26px 0 0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   height: ${BOTTOM_SHEET_HEIGHT}px;
   transition: transform 150ms ease-out;
 `;
 const BottomSheetContent = styled.div`
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: 100%;
 `;
 export default BottomSheet;

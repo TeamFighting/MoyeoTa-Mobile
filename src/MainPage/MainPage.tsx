@@ -3,6 +3,7 @@ import Kakaomap from './Kakaomap/Kakaomap';
 import Chevronleft from '../../public/svg/Chevronleft.svg';
 import { useRef } from 'react';
 import BottomSheet from './BottomSheet/Components/BottomSheet';
+// import NaverMap from './NaverMap/NaverMap';
 
 function MainPage() {
   const mapRef = useRef<HTMLElement | null>(null);
@@ -13,6 +14,7 @@ function MainPage() {
         <Location>서울시 노원구</Location>
       </Header>
       <Body>
+        {/* <NaverMap mapRef={mapRef} /> */}
         <Kakaomap mapRef={mapRef} />
         <Bottom>
           {/* <TestButton open={open} onClick={() => setOpen(!open)}>
@@ -33,6 +35,7 @@ const Bottom = styled.div`
   z-index: 1000;
   width: 100%;
   bottom: 0;
+  /* height: 100%; */
   overflow: hidden;
 `;
 

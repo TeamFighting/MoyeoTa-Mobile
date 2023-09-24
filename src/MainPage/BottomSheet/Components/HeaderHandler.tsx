@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Header() {
+function HeaderHandler() {
   return (
     <HeaderWrapper
       style={{
@@ -15,7 +15,7 @@ function Header() {
   );
 }
 const HeaderWrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 40px;
   background-color: white;
   border-radius: 26px 26px 0 0;
@@ -33,4 +33,4 @@ const Handler = styled.div`
   height: 7px;
   margin-bottom: 28px;
 `;
-export default Header;
+export default HeaderHandler;
