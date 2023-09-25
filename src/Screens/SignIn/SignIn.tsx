@@ -70,15 +70,21 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
 
         <View style={styles.signInBottom}>
           <View style={styles.button}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 18,
-                fontFamily: "PretendardBold",
+            <Pressable
+              onPress={() => {
+                navigation.navigate("SchoolLogin", { id: "SchoolLogin" });
               }}
             >
-              회원가입
-            </Text>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  fontFamily: "PretendardBold",
+                }}
+              >
+                회원가입
+              </Text>
+            </Pressable>
           </View>
           <View
             style={[

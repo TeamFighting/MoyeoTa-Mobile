@@ -16,6 +16,7 @@ import * as Font from "expo-font";
 import Google from "./Screens/SignIn/socialLogin/Google";
 import CreateProfile from "./Screens/CreatePot/CreateProfile";
 import CreatePot from "./Screens/CreatePot/CreatePot";
+import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -108,6 +109,11 @@ export default function App() {
         <Stack.Screen
           name="CreatePot"
           component={CreatePot}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SchoolLogin"
+          component={SchoolLogin}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
