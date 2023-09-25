@@ -42,7 +42,13 @@ function SchoolLoginSelect({
         </Text>
       </View>
       <View style={styles.signInMiddle}>
-        <Pressable onPress={() => navigation.goBack()}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("InputLogin", {
+              id: "InputLogin",
+            });
+          }}
+        >
           <View style={styles.box}>
             <Text style={styles.title}>학교 웹 메일 인증</Text>
 
