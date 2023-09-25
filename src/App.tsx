@@ -17,6 +17,7 @@ import Google from "./Screens/SignIn/socialLogin/Google";
 import CreateProfile from "./Screens/CreatePot/CreateProfile";
 import CreatePot from "./Screens/CreatePot/CreatePot";
 import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
+import SchoolLoginSelect from "./Screens/SignIn/schoolLogin/schoolLoginSelect";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -114,6 +115,11 @@ export default function App() {
         <Stack.Screen
           name="SchoolLogin"
           component={SchoolLogin}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SchoolLoginSelect"
+          component={SchoolLoginSelect}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

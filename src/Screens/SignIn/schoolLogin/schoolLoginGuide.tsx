@@ -13,7 +13,7 @@ import Ximage from "../../../../assets/svg/x_image.svg";
 import SchoolImage from "../../../../assets/school_images/schoolImage.png";
 import { colors } from "../../../styles/color";
 
-function SignIn({ route, navigation }: { route: any; navigation: any }) {
+function SchoolLoginGuide({ navigation }: { navigation: any }) {
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View
@@ -52,16 +52,24 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
 
       <View style={styles.signInBottom}>
         <View style={styles.button}>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 18,
-              fontFamily: "PretendardBold",
-              fontWeight: "700",
+          <Pressable
+            onPress={() => {
+              navigation.navigate("SchoolLoginSelect", {
+                id: "SchoolLoginSelect",
+              });
             }}
           >
-            다음
-          </Text>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                fontFamily: "PretendardBold",
+                fontWeight: "700",
+              }}
+            >
+              다음
+            </Text>
+          </Pressable>
         </View>
         <View
           style={[
@@ -147,4 +155,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignIn;
+export default SchoolLoginGuide;
