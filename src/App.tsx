@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import * as Font from "expo-font";
 import Google from "./Screens/SignIn/socialLogin/Google";
 import CreateProfile from "./Screens/CreatePot/CreateProfile";
+import CreatePot from "./Screens/CreatePot/CreatePot";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -102,6 +103,11 @@ export default function App() {
         <Stack.Screen
           name="CreateProfile"
           component={CreateProfile}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreatePot"
+          component={CreatePot}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

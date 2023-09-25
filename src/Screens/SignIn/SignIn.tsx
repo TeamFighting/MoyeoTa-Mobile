@@ -69,23 +69,17 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
         </View>
 
         <View style={styles.signInBottom}>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("CreateProfile", { id: "CreateProfile" });
-            }}
-          >
-            <View style={styles.button}>
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 18,
-                  fontFamily: "PretendardBold",
-                }}
-              >
-                회원가입
-              </Text>
-            </View>
-          </Pressable>
+          <View style={styles.button}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                fontFamily: "PretendardBold",
+              }}
+            >
+              회원가입
+            </Text>
+          </View>
           <View
             style={[
               styles.button,

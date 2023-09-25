@@ -8,20 +8,18 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import LeftArrow from "../../../assets/svg/leftArrow.svg";
+import RightArrow from "../../../assets/svg/RightArrow.svg";
 import Ximage from "../../../assets/svg/x_image.svg";
-import ProfileImage from "../../../assets/profileImage.png";
 import { useNavigation } from "@react-navigation/native";
 
-export default function CreateProfile() {
+export default function CreatePot() {
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
   const [name, setName] = React.useState("");
 
-  const onChangeName = (inputName) => {
-    setName(inputName);
-  };
+  const onChangeName = (event) => setName(event);
 
   return (
     <View style={[styles.container, { width }]}>
@@ -39,32 +37,26 @@ export default function CreateProfile() {
           <Ximage style={{ marginLeft: 299 }} />
         </Pressable>
       </View>
-      <Text style={styles.title}>프로필을 설정해주세요</Text>
-      <Text style={styles.description}>
-        모여타에서는 닉네임, 성별, 나이대가 공개되어요
-      </Text>
+      <Text style={styles.subject}>상세 항목을 알려주세요</Text>
+
       <View style={styles.middle}>
-        <Image
-          source={ProfileImage}
-          style={{ marginTop: 52, width: 100, height: 100 }}
-        />
         <TextInput
           style={styles.input}
-          placeholder="모연두"
+          placeholder="지역, 목적지가 포함된 제목이면 더 좋아요"
           onChangeText={onChangeName}
-          value={name}
-          clearButtonMode="always"
         />
+        <View style={{ flexDirection: "row", justifyContent: "flex-start" }}>
+          <Text style={styles.title}>출발시간</Text>
+          <RightArrow style={{ marginLeft: 235 }} />
+        </View>
+        <View style={{ flexDirection: "row", justifyContent: "flex-start" }}>
+          <Text style={styles.title}>이동수단 및 인원</Text>
+          <RightArrow style={{ marginLeft: 179 }} />
+        </View>
       </View>
       <View style={styles.buttonBottom}>
         <View style={styles.button}>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("CreatePot", { id: "CreatePot" });
-            }}
-          >
-            <Text style={styles.buttonText}>확인</Text>
-          </Pressable>
+          <Text style={styles.buttonText}>팟 생성 완료</Text>
         </View>
       </View>
     </View>
@@ -75,7 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  title: {
+  subject: {
     marginTop: 41,
     fontSize: 22,
     fontFamily: "PretendardBold",
@@ -83,28 +75,24 @@ const styles = StyleSheet.create({
     color: "#000",
     marginLeft: 14,
   },
-  description: {
-    marginTop: 15,
-    fontSize: 16,
-    fontFamily: "Pretendard",
-    fontWeight: "600",
-    color: "#9A9A9A",
-    marginLeft: 14,
+  title: {
+    fontFamily: "PretendardBold",
+    fontSize: 18,
+    fontWeight: "700",
   },
   middle: {
     justifyContent: "center",
     alignItems: "center",
   },
   input: {
-    width: 335,
+    width: 336,
     height: 48,
     flexShrink: 0,
-    borderRadius: 12,
-    marginTop: 35,
-    backgroundColor: "#F5F6F8",
-    padding: 14,
+    borderBottomWidth: 0.5,
+    borderBottomColor: "#E0E0E0",
+    marginTop: 60,
     fontFamily: "Pretendard",
-    fontSize: 14,
+    fontSize: 16,
   },
   buttonBottom: {
     justifyContent: "center",
