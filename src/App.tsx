@@ -19,6 +19,7 @@ import CreatePot from "./Screens/CreatePot/CreatePot";
 import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
 import SchoolLoginSelect from "./Screens/SignIn/schoolLogin/schoolLoginSelect";
 import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
+import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -126,6 +127,11 @@ export default function App() {
         <Stack.Screen
           name="InputLogin"
           component={InputLogin}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EmailAuth"
+          component={EmailAuth}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
