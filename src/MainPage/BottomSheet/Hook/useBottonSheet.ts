@@ -87,12 +87,13 @@ export default function useBottomSheet() {
 
         if (nextSheetY >= MAX_Y) {
           nextSheetY = MAX_Y;
+          
         }
 
         sheet.current!.style.setProperty(
           'transform',
           `translateY(${nextSheetY - MAX_Y}px)`
-        ); //바닥 만큼은 빼야쥬...
+        ); //바닥 만큼은 빼줘야함.
       } else {
         document.body.style.overflowY = 'hidden';
       }

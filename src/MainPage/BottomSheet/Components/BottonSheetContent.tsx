@@ -6,6 +6,9 @@ const BottonSheetContent = () => {
     <S.ModalContent>
       <S.ContentWrapper>
         <Content />
+        <Content />
+        <Content />
+        <Content />
       </S.ContentWrapper>
     </S.ModalContent>
   );

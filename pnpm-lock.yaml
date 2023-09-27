@@ -47,9 +47,6 @@ dependencies:
   vite-plugin-svgr:
     specifier: ^3.2.0
     version: 3.2.0(typescript@5.2.2)(vite@4.4.9)
-  zustand:
-    specifier: ^4.4.1
-    version: 4.4.1(@types/react@18.2.22)(react@18.2.0)
 
 devDependencies:
   '@types/navermaps':
@@ -85,6 +82,9 @@ devDependencies:
   vite:
     specifier: ^4.4.5
     version: 4.4.9
+  zustand:
+    specifier: ^4.4.1
+    version: 4.4.1(@types/react@18.2.22)(react@18.2.0)
 
 packages:
 
@@ -3272,7 +3272,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -3607,7 +3606,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
@@ -4003,7 +4001,7 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-    dev: false
+    dev: true
 
   /vite-plugin-svgr@3.2.0(typescript@5.2.2)(vite@4.4.9):
     resolution: {integrity: sha512-Uvq6niTvhqJU6ga78qLKBFJSDvxWhOnyfQSoKpDPMAGxJPo5S3+9hyjExE5YDj6Lpa4uaLkGc1cBgxXov+LjSw==}
@@ -4100,4 +4098,4 @@ packages:
       '@types/react': 18.2.22
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
-    dev: false
+    dev: true

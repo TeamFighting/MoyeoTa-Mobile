@@ -3,15 +3,18 @@ import Kakaomap from './Kakaomap/Kakaomap';
 import Chevronleft from '../../public/svg/Chevronleft.svg';
 import { useRef } from 'react';
 import BottomSheet from './BottomSheet/Components/BottomSheet';
+// import LocationHeader from './BottomSheet/Components/LocationHeader';
 // import NaverMap from './NaverMap/NaverMap';
 
 function MainPage() {
   const mapRef = useRef<HTMLElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   return (
     <Container>
       <Header>
         <Chevronleft />
-        <Location>서울시 노원구</Location>
+        {/* <LocationHeader /> */}
       </Header>
       <Body>
         {/* <NaverMap mapRef={mapRef} /> */}
@@ -27,48 +30,6 @@ function MainPage() {
     </Container>
   );
 }
-
-const Bottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 1000;
-  width: 100%;
-  bottom: 0;
-  /* height: 100%; */
-  overflow: hidden;
-`;
-
-// const TestButton = styled.button<{ open: boolean }>`
-//   margin: 0 10px 10px 0;
-//   width: fit-content;
-//   align-self: flex-end;
-//   transform: translateY(${({ open }) => (open ? 0 : '100px')});
-//   transition: transform 0.3s ease-in-out;
-// `;
-
-// const Drawer = styled.div<{ open: boolean }>`
-//   height: 100px;
-//   width: 100vw;
-//   background-color: white;
-//   transform: translateY(${({ open }) => (open ? 0 : '100px')});
-//   transition: transform 0.3s ease-in-out;
-// `;
-
-const Body = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 700px;
-  background-color: aliceblue;
-`;
-
-const Location = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  margin-left: 14px;
-`;
 
 const Container = styled.div`
   flex: 1;
@@ -86,6 +47,27 @@ const Header = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding-left: 4%;
+  z-index: 1000000;
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  bottom: 0;
+  /* height: 100%; */
+  overflow: hidden;
+`;
+
+const Body = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 700px;
+  background-color: aliceblue;
 `;
 
 export default MainPage;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { BOTTOM_SHEET_HEIGHT } from '../../../Constants/constant';
-import useBottomSheet from '../Logics/useBottonSheet';
+import useBottomSheet from '../Hook/useBottonSheet';
 import BottonSheetContent from './BottonSheetContent';
 import HeaderHandler from './HeaderHandler';
 
@@ -17,12 +17,13 @@ function BottomSheet() {
   );
 }
 
-const Wrapper = styled(motion.div)`
+const Wrapper = styled(motion.div)<{ isMaxHeight: boolean }>`
   display: flex;
   flex-direction: column;
   position: fixed;
   z-index: 1;
   width: 100%;
+  padding: 30px 0;
   border-radius: 26px 26px 0 0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   height: ${BOTTOM_SHEET_HEIGHT}px;

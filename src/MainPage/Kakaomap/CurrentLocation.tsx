@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useStore from '../../zustand/store/store';
 
 function CurrentLocation() {
   const [location, setLocation] = useState<
@@ -7,6 +8,8 @@ function CurrentLocation() {
     latitude: 37.6330789279387,
     longitude: 127.076794742851,
   });
+
+  const { setLatLng } = useStore((state) => state);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -21,7 +24,9 @@ function CurrentLocation() {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       });
+      setLatLng(position.coords.latitude, position.coords.longitude);
     }
+
     function error() {
       setLocation({
         latitude: 37.483034,
