@@ -13,6 +13,10 @@ import LeftArrow from "../../../../assets/svg/leftArrow.svg";
 import { colors } from "../../../styles/color";
 
 function InputLogin({ route, navigation }: { route: any; navigation: any }) {
+  const [email, setEmail] = useState("");
+  const [year, setYear] = useState("");
+  const [univName, setUnivName] = useState("");
+
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View
@@ -32,15 +36,28 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
       <View style={styles.middle}>
         <Text style={styles.description}>입학년도</Text>
         <View style={styles.signInMiddle}>
-          <TextInput style={styles.input} />
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) => setYear(text)}
+            value={year}
+          />
         </View>
         <Text style={styles.description}>학교</Text>
         <View style={styles.signInMiddle}>
-          <TextInput style={styles.input} />
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) => setUnivName(text)}
+            value={univName}
+          />
         </View>
         <Text style={styles.description}>웹 메일 주소</Text>
         <View style={styles.signInMiddle}>
-          <TextInput style={styles.input} />
+          <TextInput
+            style={styles.input}
+            keyboardType={"email-address"}
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
         </View>
       </View>
       <View style={[styles.signInBottom, styles.button]}>
@@ -62,6 +79,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
             다음
           </Text>
         </Pressable>
+        {/* <WarningText>{WarningText}</WarningText> */}
       </View>
     </View>
   );

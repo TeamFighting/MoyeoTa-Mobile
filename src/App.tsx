@@ -20,6 +20,7 @@ import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
 import SchoolLoginSelect from "./Screens/SignIn/schoolLogin/schoolLoginSelect";
 import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
 import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
+import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -132,6 +133,11 @@ export default function App() {
         <Stack.Screen
           name="EmailAuth"
           component={EmailAuth}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EmailSuccess"
+          component={EmailSuccess}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

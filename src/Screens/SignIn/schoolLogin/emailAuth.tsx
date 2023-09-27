@@ -57,8 +57,8 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
         <View style={styles.button}>
           <Pressable
             onPress={() => {
-              navigation.navigate("EmailAuth", {
-                id: "EmailAuth",
+              navigation.navigate("EmailSuccess", {
+                id: "EmailSuccess",
               });
             }}
           >
