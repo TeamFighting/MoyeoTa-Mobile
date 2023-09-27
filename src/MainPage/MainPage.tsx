@@ -3,7 +3,7 @@ import Kakaomap from './Kakaomap/Kakaomap';
 import Chevronleft from '../../public/svg/Chevronleft.svg';
 import { useRef } from 'react';
 import BottomSheet from './BottomSheet/Components/BottomSheet';
-// import LocationHeader from './BottomSheet/Components/LocationHeader';
+import LocationHeader from './BottomSheet/Components/LocationHeader';
 // import NaverMap from './NaverMap/NaverMap';
 
 function MainPage() {
@@ -14,16 +14,11 @@ function MainPage() {
     <Container>
       <Header>
         <Chevronleft />
-        {/* <LocationHeader /> */}
+        <LocationHeader />
       </Header>
       <Body>
-        {/* <NaverMap mapRef={mapRef} /> */}
         <Kakaomap mapRef={mapRef} />
         <Bottom>
-          {/* <TestButton open={open} onClick={() => setOpen(!open)}>
-            {open ? 'close' : 'open'}
-          </TestButton>
-          <Drawer open={open}>hi</Drawer> */}
           <BottomSheet />
         </Bottom>
       </Body>

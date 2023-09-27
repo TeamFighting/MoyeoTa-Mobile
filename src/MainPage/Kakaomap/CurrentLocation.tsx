@@ -5,8 +5,8 @@ function CurrentLocation() {
   const [location, setLocation] = useState<
     { latitude: number; longitude: number } | string
   >({
-    latitude: 37.6330789279387,
-    longitude: 127.076794742851,
+    latitude: 33.4925551,
+    longitude: 126.4876332,
   });
 
   const { setLatLng } = useStore((state) => state);
@@ -32,11 +32,10 @@ function CurrentLocation() {
         latitude: 37.483034,
         longitude: 126.902435,
       });
-      alert('위치받기 실패');
       console.log('위치받기 실패');
     }
     return () => clearInterval(intervalId);
-  }, []);
+  }, [location, setLatLng]);
 
   return location;
 }

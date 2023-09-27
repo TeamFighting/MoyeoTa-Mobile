@@ -23,7 +23,7 @@ const Wrapper = styled(motion.div)<{ isMaxHeight: boolean }>`
   position: fixed;
   z-index: 1;
   width: 100%;
-  padding: 30px 0;
+  /* background-color: #434327; */
   border-radius: 26px 26px 0 0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   height: ${BOTTOM_SHEET_HEIGHT}px;

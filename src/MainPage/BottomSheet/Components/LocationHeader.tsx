@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import LatLngStore from '../../../zustand/store/store';
 
 function LocationHeader() {
-  const geocoder = new kakao.maps.services.Geocoder();
-  const { currentLat, currentLng } = LatLngStore((state) => state);
+  //   const geocoder = new kakao.maps.services.Geocoder();
+  // const coord = new kakao.maps.LatLng(33.450701, 126.570667);
 
-  return <Location></Location>;
+  return <Location>제주시 연동</Location>;
 }
 
 const Location = styled.div`

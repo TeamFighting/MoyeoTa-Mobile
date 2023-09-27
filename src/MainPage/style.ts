@@ -9,13 +9,28 @@ export const ModalContent = styled.div`
   background-color: aliceblue;
 `;
 
+export const ContentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+  background-color: white;
+`;
+
 export const ContentHeader = styled.div`
   flex-direction: row;
-  padding: 17px 26px;
+  /* padding: 17px 26px; */
   background-color: #f5f5f520;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  height: fit-content;
+  gap: 50%;
+  width: 100vw;
+  /* background-color: aliceblue; */
 `;
 
 export const Left = styled.div`
@@ -24,14 +39,6 @@ export const Left = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 5px;
-`;
-
-export const Right = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   gap: 5px;
 `;
 
@@ -46,23 +53,22 @@ export const HeaderP = styled.span`
   margin-top: 1px;
 `;
 
-export const ContentWrapper = styled.div`
-  width: 100%;
+export const Right = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding-top: 20px;
-  background-color: bisque;
+  gap: 5px;
 `;
+
 export const SingleContent = styled.div`
-  background-color: #ffffff;
+  /* background-color: aliceblue; */
   border-radius: 12px;
   display: flex;
   border: 2px solid #ebebeb;
   flex-direction: column;
-  padding: 15px 15px 0 16px;
+  width: 335px;
+  height: 200px;
 `;
 
 export const ContentTitle = styled.span`
@@ -72,21 +78,60 @@ export const ContentTitle = styled.span`
   font-style: normal;
   font-weight: 700;
   width: 100%;
+  margin-left: 16px;
+  margin-bottom: 10px;
 `;
 
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
+  margin-left: 20px;
   gap: 6px;
 `;
 
-export const Line = styled.div`
-  width: 304px;
-  height: 1px;
-  background-color: #ebebeb;
-  margin-top: 100px;
+export const Route = styled.div`
+  display: flex;
+  flex-direction: columnn;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const From = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+`;
+export const To = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+`;
+
+export const Time = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-left: 2.5px;
+`;
+export const StartTime = styled.span`
+  color: #343434;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  justify-content: flex-start;
+  font-weight: 500;
+  margin-left: 7px;
 `;
 
 export const ProfileInfo = styled.div`
@@ -103,6 +148,8 @@ export const ProfileInfo = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 14px;
+  margin-top: 15px;
+  margin-left: 16px;
 `;
 
 export const ProfileLeft = styled.div`
@@ -160,41 +207,13 @@ export const ProfileDistance = styled.span`
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
+  margin-right: 15px;
 `;
-export const Route = styled.div`
-  display: flex;
-  flex-direction: columnn;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 5px;
-`;
-
-export const StartTime = styled.span`
-  color: #343434;
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  justify-content: flex-start;
-  font-weight: 500;
-`;
-export const Time = styled.span`
-  color: #343434;
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-`;
-export const From = styled.span`
-  color: #343434;
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-`;
-export const To = styled.span`
-  color: #343434;
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
+export const Line = styled.div`
+  width: 304px;
+  height: 1px;
+  background-color: #ebebeb;
+  margin-top: 14px;
+  /* margin-top: 100px; */
+  align-self: center;
 `;

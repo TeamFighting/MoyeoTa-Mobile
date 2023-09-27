@@ -23,7 +23,7 @@ const HeaderWrapper = styled.div`
 
 const Handler = styled.div`
   right: 0;
-  top: 16px;
+  /* top: 16px; */
   justify-content: center;
   align-items: center;
   cursor: pointer;
