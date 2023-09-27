@@ -1,17 +1,20 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function CurrentLocation() {
   const [location, setLocation] = useState<
     { latitude: number; longitude: number } | string
   >({
-    latitude: 0, // 초기값 설정, 여기에서는 임의의 값으로 설정했으니 실제로는 초기값을 어떻게 설정할지 고려해야 합니다.
-    longitude: 0,
+    latitude: 37.6330789279387,
+    longitude: 127.076794742851,
   });
 
-  useMemo(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+        console.log('위치받기 성공');
+      }
+    }, 10000);
 
     function success(position: GeolocationPosition) {
       setLocation({
@@ -24,8 +27,10 @@ function CurrentLocation() {
         latitude: 37.483034,
         longitude: 126.902435,
       });
+      alert('위치받기 실패');
       console.log('위치받기 실패');
     }
+    return () => clearInterval(intervalId);
   }, []);
 
   return location;
