@@ -18,6 +18,8 @@ export const ContentWrapper = styled.div`
   gap: 20px;
   padding-top: 20px;
   background-color: white;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 `;
 
 export const ContentHeader = styled.div`
