@@ -49,11 +49,9 @@ const Bottom = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  z-index: 1000;
   width: 100%;
   bottom: 0;
-  /* height: 100%; */
-  overflow: hidden;
+  height: 258px;
 `;
 
 const Body = styled.div`
@@ -61,7 +59,7 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 700px;
+  height: 100vh;
   background-color: aliceblue;
 `;
 

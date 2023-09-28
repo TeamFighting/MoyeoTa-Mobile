@@ -17,7 +17,7 @@ function HeaderHandler() {
 const HeaderWrapper = styled.div`
   width: 100%;
   height: 40px;
-  background-color: white;
+  background-color: beige;
   border-radius: 26px 26px 0 0;
 `;
 

@@ -6,8 +6,9 @@ export const ModalContent = styled.div`
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: aliceblue;
   font-family: Pretendard;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const ContentWrapper = styled.div`
@@ -18,9 +19,9 @@ export const ContentWrapper = styled.div`
   align-items: center;
   gap: 20px;
   padding-top: 20px;
-  background-color: white;
   scroll-behavior: smooth;
-  overflow-y: scroll;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const ContentHeader = styled.div`
