@@ -27,6 +27,7 @@ const Wrapper = styled(motion.div)<{ isMaxHeight: boolean }>`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   height: ${BOTTOM_SHEET_HEIGHT}px;
   transition: transform 150ms ease-out;
+  background-color: white;
 `;
 const BottomSheetContent = styled.div`
   overflow: auto;

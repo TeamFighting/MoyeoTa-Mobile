@@ -7,6 +7,7 @@ export const ModalContent = styled.div`
   height: 100%;
   width: 100%;
   background-color: aliceblue;
+  font-family: Pretendard;
 `;
 
 export const ContentWrapper = styled.div`
@@ -32,6 +33,7 @@ export const ContentHeader = styled.div`
   height: fit-content;
   gap: 50%;
   width: 100vw;
+  position: sticky;
   /* background-color: aliceblue; */
 `;
 
@@ -107,6 +109,7 @@ export const From = styled.span`
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
+  color: #7e7e7e;
 `;
 export const To = styled.span`
   color: #343434;
@@ -114,6 +117,7 @@ export const To = styled.span`
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
+  color: #7e7e7e;
 `;
 
 export const Time = styled.span`
@@ -125,6 +129,7 @@ export const Time = styled.span`
   display: flex;
   align-items: center;
   margin-left: 2.5px;
+  color: #7e7e7e;
 `;
 export const StartTime = styled.span`
   color: #343434;
@@ -134,6 +139,7 @@ export const StartTime = styled.span`
   justify-content: flex-start;
   font-weight: 500;
   margin-left: 7px;
+  color: #7e7e7e;
 `;
 
 export const ProfileInfo = styled.div`
