@@ -27,7 +27,7 @@ export const ContentWrapper = styled.div`
 export const ContentHeader = styled.div`
   flex-direction: row;
   /* padding: 17px 26px; */
-  background-color: #f5f5f520;
+  /* background-color: #f5f5f520; */
   display: flex;
   align-items: center;
   justify-content: center;

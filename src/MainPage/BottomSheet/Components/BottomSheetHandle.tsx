@@ -1,15 +1,8 @@
 import styled from 'styled-components';
 
-function HeaderHandler() {
+function BottomSheetHandle() {
   return (
-    <HeaderWrapper
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: '16px',
-      }}
-    >
+    <HeaderWrapper>
       <Handler />
     </HeaderWrapper>
   );
@@ -19,18 +12,19 @@ const HeaderWrapper = styled.div`
   height: 40px;
   background-color: beige;
   border-radius: 26px 26px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Handler = styled.div`
   right: 0;
-  /* top: 16px; */
   justify-content: center;
-  align-items: center;
+  align-self: center;
   cursor: pointer;
   border-radius: 26px;
   background-color: #ededed;
   width: 50px;
   height: 7px;
-  margin-bottom: 28px;
 `;
-export default HeaderHandler;
+export default BottomSheetHandle;
