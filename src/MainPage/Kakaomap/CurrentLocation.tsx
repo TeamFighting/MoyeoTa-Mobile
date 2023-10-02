@@ -17,7 +17,7 @@ function CurrentLocation() {
         navigator.geolocation.getCurrentPosition(success, error);
         console.log('위치받기 성공');
       }
-    }, 100000000000);
+    }, 1000);
 
     function success(position: GeolocationPosition) {
       setLocation({
