@@ -26,8 +26,6 @@ export const ContentWrapper = styled.div`
 
 export const ContentHeader = styled.div`
   flex-direction: row;
-  /* padding: 17px 26px; */
-  /* background-color: #f5f5f520; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +33,6 @@ export const ContentHeader = styled.div`
   gap: 50%;
   width: 100vw;
   position: sticky;
-  /* background-color: aliceblue; */
 `;
 
 export const Left = styled.div`
@@ -67,7 +64,6 @@ export const Right = styled.div`
 `;
 
 export const SingleContent = styled.div`
-  /* background-color: aliceblue; */
   border-radius: 12px;
   display: flex;
   border: 2px solid #ebebeb;

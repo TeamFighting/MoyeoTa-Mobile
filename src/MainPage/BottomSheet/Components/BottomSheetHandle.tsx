@@ -10,7 +10,7 @@ function BottomSheetHandle() {
 const HeaderWrapper = styled.div`
   width: 100%;
   height: 40px;
-  background-color: beige;
+  background-color: #ffffff;
   border-radius: 26px 26px 0 0;
   display: flex;
   justify-content: center;
