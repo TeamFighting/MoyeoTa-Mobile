@@ -1,21 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dimensions,
   StyleSheet,
   Text,
   View,
   Pressable,
-  TouchableOpacity,
-  Image,
   TextInput,
 } from "react-native";
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
+import QuestionMark from "../../../../assets/svg/questionMark.svg";
 import { colors } from "../../../styles/color";
 
 function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [email, setEmail] = useState("");
   const [year, setYear] = useState("");
   const [univName, setUnivName] = useState("");
+
+  const handleNextButtonPress = async () => {
+    try {
+      const headers = {
+        // Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      };
+      const response = await sendVerificationCodeToEmail(email, headers);
+
+      if (response.code === 0 && response.univ_check) {
+        // 인증 코드 요청이 성공하고 학교 인증이 완료된 경우 다음 화면
+        navigation.navigate("EmailAuth", {
+          id: "EmailAuth",
+          email: response.email,
+          univName: response.univName,
+          key: response.key,
+        });
+      } else {
+        alert("인증 코드 요청 실패");
+        console.log(response.code);
+      }
+    } catch (error) {
+      console.error("인증 코드 요청 중 오류:", error);
+      alert("인증 코드 요청 중 오류 발생");
+    }
+  };
+
+  const sendVerificationCodeToEmail = async (email: string, headers: any) => {
+    try {
+      const response = await fetch(
+        "http://moyeota.shop:80/api/users/school-email",
+        {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const data = await response.json();
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
@@ -61,13 +105,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         </View>
       </View>
       <View style={[styles.signInBottom, styles.button]}>
-        <Pressable
-          onPress={() => {
-            navigation.navigate("EmailAuth", {
-              id: "EmailAuth",
-            });
-          }}
-        >
+        <Pressable onPress={handleNextButtonPress}>
           <Text
             style={{
               color: "white",
@@ -79,11 +117,11 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
             다음
           </Text>
         </Pressable>
-        {/* <WarningText>{WarningText}</WarningText> */}
       </View>
     </View>
   );
 }
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -115,13 +153,6 @@ const styles = StyleSheet.create({
   middle: {
     marginTop: -195,
   },
-  signInTop: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 27,
-    paddingBottom: 18,
-  },
   signInMiddle: {
     alignItems: "center",
   },
@@ -137,13 +168,19 @@ const styles = StyleSheet.create({
   signInBottom: {
     alignItems: "center",
   },
-
   description: {
     fontSize: 14,
     fontFamily: "PretendardBold",
     fontWeight: "700",
     color: "#9A9A9A",
     paddingLeft: 36,
+  },
+  question: {
+    position: "absolute",
+    right: 30,
+    top: 20,
+    width: 24,
+    height: 24,
   },
 });
 

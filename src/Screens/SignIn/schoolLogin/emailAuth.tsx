@@ -1,18 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Dimensions,
   StyleSheet,
   Text,
   View,
   Pressable,
-  TouchableOpacity,
-  Image,
   TextInput,
 } from "react-native";
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
 import { colors } from "../../../styles/color";
 
 function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
+  const [verificationCode, setVerificationCode] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [univName, setUnivName] = useState<string>("");
+  const [univCheck, setUnivCheck] = useState<boolean>(false);
+  const [key, setKey] = useState<string>("");
+
+  const handleVerification = async () => {
+    try {
+      const response = await fetch(
+        "http://moyeota.shop:80/api/users/school-email-check",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ verificationCode }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.code === 0 && data.univ_check) {
+        // 인증 성공
+        setEmail(data.email);
+        setUnivName(data.univName);
+        setKey(data.key);
+        setUnivCheck(true);
+        navigation.navigate("EmailSuccess", {
+          id: "EmailSuccess",
+          email: data.email,
+          univName: data.univName,
+          key: data.key,
+        });
+      } else {
+        alert("인증 실패");
+      }
+    } catch (error) {
+      console.error("인증 코드 확인 중 오류:", error);
+      alert("인증 코드 확인 중 오류 발생");
+    }
+  };
+
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View
@@ -36,6 +76,8 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
             style={styles.input}
             keyboardType="number-pad"
             placeholder="인증번호를 입력해주세요"
+            onChangeText={(text) => setVerificationCode(text)}
+            value={verificationCode}
           />
         </View>
         <Text style={styles.description}>
@@ -55,13 +97,7 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
           인증번호 다시받기
         </Text>
         <View style={styles.button}>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("EmailSuccess", {
-                id: "EmailSuccess",
-              });
-            }}
-          >
+          <Pressable onPress={handleVerification} disabled={!verificationCode}>
             <Text
               style={{
                 color: "white",
@@ -78,6 +114,7 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
     </View>
   );
 }
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -99,7 +136,6 @@ const styles = StyleSheet.create({
     height: 48,
     flexShrink: 0,
     borderRadius: 12,
-    // marginTop: 8,
     borderBottomWidth: 2,
     borderBottomColor: "#9A9A9A",
     padding: 8,
@@ -109,13 +145,6 @@ const styles = StyleSheet.create({
   },
   middle: {
     marginTop: -195,
-  },
-  signInTop: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 27,
-    paddingBottom: 18,
   },
   signInMiddle: {
     alignItems: "center",
@@ -132,7 +161,6 @@ const styles = StyleSheet.create({
   signInBottom: {
     alignItems: "center",
   },
-
   description: {
     fontSize: 12,
     fontFamily: "PretendardBold",
