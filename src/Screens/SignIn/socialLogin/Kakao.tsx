@@ -22,7 +22,8 @@ function Kakao() {
         javaScriptEnabled
         onMessage={(event) => {
           const data = event.nativeEvent["url"];
-          OAuth2RedirectHandler({ data, navigation });
+          const from = "Kakao";
+          OAuth2RedirectHandler({ data, navigation, from });
         }}
         setSupportMultipleWindows={false}
       />

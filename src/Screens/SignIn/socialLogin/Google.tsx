@@ -23,7 +23,8 @@ function Google() {
         javaScriptEnabled
         onMessage={(event) => {
           const data = event.nativeEvent["url"];
-          OAuth2RedirectHandler({ data, navigation });
+          const from = "Google";
+          OAuth2RedirectHandler({ data, navigation, from });
         }}
         setSupportMultipleWindows={false}
       />
