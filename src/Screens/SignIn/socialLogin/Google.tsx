@@ -1,9 +1,9 @@
 import WebView from "react-native-webview";
-import OAuth2RedirectHandler from "./OAuth2RedirectHandler";
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('message from webView')`;
 import React from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import OAuth2RedirectHandler from "./OAuth2RedirectHandler";
 
 function Google() {
   const navigation = useNavigation();
@@ -23,7 +23,8 @@ function Google() {
         javaScriptEnabled
         onMessage={(event) => {
           const data = event.nativeEvent["url"];
-          OAuth2RedirectHandler({ data, navigation });
+          const from = "Google";
+          OAuth2RedirectHandler({ data, navigation, from });
         }}
         setSupportMultipleWindows={false}
       />

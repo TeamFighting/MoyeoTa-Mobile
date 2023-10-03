@@ -7,11 +7,17 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
+<<<<<<< HEAD
+=======
 import Kakaotalk from "../../../assets/svg/kakaotalk.svg";
 import Naver from "../../../assets/svg/naver.svg";
 import Google from "../../../assets/svg/google.svg";
 import LeftArrow from "../../../assets/svg/leftArrow.svg";
+>>>>>>> db99cb58f7dbba2b016a44e2706436e27d50369f
 import { colors } from "../../styles/color";
+import Kakaotalk from "../../../assets/svg/kakaotalk.svg";
+import Naver from "../../../assets/svg/naver.svg";
+import Google from "../../../assets/svg/google.svg";
 
 export type RootStackParamList = {
   LoginScreen: undefined;
@@ -23,9 +29,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <LeftArrow />
-        </Pressable>
+        <Pressable onPress={() => navigation.goBack()}></Pressable>
       </View>
       <View style={styles.introContainer}>
         <Text style={styles.intro}>반가워요!</Text>
@@ -51,7 +55,13 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
           >
             <Naver />
           </Pressable>
-
+          <Pressable
+            onPress={() => {
+              navigation.navigate("MainPage", { id: "MainPage" });
+            }}
+          >
+            <Text>메인페이지</Text>
+          </Pressable>
           <Pressable
             onPress={() => {
               navigation.navigate("Google", { id: "Google" });
