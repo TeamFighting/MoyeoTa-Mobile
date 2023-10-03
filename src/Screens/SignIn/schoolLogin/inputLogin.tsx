@@ -93,7 +93,9 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
             onChangeText={(text) => setUnivName(text)}
             value={univName}
           />
-          <QuestionMark style={styles.question} />
+          <Pressable onPress={() => navigation.navigate("SchoolList" as never)}>
+            <QuestionMark style={styles.question} />
+          </Pressable>
         </View>
         <Text style={styles.description}>웹 메일 주소</Text>
         <View style={styles.signInMiddle}>
@@ -178,8 +180,8 @@ const styles = StyleSheet.create({
   },
   question: {
     position: "absolute",
-    right: 30,
-    top: 20,
+    left: 130,
+    bottom: 30,
     width: 24,
     height: 24,
   },
