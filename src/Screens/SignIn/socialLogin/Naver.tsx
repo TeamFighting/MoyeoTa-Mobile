@@ -21,7 +21,8 @@ function Naver() {
         javaScriptEnabled
         onMessage={(event) => {
           const data = event.nativeEvent["url"];
-          OAuth2RedirectHandler({ data, navigation });
+          const from = "Naver";
+          OAuth2RedirectHandler({ data, navigation, from});
         }}
         setSupportMultipleWindows={false}
       />
