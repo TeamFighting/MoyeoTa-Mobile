@@ -23,7 +23,7 @@ async function requestToken(
     .catch(function (e) {
       console.log(e);
     });
-  } else if(from === 'Google') { 
+  } else if(from === 'Google') {
     axios
     .post('http://moyeota.shop/api/users/google', {
       authorizationCode: code,
