@@ -93,6 +93,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
             onChangeText={(text) => setUnivName(text)}
             value={univName}
           />
+          <QuestionMark style={styles.question} />
         </View>
         <Text style={styles.description}>웹 메일 주소</Text>
         <View style={styles.signInMiddle}>
