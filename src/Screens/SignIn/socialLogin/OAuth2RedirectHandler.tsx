@@ -40,7 +40,8 @@ async function requestToken(
       console.log(e);
     });
   }
-  navigation.navigate('MainPage' as never);
+  navigation.navigate("Guide" as never);
+
 }
 
 function OAuth2RedirectHandler({

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
@@ -13,6 +14,24 @@ import MainPage from './Screens/MainPage/MainPage';
 import Kakao from './Screens/SignIn/SocialLogin/Kakao';
 import Naver from './Screens/SignIn/SocialLogin/Naver';
 import Google from './Screens/SignIn/SocialLogin/Google';
+=======
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import { useFonts } from "expo-font";
+import Onboarding from "./components/Onboarding";
+import Slogan from "./Screens/Slogan";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Kakao from "./Screens/SignIn/socialLogin/Kakao";
+import SignIn from "./Screens/SignIn/SignIn";
+import axios from "axios";
+import Naver from "./Screens/SignIn/socialLogin/Naver";
+import Guide from "./Screens/Guide";
+import { SplashScreen } from "expo-router";
+import { useEffect, useState } from "react";
+import * as Font from "expo-font";
+import Google from "./Screens/SignIn/socialLogin/Google";
+>>>>>>> db99cb58f7dbba2b016a44e2706436e27d50369f
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -61,7 +80,16 @@ export default function App() {
 
   return (
     <NavigationContainer>
+<<<<<<< HEAD
       <Stack.Navigator initialRouteName="SignIn">
+=======
+      <Stack.Navigator initialRouteName="Slogan">
+        <Stack.Screen
+          name="Slogan"
+          component={Slogan}
+          options={{ headerShown: false }}
+        />
+>>>>>>> db99cb58f7dbba2b016a44e2706436e27d50369f
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
@@ -88,8 +116,13 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+<<<<<<< HEAD
           name="MainPage"
           component={MainPage}
+=======
+          name="Guide"
+          component={Guide}
+>>>>>>> db99cb58f7dbba2b016a44e2706436e27d50369f
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

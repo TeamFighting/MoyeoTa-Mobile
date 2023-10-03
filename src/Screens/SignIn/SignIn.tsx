@@ -7,6 +7,13 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
+<<<<<<< HEAD
+=======
+import Kakaotalk from "../../../assets/svg/kakaotalk.svg";
+import Naver from "../../../assets/svg/naver.svg";
+import Google from "../../../assets/svg/google.svg";
+import LeftArrow from "../../../assets/svg/leftArrow.svg";
+>>>>>>> db99cb58f7dbba2b016a44e2706436e27d50369f
 import { colors } from "../../styles/color";
 import Kakaotalk from "../../../assets/svg/kakaotalk.svg";
 import Naver from "../../../assets/svg/naver.svg";
@@ -83,6 +90,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               회원가입
             </Text>
           </View>
+
           <View
             style={[
               styles.button,
@@ -93,15 +101,17 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               },
             ]}
           >
-            <Text
-              style={{
-                color: "#5d5d5d",
-                fontSize: 18,
-                fontFamily: "PretendardBold",
-              }}
-            >
-              닫기
-            </Text>
+            <Pressable onPress={() => navigation.goBack()}>
+              <Text
+                style={{
+                  color: "#5d5d5d",
+                  fontSize: 18,
+                  fontFamily: "PretendardBold",
+                }}
+              >
+                닫기
+              </Text>
+            </Pressable>
           </View>
           <Text
             style={{
