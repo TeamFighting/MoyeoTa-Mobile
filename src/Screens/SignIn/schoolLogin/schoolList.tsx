@@ -13,7 +13,7 @@ import { colors } from "../../../styles/color";
 import axios from "axios";
 
 function SchoolList({ route, navigation }: { route: any; navigation: any }) {
-  const [schoolData, setSchoolData] = useState<string[]>([]); // 학교 이름을 저장할 배열
+  const [schoolNames, setSchoolNames] = useState<string[]>([]); // 학교 이름을 저장할 배열
 
   useEffect(() => {
     const apiUrl = `http://www.career.go.kr/cnet/openapi/getOpenApi.json?apiKey=${process.env.SCHOOL_API_KEY}&svcType=api&svcCode=SCHOOL&contentType=json&gubun=univ_list`;
@@ -30,10 +30,8 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
         ) {
           const schoolData = responseData.dataSearch.content;
 
-          const schoolNames = schoolData.map(
-            (school: any) => school.schoolName
-          );
-          console.log(schoolNames);
+          const names = schoolData.map((school: any) => school.schoolName);
+          setSchoolNames(names);
         } else {
           console.error("잘못된 형식입니다.");
         }
@@ -55,6 +53,15 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
         <Pressable onPress={() => navigation.goBack()}>
           <LeftArrow style={{ marginLeft: 14 }} />
         </Pressable>
+      </View>
+      <View style={styles.schoolListContainer}>
+        <FlatList
+          data={schoolNames}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <Text style={styles.schoolItem}>{item}</Text>
+          )}
+        />
       </View>
     </View>
   );
