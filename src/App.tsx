@@ -23,8 +23,8 @@ import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
 import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
 
-const loadFonts = () => {
-  return Font.loadAsync({
+const loadFonts = async () => {
+  await Font.loadAsync({
     Pretendard: require("../assets/font/Pretendard-Medium.otf"),
     PretedardBlack: require("../assets/font/Pretendard-Black.otf"),
     PretendardBold: require("../assets/font/Pretendard-Bold.otf"),
@@ -39,7 +39,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const inialize = async () => {
+    const initialize = async () => {
       await SplashScreen.preventAutoHideAsync();
 
       await loadFonts();
@@ -48,7 +48,7 @@ export default function App() {
       }, 3000);
       setIsReady(true);
     };
-    inialize();
+    initialize();
   }, []);
 
   if (!isReady) {
