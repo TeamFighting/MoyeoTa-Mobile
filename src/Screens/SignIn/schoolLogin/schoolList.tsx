@@ -70,7 +70,9 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
           data={schoolNames}
           keyExtractor={(item) => item}
           renderItem={({ item }) => (
-            <Text style={styles.schoolItem}>{item}</Text>
+            <View style={styles.schoolItemContainer}>
+              <Text style={styles.schoolItem}>{item}</Text>
+            </View>
           )}
           onEndReached={loadMoreData}
           onEndReachedThreshold={0.1}
@@ -94,17 +96,22 @@ const styles = StyleSheet.create({
     paddingLeft: "7%",
   },
   schoolListContainer: {
-    marginTop: 20,
-    marginLeft: "7%",
+    marginTop: 41,
+    marginLeft: 20,
   },
   schoolItem: {
-    fontSize: 16,
-    marginBottom: 10,
+    fontSize: 14,
+    fontFamily: "Pretendard",
   },
   noDataContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  schoolItemContainer: {
+    borderBottomWidth: 2,
+    borderBottomColor: "#E3E3E3",
+    marginBottom: 28,
   },
 });
 
