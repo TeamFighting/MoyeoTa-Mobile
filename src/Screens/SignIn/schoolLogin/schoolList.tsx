@@ -68,7 +68,7 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
       <View style={styles.schoolListContainer}>
         <FlatList
           data={schoolNames}
-          keyExtractor={(item) => item}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <View style={styles.schoolItemContainer}>
               <Text style={styles.schoolItem}>{item}</Text>
