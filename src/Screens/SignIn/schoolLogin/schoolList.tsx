@@ -5,44 +5,55 @@ import {
   Text,
   View,
   Pressable,
-  TextInput,
   FlatList,
+  ActivityIndicator,
 } from "react-native";
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
 import { colors } from "../../../styles/color";
 import axios from "axios";
+import xmljs from "xml-js";
 
 function SchoolList({ route, navigation }: { route: any; navigation: any }) {
-  const [schoolNames, setSchoolNames] = useState<string[]>([]); // 학교 이름을 저장할 배열
+  const [schoolNames, setSchoolNames] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   useEffect(() => {
-    const apiUrl = `http://www.career.go.kr/cnet/openapi/getOpenApi.json?apiKey=${process.env.SCHOOL_API_KEY}&svcType=api&svcCode=SCHOOL&contentType=json&gubun=univ_list`;
+    const apiUrl = `http://www.career.go.kr/cnet/openapi/getOpenApi.xml?apiKey=${process.env.SCHOOL_API_KEY}&svcType=api&svcCode=SCHOOL&contentType=xml&gubun=univ_list&thisPage=${currentPage}`;
 
     axios
       .get(apiUrl)
       .then((response) => {
-        const responseData = response.data;
+        const xmlData = response.data;
 
-        if (
-          responseData &&
-          responseData.dataSearch &&
-          responseData.dataSearch.content
-        ) {
-          const schoolData = responseData.dataSearch.content;
+        const jsonData = xmljs.xml2json(xmlData, { compact: true, spaces: 4 });
 
-          const names = schoolData.map((school: any) => school.schoolName);
-          setSchoolNames(names);
-        } else {
-          console.error("잘못된 형식입니다.");
-        }
+        const schoolData = JSON.parse(jsonData).dataSearch.content;
+        const names = schoolData.map((school: any) => school.schoolName._text);
+
+        setSchoolNames((prevNames) => [...prevNames, ...names]);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("API 요청 중 오류 발생:", error);
+        setIsLoading(false);
       });
-  }, []);
+  }, [currentPage]);
+
+  const loadMoreData = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  if (!isLoading && schoolNames.length === 0) {
+    return (
+      <View style={styles.noDataContainer}>
+        <Text>데이터가 없습니다.</Text>
+      </View>
+    );
+  }
 
   return (
-    <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
+    <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <View
         style={{
           flexDirection: "row",
@@ -61,6 +72,11 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
           renderItem={({ item }) => (
             <Text style={styles.schoolItem}>{item}</Text>
           )}
+          onEndReached={loadMoreData}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={
+            isLoading && <ActivityIndicator size="large" color="#000" />
+          }
         />
       </View>
     </View>
@@ -84,6 +100,11 @@ const styles = StyleSheet.create({
   schoolItem: {
     fontSize: 16,
     marginBottom: 10,
+  },
+  noDataContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
