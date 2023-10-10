@@ -7,8 +7,10 @@ import {
   Pressable,
   FlatList,
   ActivityIndicator,
+  TextInput,
 } from "react-native";
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
+import QuestionMark from "../../../../assets/svg/questionMark.svg";
 import { colors } from "../../../styles/color";
 import axios from "axios";
 import xmljs from "xml-js";
@@ -17,6 +19,8 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
   const [schoolNames, setSchoolNames] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [searchText, setSearchText] = useState<string>("");
+  const [filteredSchoolNames, setFilteredSchoolNames] = useState<string[]>([]);
 
   useEffect(() => {
     const apiUrl = `http://www.career.go.kr/cnet/openapi/getOpenApi.xml?apiKey=${process.env.SCHOOL_API_KEY}&svcType=api&svcCode=SCHOOL&contentType=xml&gubun=univ_list&thisPage=${currentPage}`;
@@ -40,6 +44,15 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
       });
   }, [currentPage]);
 
+  useEffect(() => {
+    if (searchText === "") {
+      setFilteredSchoolNames(schoolNames);
+    } else {
+      const filtered = schoolNames.filter((name) => name.includes(searchText));
+      setFilteredSchoolNames(filtered);
+    }
+  }, [searchText, schoolNames]);
+
   const loadMoreData = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
@@ -54,20 +67,24 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "flex-start",
-          marginTop: 52,
-        }}
-      >
+      <View style={styles.headerContainer}>
         <Pressable onPress={() => navigation.goBack()}>
-          <LeftArrow style={{ marginLeft: 14 }} />
+          <LeftArrow />
         </Pressable>
+        <View style={styles.searchContainer}>
+          <QuestionMark style={styles.question} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="학교 이름으로 검색"
+            placeholderTextColor="#7E7E7E"
+            value={searchText}
+            onChangeText={(text) => setSearchText(text)}
+          />
+        </View>
       </View>
       <View style={styles.schoolListContainer}>
         <FlatList
-          data={schoolNames}
+          data={filteredSchoolNames}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <View style={styles.schoolItemContainer}>
@@ -89,14 +106,29 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
-  introContainer: {
-    height: windowHeight * 0.4,
-    width: "100%",
-    paddingTop: windowHeight * 0.05,
-    paddingLeft: "7%",
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    marginTop: 52,
+    marginBottom: 36,
+  },
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  searchInput: {
+    flex: 1,
+    height: 40,
+    borderColor: "#9A9A9A",
+    borderBottomWidth: 1,
+    marginLeft: 10,
+    paddingLeft: 30,
+    fontFamily: "Pretendard",
   },
   schoolListContainer: {
-    marginTop: 41,
+    marginTop: 8,
     marginLeft: 20,
   },
   schoolItem: {
@@ -112,6 +144,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: "#E3E3E3",
     marginBottom: 28,
+  },
+  question: {
+    position: "absolute",
+    left: 12,
   },
 });
 
