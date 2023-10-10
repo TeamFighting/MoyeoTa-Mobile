@@ -119,12 +119,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchInput: {
-    flex: 1,
+    width: 300,
     height: 40,
     borderColor: "#9A9A9A",
     borderBottomWidth: 1,
     marginLeft: 10,
-    paddingLeft: 30,
+    paddingLeft: 35,
     fontFamily: "Pretendard",
   },
   schoolListContainer: {
