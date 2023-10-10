@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: "#E3E3E3",
     marginBottom: 28,
+    width: 330,
   },
   question: {
     position: "absolute",
