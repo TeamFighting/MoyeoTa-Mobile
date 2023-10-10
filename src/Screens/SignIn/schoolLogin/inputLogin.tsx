@@ -94,6 +94,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
             style={styles.input}
             onChangeText={(text) => setUnivName(text)}
             value={selectedSchool}
+            editable={false}
           />
           <Pressable onPress={() => navigation.navigate("SchoolList")}>
             <QuestionMark style={styles.question} />
