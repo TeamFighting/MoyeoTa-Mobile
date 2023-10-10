@@ -55,17 +55,6 @@ export default function App() {
     return null;
   }
 
-  // const [fontsLoaded] = useFonts({
-  //   Pretendard: require("../assets/font/Pretendard-Medium.otf"),
-  //   PretedardBlack: require("../assets/font/Pretendard-Black.otf"),
-  //   PretendardBold: require("../assets/font/Pretendard-Bold.otf"),
-  //   PretendardExtraBold: require("../assets/font/Pretendard-ExtraBold.otf"),
-  //   PretendardLight: require("../assets/font/Pretendard-Light.otf"),
-  //   PretendardRegular: require("../assets/font/Pretendard-Regular.otf"),
-  //   PretendardSemiBold: require("../assets/font/Pretendard-SemiBold.otf"),
-  // });
-  // if (!fontsLoaded) return null;
-
   const Stack = createNativeStackNavigator();
 
   return (
