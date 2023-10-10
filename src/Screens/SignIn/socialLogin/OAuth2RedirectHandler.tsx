@@ -1,7 +1,8 @@
 import { NavigationProp } from "@react-navigation/core";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View } from "react-native";
+import useAuthStore from "./authStore";
 
 interface OAuth2RedirectHandlerProps {
   data: string;
@@ -14,32 +15,31 @@ async function requestToken(
   navigation: NavigationProp<ReactNavigation.RootParamList>,
   from: string
 ) {
-  if (from === "Kakao") {
-    axios
-      .post("http://moyeota.shop/api/users/kakao", {
+  try {
+    let response;
+    if (from === "Kakao") {
+      response = await axios.post("http://moyeota.shop/api/users/kakao", {
         authorizationCode: code,
-      })
-      .catch(function (e) {
-        console.log(e);
       });
-  } else if (from === "Google") {
-    axios
-      .post("http://moyeota.shop/api/users/google", {
+    } else if (from === "Google") {
+      response = await axios.post("http://moyeota.shop/api/users/google", {
         authorizationCode: code,
-      })
-      .catch(function (e) {
-        console.log(e);
       });
-  } else if (from === "Naver") {
-    axios
-      .post("http://moyeota.shop/api/users/naver", {
+    } else if (from === "Naver") {
+      response = await axios.post("http://moyeota.shop/api/users/naver", {
         authorizationCode: code,
-      })
-      .catch(function (e) {
-        console.log(e);
       });
+    }
+
+    if (response && response.data && response.data.token) {
+      const token = response.data.token;
+      useAuthStore.getState().setAuthToken(token);
+    }
+
+    navigation.navigate("Guide" as never);
+  } catch (error) {
+    console.error("Error requesting token:", error);
   }
-  navigation.navigate("Guide" as never);
 }
 
 function OAuth2RedirectHandler({
@@ -50,12 +50,12 @@ function OAuth2RedirectHandler({
   const exp = "code=";
   const condition = data.indexOf(exp);
 
-  if (condition !== -1) {
-    console.log("condition", condition);
-    const requestCode = data.substring(condition + exp.length).split("&")[0];
-    requestToken(requestCode, navigation, from);
-    console.log("requestCode", requestCode);
-  }
+  useEffect(() => {
+    if (condition !== -1) {
+      const requestCode = data.substring(condition + exp.length).split("&")[0];
+      requestToken(requestCode, navigation, from);
+    }
+  }, []);
 }
 
 export default OAuth2RedirectHandler;
