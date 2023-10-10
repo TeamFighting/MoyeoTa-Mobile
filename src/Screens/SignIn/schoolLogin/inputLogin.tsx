@@ -16,6 +16,8 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [year, setYear] = useState("");
   const [univName, setUnivName] = useState("");
 
+  const selectedSchool = route.params.selectedSchool || "";
+
   const handleNextButtonPress = async () => {
     try {
       const headers = {
@@ -91,9 +93,9 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
           <TextInput
             style={styles.input}
             onChangeText={(text) => setUnivName(text)}
-            value={univName}
+            value={selectedSchool}
           />
-          <Pressable onPress={() => navigation.navigate("SchoolList" as never)}>
+          <Pressable onPress={() => navigation.navigate("SchoolList")}>
             <QuestionMark style={styles.question} />
           </Pressable>
         </View>

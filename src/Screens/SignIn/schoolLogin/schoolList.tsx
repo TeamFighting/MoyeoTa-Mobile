@@ -65,6 +65,10 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
     );
   }
 
+  const handleSchoolClick = (item) => {
+    navigation.navigate("InputLogin", { selectedSchool: item });
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <View style={styles.headerContainer}>
@@ -87,9 +91,15 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
           data={filteredSchoolNames}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
-            <View style={styles.schoolItemContainer}>
-              <Text style={styles.schoolItem}>{item}</Text>
-            </View>
+            <Pressable
+              onPress={() => {
+                handleSchoolClick(item);
+              }}
+            >
+              <View style={styles.schoolItemContainer}>
+                <Text style={styles.schoolItem}>{item}</Text>
+              </View>
+            </Pressable>
           )}
           onEndReached={loadMoreData}
           onEndReachedThreshold={0.1}
