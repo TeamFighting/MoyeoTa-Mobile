@@ -10,6 +10,7 @@ import {
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
 import QuestionMark from "../../../../assets/svg/questionMark.svg";
 import { colors } from "../../../styles/color";
+import useAuthStore from "../socialLogin/authStore";
 
 function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [email, setEmail] = useState("");
@@ -18,10 +19,16 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
 
   const selectedSchool = route.params.selectedSchool || "";
 
+  const authToken = useAuthStore((state) => state.authToken);
+
   const handleNextButtonPress = async () => {
     try {
+      if (!email) {
+        alert("이메일을 입력해주세요.");
+        return;
+      }
       const headers = {
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
       };
       const response = await sendVerificationCodeToEmail(email, headers);
