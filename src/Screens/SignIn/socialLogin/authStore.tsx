@@ -1,13 +1,11 @@
-import create from "zustand";
+import { create, State } from "zustand";
 
-interface AuthStore {
-  authToken: string | null;
-  setAuthToken: (token: string | null) => void;
-}
+type AuthStore = State & {
+  token: string | null;
+  setToken: (token: string | null) => void;
+};
 
-const useAuthStore = create<AuthStore>((set) => ({
-  authToken: null,
-  setAuthToken: (token) => set({ authToken: token }),
+export const useAuthStore = create<AuthStore>((set) => ({
+  token: null,
+  setToken: (token) => set({ token }),
 }));
-
-export default useAuthStore;

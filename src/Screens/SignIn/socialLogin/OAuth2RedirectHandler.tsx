@@ -1,8 +1,8 @@
 import { NavigationProp } from "@react-navigation/core";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { Text, View } from "react-native";
-import useAuthStore from "./authStore";
+import { useAuthStore } from "./authStore";
 
 interface OAuth2RedirectHandlerProps {
   data: string;
@@ -15,30 +15,52 @@ async function requestToken(
   navigation: NavigationProp<ReactNavigation.RootParamList>,
   from: string
 ) {
-  try {
-    let response;
-    if (from === "Kakao") {
-      response = await axios.post("http://moyeota.shop/api/users/kakao", {
+  if (from === "Kakao") {
+    axios
+      .post("http://moyeota.shop/api/users/kakao", {
         authorizationCode: code,
+      })
+      .then((response) => {
+        if (response.data && response.data.token) {
+          const token = response.data.token;
+          useAuthStore.getState().setToken(token);
+          navigation.navigate("Guide" as never);
+        } else {
+          console.log("유효하지 않은 토큰");
+        }
+      })
+      .catch(function (e) {
+        console.log(e);
       });
-    } else if (from === "Google") {
-      response = await axios.post("http://moyeota.shop/api/users/google", {
+  } else if (from === "Google") {
+    axios
+      .post("http://moyeota.shop/api/users/google", {
         authorizationCode: code,
+      })
+      .then(() => {
+        useAuthStore.getState().setToken(code);
+        navigation.navigate("Guide" as never);
+      })
+      .catch(function (e) {
+        console.log(e);
       });
-    } else if (from === "Naver") {
-      response = await axios.post("http://moyeota.shop/api/users/naver", {
+  } else if (from === "Naver") {
+    axios
+      .post("http://moyeota.shop/api/users/naver", {
         authorizationCode: code,
+      })
+      .then((response) => {
+        if (response.data && response.data.token) {
+          const token = response.data.token;
+          useAuthStore.getState().setToken(token);
+          navigation.navigate("Guide" as never);
+        } else {
+          console.log("유효하지 않은 토큰");
+        }
+      })
+      .catch(function (e) {
+        console.log(e);
       });
-    }
-
-    if (response && response.data && response.data.token) {
-      const token = response.data.token;
-      useAuthStore.getState().setAuthToken(token);
-    }
-
-    navigation.navigate("Guide" as never);
-  } catch (error) {
-    console.error("Error requesting token:", error);
   }
 }
 
@@ -50,12 +72,12 @@ function OAuth2RedirectHandler({
   const exp = "code=";
   const condition = data.indexOf(exp);
 
-  useEffect(() => {
-    if (condition !== -1) {
-      const requestCode = data.substring(condition + exp.length).split("&")[0];
-      requestToken(requestCode, navigation, from);
-    }
-  }, []);
+  if (condition !== -1) {
+    console.log("condition", condition);
+    const requestCode = data.substring(condition + exp.length).split("&")[0];
+    requestToken(requestCode, navigation, from);
+    console.log("requestCode", requestCode);
+  }
 }
 
 export default OAuth2RedirectHandler;

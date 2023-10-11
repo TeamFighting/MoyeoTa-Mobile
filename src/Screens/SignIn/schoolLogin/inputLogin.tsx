@@ -10,7 +10,7 @@ import {
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
 import QuestionMark from "../../../../assets/svg/questionMark.svg";
 import { colors } from "../../../styles/color";
-import useAuthStore from "../socialLogin/authStore";
+import { useAuthStore } from "../socialLogin/authStore";
 
 function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [email, setEmail] = useState("");
@@ -19,7 +19,8 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
 
   const selectedSchool = route.params.selectedSchool || "";
 
-  const authToken = useAuthStore((state) => state.authToken);
+  const authToken = useAuthStore((state) => state.token);
+  console.log("authToken", authToken);
 
   const handleNextButtonPress = async () => {
     try {
@@ -42,7 +43,8 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         "Content-Type": "application/json",
       };
       const response = await sendVerificationCodeToEmail(email, headers);
-
+      console.log("code", response.code);
+      console.log("univ_check", response.univ_check);
       if (response.code === 0 && response.univ_check) {
         // 인증 코드 요청이 성공하고 학교 인증이 완료된 경우 다음 화면
         navigation.navigate("EmailAuth", {
@@ -50,6 +52,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
           email: response.email,
           univName: response.univName,
           key: response.key,
+          univ_check: true,
         });
       } else {
         alert("인증 코드 요청 실패");
@@ -68,12 +71,18 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         {
           method: "POST",
           headers: headers,
-          body: JSON.stringify({ email, year, univName }),
+          body: JSON.stringify({
+            code: 0,
+            email: email,
+            key: authToken,
+            univName: univName,
+            univ_check: true,
+          }),
         }
       );
 
       const data = await response.json();
-
+      console.log("responseData", data);
       return data;
     } catch (error) {
       throw error;
