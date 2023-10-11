@@ -27,6 +27,16 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         alert("이메일을 입력해주세요.");
         return;
       }
+      if (!year) {
+        alert("입학년도를 입력해주세요.");
+        return;
+      }
+
+      if (!selectedSchool) {
+        alert("학교 이름을 입력해주세요.");
+        return;
+      }
+
       const headers = {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
@@ -58,7 +68,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         {
           method: "POST",
           headers: headers,
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email, year, univName }),
         }
       );
 
