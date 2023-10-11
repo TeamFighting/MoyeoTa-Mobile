@@ -29,13 +29,15 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
       .get(apiUrl)
       .then((response) => {
         const xmlData = response.data;
-
         const jsonData = xmljs.xml2json(xmlData, { compact: true, spaces: 4 });
-
         const schoolData = JSON.parse(jsonData).dataSearch.content;
         const names = schoolData.map((school: any) => school.schoolName._text);
 
-        setSchoolNames((prevNames) => [...prevNames, ...names]);
+        // 중복 학교 이름을 제거하고 새로운 학교 이름만 추가
+        setSchoolNames((prevNames) =>
+          Array.from(new Set([...prevNames, ...names]))
+        );
+
         setIsLoading(false);
       })
       .catch((error) => {
