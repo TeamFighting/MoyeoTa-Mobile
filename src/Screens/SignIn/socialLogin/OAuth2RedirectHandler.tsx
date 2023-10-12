@@ -21,8 +21,8 @@ async function requestToken(
         authorizationCode: code,
       })
       .then((response) => {
-        if (response.data && response.data.token) {
-          const token = response.data.token;
+        if (response.data && response.data.accessToken) {
+          const token = response.data.accessToken;
           useAuthStore.getState().setToken(token);
           navigation.navigate("Guide" as never);
         } else {
@@ -37,9 +37,14 @@ async function requestToken(
       .post("http://moyeota.shop/api/users/google", {
         authorizationCode: code,
       })
-      .then(() => {
-        useAuthStore.getState().setToken(code);
-        navigation.navigate("Guide" as never);
+      .then((response) => {
+        if (response.data && response.data.data.accessToken) {
+          const token = response.data.data.accessToken;
+          useAuthStore.getState().setToken(token);
+          navigation.navigate("Guide" as never);
+        } else {
+          console.log("유효하지 않은 토큰");
+        }
       })
       .catch(function (e) {
         console.log(e);
@@ -50,8 +55,8 @@ async function requestToken(
         authorizationCode: code,
       })
       .then((response) => {
-        if (response.data && response.data.token) {
-          const token = response.data.token;
+        if (response.data && response.data.accessToken) {
+          const token = response.data.accessToken;
           useAuthStore.getState().setToken(token);
           navigation.navigate("Guide" as never);
         } else {
