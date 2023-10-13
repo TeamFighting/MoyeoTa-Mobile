@@ -32,7 +32,6 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         alert("입학년도를 입력해주세요.");
         return;
       }
-
       if (!selectedSchool) {
         alert("학교 이름을 입력해주세요.");
         return;
@@ -43,19 +42,15 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         "Content-Type": "application/json",
       };
       const response = await sendVerificationCodeToEmail(email, headers);
-      console.log("code", response.code);
 
-      if (response.code === 0 && response.univ_check) {
-        // 인증 코드 요청이 성공하고 학교 인증이 완료된 경우 다음 화면
+      if (response.status === "ERROR") {
+        alert(response.message);
+      } else {
         navigation.navigate("EmailAuth", {
           id: "EmailAuth",
-          email: response.email,
-          univName: response.univName,
-          key: response.key,
+          email: response.data.email,
+          univName: response.data.univName,
         });
-      } else {
-        alert("인증 코드 요청 실패");
-        console.log(response.code);
       }
     } catch (error) {
       console.error("인증 코드 요청 중 오류:", error);
@@ -72,7 +67,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
           headers: headers,
           body: JSON.stringify({
             email: email,
-            univName: univName,
+            univName: selectedSchool,
           }),
         }
       );
