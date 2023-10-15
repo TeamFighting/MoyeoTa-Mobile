@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -15,6 +15,8 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [email, setEmail] = useState<string>(route.params.email || "");
   const [univName, setUnivName] = useState<string>(route.params.univName || "");
+  const [resendDisabled, setResendDisabled] = useState(false);
+  const [timer, setTimer] = useState<number>(300);
 
   const authToken = useAuthStore((state) => state.token);
   console.log("authToken", authToken);
@@ -79,6 +81,8 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
 
       if (data.status === "SUCCESS") {
         alert("인증번호가 재전송되었습니다.");
+        setResendDisabled(true);
+        setTimer(300);
       } else {
         alert("인증번호 재전송 실패");
       }
@@ -87,6 +91,34 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
       alert("인증번호 재전송 중 오류 발생");
     }
   };
+
+  useEffect(() => {
+    if (!resendDisabled) {
+      const timerInterval = setInterval(() => {
+        if (timer > 0) {
+          setTimer(timer - 1);
+        } else {
+          setResendDisabled(false);
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+      return () => clearInterval(timerInterval);
+    }
+  }, [resendDisabled, timer]);
+
+  useEffect(() => {
+    if (!resendDisabled) {
+      const timerInterval = setInterval(() => {
+        if (timer > 0) {
+          setTimer(timer - 1);
+        } else {
+          setResendDisabled(false);
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+      return () => clearInterval(timerInterval);
+    }
+  }, [resendDisabled, timer]);
 
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
@@ -130,7 +162,9 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
               marginTop: 170,
             }}
           >
-            인증번호 다시받기
+            인증번호 다시받기 ({"0"}
+            {Math.floor(timer / 60)}분 {timer % 60 < 10 ? "0" : ""}
+            {timer % 60}초)
           </Text>
         </Pressable>
         <View style={styles.button}>
