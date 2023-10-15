@@ -50,11 +50,41 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
           univName: data.univName,
         });
       } else {
-        alert("인증 실패");
+        alert("인증번호를 확인해주세요");
       }
     } catch (error) {
       console.error("인증 코드 확인 중 오류:", error);
       alert("인증 코드 확인 중 오류 발생");
+    }
+  };
+
+  const handleResendCode = async () => {
+    try {
+      const response = await fetch(
+        "http://moyeota.shop:80/api/users/school-email/resend",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            univName: univName,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log("resend data", data);
+
+      if (data.status === "SUCCESS") {
+        alert("인증번호가 재전송되었습니다.");
+      } else {
+        alert("인증번호 재전송 실패");
+      }
+    } catch (error) {
+      console.error("인증번호 재전송 중 오류:", error);
+      alert("인증번호 재전송 중 오류 발생");
     }
   };
 
@@ -90,17 +120,19 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
         </Text>
       </View>
       <View style={styles.signInBottom}>
-        <Text
-          style={{
-            fontFamily: "Pretendard",
-            textDecorationLine: "underline",
-            color: "#9A9A9A",
-            fontSize: 14,
-            marginTop: 170,
-          }}
-        >
-          인증번호 다시받기
-        </Text>
+        <Pressable onPress={handleResendCode}>
+          <Text
+            style={{
+              fontFamily: "Pretendard",
+              textDecorationLine: "underline",
+              color: "#9A9A9A",
+              fontSize: 14,
+              marginTop: 170,
+            }}
+          >
+            인증번호 다시받기
+          </Text>
+        </Pressable>
         <View style={styles.button}>
           <Pressable onPress={handleVerification} disabled={!verificationCode}>
             <Text
