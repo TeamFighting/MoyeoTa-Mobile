@@ -9,40 +9,45 @@ import {
 } from "react-native";
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
 import { colors } from "../../../styles/color";
+import { useAuthStore } from "../socialLogin/authStore";
 
 function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   const [verificationCode, setVerificationCode] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [univName, setUnivName] = useState<string>("");
-  const [univCheck, setUnivCheck] = useState<boolean>(false);
-  const [key, setKey] = useState<string>("");
+  const [email, setEmail] = useState<string>(route.params.email || "");
+  const [univName, setUnivName] = useState<string>(route.params.univName || "");
+
+  const authToken = useAuthStore((state) => state.token);
+  console.log("authToken", authToken);
 
   const handleVerification = async () => {
     try {
+      if (!verificationCode) {
+        alert("인증번호를 입력해주세요.");
+        return;
+      }
       const response = await fetch(
-        "http://moyeota.shop:80/api/users/school-email-check",
+        "http://moyeota.shop:80/api/users/school-email/verification",
         {
           method: "POST",
           headers: {
+            Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ verificationCode }),
+          body: JSON.stringify({
+            code: verificationCode,
+            email: email,
+            univName: univName,
+          }),
         }
       );
 
       const data = await response.json();
-
-      if (data.code === 0 && data.univ_check) {
-        // 인증 성공
-        setEmail(data.email);
-        setUnivName(data.univName);
-        setKey(data.key);
-        setUnivCheck(true);
+      console.log("responseData", data);
+      if (data.status === "SUCCESS") {
         navigation.navigate("EmailSuccess", {
           id: "EmailSuccess",
           email: data.email,
           univName: data.univName,
-          key: data.key,
         });
       } else {
         alert("인증 실패");

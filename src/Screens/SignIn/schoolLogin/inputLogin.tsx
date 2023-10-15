@@ -48,8 +48,8 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
       } else {
         navigation.navigate("EmailAuth", {
           id: "EmailAuth",
-          email: response.data.email,
-          univName: response.data.univName,
+          email: email,
+          univName: selectedSchool,
         });
       }
     } catch (error) {
