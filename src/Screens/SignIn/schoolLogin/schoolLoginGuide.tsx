@@ -26,7 +26,13 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
         <Pressable onPress={() => navigation.goBack()}>
           <LeftArrow style={{ marginLeft: 14 }} />
         </Pressable>
-        <Pressable onPress={() => navigation.goBack()}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("SignIn", {
+              id: "SignIn",
+            });
+          }}
+        >
           <Ximage style={{ marginLeft: 299 }} />
         </Pressable>
       </View>

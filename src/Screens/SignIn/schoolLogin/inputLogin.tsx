@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   middle: {
-    marginTop: -195,
+    marginTop: -204,
   },
   signInMiddle: {
     alignItems: "center",
