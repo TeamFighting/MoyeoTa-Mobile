@@ -23,9 +23,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <LeftArrow />
-        </Pressable>
+        <Pressable onPress={() => navigation.goBack()}></Pressable>
       </View>
       <View style={styles.introContainer}>
         <Text style={styles.intro}>반가워요!</Text>
@@ -51,7 +49,13 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
           >
             <Naver />
           </Pressable>
-
+          <Pressable
+            onPress={() => {
+              navigation.navigate("MainPage", { id: "MainPage" });
+            }}
+          >
+            <Text>메인페이지</Text>
+          </Pressable>
           <Pressable
             onPress={() => {
               navigation.navigate("Google", { id: "Google" });
