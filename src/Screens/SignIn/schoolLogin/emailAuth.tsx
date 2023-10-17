@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.4,
     width: "100%",
     paddingTop: windowHeight * 0.05,
-    paddingLeft: "7%",
+    paddingLeft: 20,
   },
   intro: {
     fontSize: 22,
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   input: {
-    width: 336,
+    width: 345,
     height: 48,
     flexShrink: 0,
     borderRadius: 12,
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     fontFamily: "PretendardBold",
     fontWeight: "500",
     color: "#9A9A9A",
-    paddingLeft: 20,
+    paddingLeft: 23,
   },
 });
 
