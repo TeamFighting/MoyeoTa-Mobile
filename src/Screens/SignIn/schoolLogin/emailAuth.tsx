@@ -93,7 +93,7 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   };
 
   useEffect(() => {
-    if (!resendDisabled) {
+    if (!resendDisabled && timer > 0) {
       const timerInterval = setInterval(() => {
         if (timer > 0) {
           setTimer(timer - 1);
