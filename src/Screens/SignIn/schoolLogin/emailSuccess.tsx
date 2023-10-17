@@ -47,16 +47,18 @@ function EmailSuccess({ navigation }: { navigation: any }) {
 
       <View style={styles.signInBottom}>
         <View style={styles.button}>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 18,
-              fontFamily: "PretendardBold",
-              fontWeight: "700",
-            }}
-          >
-            확인
-          </Text>
+          <Pressable onPress={() => navigation.navigate("Guide" as never)}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                fontFamily: "PretendardBold",
+                fontWeight: "700",
+              }}
+            >
+              확인
+            </Text>
+          </Pressable>
         </View>
       </View>
     </View>
