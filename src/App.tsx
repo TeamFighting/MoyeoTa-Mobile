@@ -22,6 +22,7 @@ import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
 import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
 import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
+import MainPage from "./Screens/MainPage/MainPage";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -133,6 +134,11 @@ export default function App() {
         <Stack.Screen
           name="SchoolList"
           component={SchoolList}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="MainPage"
+          component={MainPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
