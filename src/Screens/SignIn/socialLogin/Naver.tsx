@@ -13,8 +13,7 @@ function Naver() {
       <WebView
         style={{ flex: 1 }}
         source={{
-          uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.EXPO_PUBLIC_NAVER_CLIENT_ID
-        }&redirect_uri=${process.env.EXPO_PUBLIC_REDIRECT_URI}&state=nid/me`,
+          uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.EXPO_PUBLIC_NAVER_CLIENT_ID}&redirect_uri=${process.env.EXPO_PUBLIC_REDIRECT_URI}&state=nid/me`,
         }}
         originWhitelist={["*"]}
         injectedJavaScript={INJECTED_JAVASCRIPT}
@@ -22,7 +21,7 @@ function Naver() {
         onMessage={(event) => {
           const data = event.nativeEvent["url"];
           const from = "Naver";
-          OAuth2RedirectHandler({ data, navigation, from});
+          OAuth2RedirectHandler({ data, navigation, from });
         }}
         setSupportMultipleWindows={false}
       />

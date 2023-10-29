@@ -14,6 +14,14 @@ import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
 import Google from "./Screens/SignIn/socialLogin/Google";
+import CreateProfile from "./Screens/CreatePot/CreateProfile";
+import CreatePot from "./Screens/CreatePot/CreatePot";
+import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
+import SchoolLoginSelect from "./Screens/SignIn/schoolLogin/schoolLoginSelect";
+import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
+import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
+import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
+import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -31,7 +39,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const inialize = async () => {
+    const initialize = async () => {
       await SplashScreen.preventAutoHideAsync();
 
       await loadFonts();
@@ -40,7 +48,7 @@ export default function App() {
       }, 3000);
       setIsReady(true);
     };
-    inialize();
+    initialize();
   }, []);
 
   if (!isReady) {
@@ -85,6 +93,46 @@ export default function App() {
         <Stack.Screen
           name="Guide"
           component={Guide}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreateProfile"
+          component={CreateProfile}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreatePot"
+          component={CreatePot}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SchoolLogin"
+          component={SchoolLogin}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SchoolLoginSelect"
+          component={SchoolLoginSelect}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="InputLogin"
+          component={InputLogin}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EmailAuth"
+          component={EmailAuth}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EmailSuccess"
+          component={EmailSuccess}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SchoolList"
+          component={SchoolList}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

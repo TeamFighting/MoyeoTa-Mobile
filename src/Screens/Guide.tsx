@@ -12,11 +12,12 @@ import Guide1 from "../../assets/svg/guide1.svg";
 import Guide2 from "../../assets/svg/guide2.svg";
 import Guide3 from "../../assets/svg/guide3.svg";
 
-export default function Slogan() {
+export default function Guide() {
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
+
   return (
-    <View style={[styles.container, { width }]}>
+    <View style={styles.container}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
         <Pressable onPress={() => navigation.goBack()}>
           <LeftArrow />
@@ -32,11 +33,7 @@ export default function Slogan() {
       >
         <View style={{ marginTop: 39 }}>
           <View style={styles.box}>
-            <Guide1
-              style={{
-                marginLeft: 14,
-              }}
-            />
+            <Guide1 style={{ marginLeft: -260, marginTop: -10 }} />
             <Text style={styles.title}>출발지/도착지와 예약 일시 선택</Text>
             <Text style={styles.description}>
               <Text
@@ -51,12 +48,7 @@ export default function Slogan() {
             </Text>
           </View>
           <View style={styles.box}>
-            <Guide2
-              style={{
-                marginLeft: 14,
-                marginTop: -10,
-              }}
-            />
+            <Guide2 style={{ marginLeft: -260, marginTop: -10 }} />
 
             <Text style={styles.title}>나만의 선호 운행 선택</Text>
 
@@ -66,12 +58,7 @@ export default function Slogan() {
             </Text>
           </View>
           <View style={styles.box}>
-            <Guide3
-              style={{
-                marginLeft: 16,
-                marginTop: -20,
-              }}
-            />
+            <Guide3 style={{ marginLeft: -260, marginTop: -30 }} />
 
             <Text style={styles.title}>팟장이 수락하면 매칭 완료!</Text>
 
@@ -95,9 +82,13 @@ export default function Slogan() {
           ⦁ 유의사항 : 서비스 지역은 확장 중에 있으며 출발지 기준으로 바로 바로
           실시간으로 빠른 매칭이 안되는 경우가 있어요
         </Text>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>확인</Text>
-        </View>
+        <Pressable
+          onPress={() => navigation.navigate("CreateProfile" as never)}
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>확인</Text>
+          </View>
+        </Pressable>
       </View>
     </View>
   );
@@ -108,7 +99,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   guide: {
-    marginTop: 74,
+    marginTop: 78,
     fontSize: 22,
     fontFamily: "PretendardBold",
     fontWeight: "700",
@@ -121,7 +112,6 @@ const styles = StyleSheet.create({
     fontFamily: "PretendardBold",
     fontWeight: "700",
     color: "#000",
-    marginLeft: 65,
   },
   description: {
     marginTop: 10,
@@ -130,7 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#9A9A9A",
     paddingHorizontal: 40,
-    marginLeft: 27,
+    marginLeft: 25,
   },
   button: {
     backgroundColor: "#1EDD81",
@@ -149,8 +139,8 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     borderRadius: 12,
     justifyContent: "center",
+    alignItems: "center",
     marginBottom: 18,
-    textAlign: "left",
   },
   buttonBottom: {
     justifyContent: "center",
