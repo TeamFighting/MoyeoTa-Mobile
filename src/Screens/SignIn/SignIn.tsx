@@ -51,13 +51,6 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
           </Pressable>
           <Pressable
             onPress={() => {
-              navigation.navigate("MainPage", { id: "MainPage" });
-            }}
-          >
-            <Text>메인페이지</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => {
               navigation.navigate("Google", { id: "Google" });
             }}
           >
