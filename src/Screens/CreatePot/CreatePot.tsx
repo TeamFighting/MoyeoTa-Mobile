@@ -19,7 +19,7 @@ export default function CreatePot() {
   const navigation = useNavigation();
   const [name, setName] = React.useState("");
 
-  const onChangeName = (event) => setName(event);
+  const onChangeName = (event: React.SetStateAction<string>) => setName(event);
 
   return (
     <View style={[styles.container, { width }]}>

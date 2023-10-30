@@ -22,11 +22,11 @@ export default function Slogan() {
       </View>
       <SloganImage style={styles.image} />
       <View style={styles.buttonBottom}>
-        <View style={styles.button}>
-          <Pressable onPress={() => navigation.navigate("Onboarding" as never)}>
+        <Pressable onPress={() => navigation.navigate("Onboarding" as never)}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}>다음</Text>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
         <Text
           style={{
             fontFamily: "Pretendard",

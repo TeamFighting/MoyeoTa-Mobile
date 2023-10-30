@@ -45,8 +45,8 @@ export default function Onboarding() {
         />
         <Paginator data={slides} scrollX={scrollX} />
         <View style={styles.buttonBottom}>
-          <View style={styles.button}>
-            <Pressable onPress={() => navigation.navigate("SignIn" as never)}>
+          <Pressable onPress={() => navigation.navigate("SignIn" as never)}>
+            <View style={styles.button}>
               <Text
                 style={{
                   color: "white",
@@ -56,8 +56,8 @@ export default function Onboarding() {
               >
                 시작하기
               </Text>
-            </Pressable>
-          </View>
+            </View>
+          </Pressable>
           <Text
             style={{
               fontFamily: "Pretendard",

@@ -66,12 +66,12 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
         </View>
 
         <View style={styles.signInBottom}>
-          <View style={styles.button}>
-            <Pressable
-              onPress={() => {
-                navigation.navigate("SchoolLogin", { id: "SchoolLogin" });
-              }}
-            >
+          <Pressable
+            onPress={() => {
+              navigation.navigate("SchoolLogin", { id: "SchoolLogin" });
+            }}
+          >
+            <View style={styles.button}>
               <Text
                 style={{
                   color: "white",
@@ -81,8 +81,8 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               >
                 회원가입
               </Text>
-            </Pressable>
-          </View>
+            </View>
+          </Pressable>
           <View
             style={[
               styles.button,

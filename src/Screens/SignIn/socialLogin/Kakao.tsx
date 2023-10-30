@@ -9,13 +9,14 @@ const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('message from
 
 function Kakao() {
   const navigation = useNavigation();
+  console.log(`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.EXPO_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.EXPO_PUBLIC_REDIRECT_URI}
+  `);
   return (
     <View style={{ flex: 1, marginTop: 24, backgroundColor: "#fff" }}>
       <WebView
         style={{ flex: 1 }}
         source={{
-          uri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.EXPO_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.EXPO_PUBLIC_REDIRECT_URI}
-          `,
+          uri: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.EXPO_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=https://moyeota-webview.netlify.app`,
         }}
         originWhitelist={["*"]}
         injectedJavaScript={INJECTED_JAVASCRIPT}

@@ -21,6 +21,7 @@ async function requestToken(
         authorizationCode: code,
       })
       .then((response) => {
+        console.log("res", response);
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
@@ -74,13 +75,13 @@ function OAuth2RedirectHandler({
   navigation,
   from,
 }: OAuth2RedirectHandlerProps) {
-  const exp = 'code=';
+  const exp = "code=";
   const condition = data.indexOf(exp);
 
   if (condition !== -1) {
     console.log("condition", condition);
     const requestCode = data.substring(condition + exp.length).split("&")[0];
-    requestToken(requestCode, navigation, from);
+    // requestToken(requestCode, navigation, from);
     console.log("requestCode", requestCode);
   }
 }
