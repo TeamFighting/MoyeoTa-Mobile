@@ -19,7 +19,7 @@ export default function CreateProfile() {
   const navigation = useNavigation();
   const [name, setName] = React.useState("");
 
-  const onChangeName = (inputName) => {
+  const onChangeName = (inputName: string) => {
     setName(inputName);
   };
 
