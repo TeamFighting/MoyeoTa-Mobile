@@ -47,7 +47,9 @@ function EmailSuccess({ navigation }: { navigation: any }) {
 
       <View style={styles.signInBottom}>
         <View style={styles.button}>
-          <Pressable onPress={() => navigation.navigate("Guide" as never)}>
+          <Pressable
+            onPress={() => navigation.navigate("CreateProfile" as never)}
+          >
             <Text
               style={{
                 color: "white",
