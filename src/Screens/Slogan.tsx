@@ -6,21 +6,23 @@ import {
   StyleSheet,
   Pressable,
   useWindowDimensions,
+  Dimensions,
 } from "react-native";
 import SloganImage from "../../assets/svg/Slogan.svg";
 
 export default function Slogan() {
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
+
   return (
     <View style={[styles.container, { width }]}>
       <View style={{ flex: 3 }}>
         <Text style={styles.title}>같이 택시 탈사람? 모두 모여타!</Text>
         <Text style={styles.description}>
-          모여타는 안전하고 똑똑한 택시팟 매칭 서비스를 제공합니다
+          모여타는 안전하고 똑똑한 {"\n"}택시팟 매칭 서비스를 제공합니다
         </Text>
       </View>
-      <SloganImage style={styles.image} />
+      <SloganImage style={[styles.image, { width: width }]} />
       <View style={styles.buttonBottom}>
         <Pressable onPress={() => navigation.navigate("Onboarding" as never)}>
           <View style={styles.button}>
@@ -42,6 +44,10 @@ export default function Slogan() {
     </View>
   );
 }
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -64,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    marginTop: 158,
+    marginTop: 140,
     fontSize: 26,
     fontFamily: "PretendardBold",
     fontWeight: "700",
@@ -81,7 +87,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingHorizontal: 80,
   },
-  image: { marginBottom: 151 },
+  image: {
+    position: "absolute",
+    transform: [{ translateY: 45 }],
+    width: windowWidth,
+  },
   buttonText: {
     color: "white",
     fontSize: 18,

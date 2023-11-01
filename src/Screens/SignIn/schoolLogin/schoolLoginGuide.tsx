@@ -46,12 +46,19 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
         <Text style={styles.description}>인증 방식을 선택해주세요</Text>
       </View>
       <View style={styles.signInMiddle}>
-        <Text style={styles.guide}>
-          ⦁ 학번, 웹메일 도용 등 올바르지 않은 경로를 통해 인증을 시도할 경우,
-          관련 법에 따라 법적 책임이 따를 수 있습니다.
+        <Text
+          style={[
+            styles.guide,
+            {
+              paddingRight: 10,
+            },
+          ]}
+        >
+          ⦁ 학번, 웹메일 도용 등 올바르지 않은 경로를 통해 인증을 시도할{"\n"}
+          경우, 관련 법에 따라 법적 책임이 따를 수 있습니다.
         </Text>
         <Text style={styles.guide}>
-          ⦁ 인증 후 사용할 수 있는 매칭 서비스의 게시물 일체를 복사하거나,
+          ⦁ 인증 후 사용할 수 있는 매칭 서비스의 게시물 일체를 복사하거나,{"\n"}
           스크린 샷을 통해 외부로 유출해서는 안 됩니다.
         </Text>
       </View>
@@ -142,7 +149,6 @@ const styles = StyleSheet.create({
   guide: {
     fontFamily: "Pretendard",
     color: "#9A9A9A",
-    paddingHorizontal: 25,
     fontSize: 12,
     marginTop: 16,
   },

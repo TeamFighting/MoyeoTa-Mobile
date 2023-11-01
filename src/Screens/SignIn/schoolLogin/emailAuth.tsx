@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   input: {
-    width: 345,
+    width: windowWidth * 0.94,
     height: 48,
     flexShrink: 0,
     borderRadius: 12,
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.green,
-    width: 375,
+    width: windowWidth,
     height: 48,
     flexShrink: 0,
     justifyContent: "center",
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     fontFamily: "PretendardBold",
     fontWeight: "500",
     color: "#9A9A9A",
-    paddingLeft: 23,
+    paddingLeft: 20,
   },
 });
 
