@@ -1,36 +1,69 @@
 import React, { useState } from "react";
-import { View, Text, Button } from "react-native";
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { View, Modal, Text, StyleSheet, TouchableOpacity } from "react-native";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { format } from "date-fns";
+import ko from "date-fns/locale/ko";
 
-const MyDateTimePicker = () => {
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const MyDatePicker: React.FC = () => {
+  const [date, setDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
-
-  const handleConfirm = (date: React.SetStateAction<Date>) => {
-    setSelectedDate(date);
-    hideDatePicker();
+  const onChange = (event: any, selectedDate: Date | undefined) => {
+    const currentDate = selectedDate || date;
+    setShowDatePicker(false);
+    setDate(currentDate);
   };
 
   return (
-    <View>
-      <Button title="Open Date Picker" onPress={showDatePicker} />
-      <Text>Selected Date: {selectedDate.toLocaleString()}</Text>
-      <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        mode="datetime" // You can change the mode to 'date' or 'time' as needed
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-      />
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setShowDatePicker(true)}
+      >
+        <Text style={styles.buttonText}>Open Date Picker</Text>
+      </TouchableOpacity>
+      <Modal visible={showDatePicker} transparent animationType="slide">
+        <View style={styles.modalContainer}>
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode="datetime"
+            display="spinner"
+            onChange={onChange}
+            textColor="black"
+            locale="ko-KR"
+          />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => setShowDatePicker(false)}
+          >
+            <Text style={styles.buttonText}>Close Date Picker</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
 
-export default MyDateTimePicker;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    marginBottom: 10,
+    padding: 10,
+    backgroundColor: "white",
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "black",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+});
+
+export default MyDatePicker;

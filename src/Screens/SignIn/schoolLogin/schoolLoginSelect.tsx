@@ -64,14 +64,22 @@ function SchoolLoginSelect({
             </Text>
           </View>
         </Pressable>
-        <View style={styles.box}>
-          <Text style={styles.title}>재학생 인증</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("DateModal", {
+              id: "DateModal",
+            });
+          }}
+        >
+          <View style={styles.box}>
+            <Text style={styles.title}>재학생 인증</Text>
 
-          <Text style={styles.description}>
-            대학생들의 신원을 확인하기 위한 용도로 재학 증명 자료를 통해 인증
-            받을 수 있어요
-          </Text>
-        </View>
+            <Text style={styles.description}>
+              대학생들의 신원을 확인하기 위한 용도로 재학 증명 자료를 통해 인증
+              받을 수 있어요
+            </Text>
+          </View>
+        </Pressable>
       </View>
     </View>
   );
