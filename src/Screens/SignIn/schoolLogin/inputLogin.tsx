@@ -10,7 +10,7 @@ import {
 import LeftArrow from "../../../../assets/svg/leftArrow.svg";
 import QuestionMark from "../../../../assets/svg/questionMark.svg";
 import { colors } from "../../../styles/color";
-import { useAuthStore } from "../socialLogin/authStore";
+import { useAuthStore } from "../../../../zustand/authStore";
 
 function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [email, setEmail] = useState("");

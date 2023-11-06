@@ -23,7 +23,7 @@ import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
 import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
 import MainPage from "./Screens/MainPage/MainPage";
-import { useAuthStore } from "./Screens/SignIn/socialLogin/authStore";
+import { useAuthStore } from "../zustand/authStore";
 
 const loadFonts = async () => {
   await Font.loadAsync({
