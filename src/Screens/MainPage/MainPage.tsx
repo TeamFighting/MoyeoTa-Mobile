@@ -4,9 +4,15 @@ import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 import WebView from "react-native-webview";
+import CreatePotModal from "../CreatePot/CreatePotModal";
 
 function MainPage() {
   const navigation = useNavigation();
+  const [openModal, setOpenModal] = React.useState(false);
+  const onMessage = (event: any) => {
+    console.log(event.nativeEvent.data);
+    setOpenModal(true);
+  };
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -23,11 +29,10 @@ function MainPage() {
           source={{
             uri: `https://moyeota-webview.netlify.app/mainpage`,
           }}
-          onMessage={(event) => {
-            console.log(event.nativeEvent.data);
-          }}
+          onMessage={onMessage}
         />
       </View>
+      {openModal && <CreatePotModal />}
     </View>
   );
 }
