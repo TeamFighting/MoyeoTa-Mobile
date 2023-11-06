@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import WebView from "react-native-webview";
 import CreatePotModal from "../CreatePot/CreatePotModal";
 import { useModalVisibleStore } from "../../../zustand/setModalVisible";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function MainPage() {
   const navigation = useNavigation();
@@ -19,16 +20,7 @@ function MainPage() {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Pressable
-        onPress={() => {
-          navigation.goBack();
-        }}
-      >
-        <Text>뒤로</Text>
-      </Pressable>
-      <StatusBar />
+    <SafeAreaView style={styles.container}>
       <View style={styles.mapContainer}>
         <WebView
           ref={WebViewRef}
@@ -39,15 +31,15 @@ function MainPage() {
         />
         {modalVisible && <CreatePotModal />}
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
+    backgroundColor: "white",
+    marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
   },
   mapContainer: {
     flex: 1,
