@@ -22,6 +22,8 @@ import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
 import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
 import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
+import MainPage from "./Screens/MainPage/MainPage";
+import { useAuthStore } from "./Screens/SignIn/socialLogin/authStore";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -59,7 +61,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Slogan">
+      <Stack.Navigator
+        initialRouteName={useAuthStore === null ? "Slogan" : "Mainpage"}
+      >
         <Stack.Screen
           name="Slogan"
           component={Slogan}
@@ -133,6 +137,11 @@ export default function App() {
         <Stack.Screen
           name="SchoolList"
           component={SchoolList}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Mainpage"
+          component={MainPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

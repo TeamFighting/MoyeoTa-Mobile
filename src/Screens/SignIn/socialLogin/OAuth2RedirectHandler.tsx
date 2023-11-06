@@ -57,6 +57,7 @@ async function requestToken(
         authorizationCode: code,
       })
       .then((response) => {
+        console.log("res", response.data.data.refreshToken);
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);

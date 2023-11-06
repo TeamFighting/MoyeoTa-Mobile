@@ -20,7 +20,6 @@ export default function CreatePot() {
   const [name, setName] = React.useState("");
 
   const onChangeName = (event: React.SetStateAction<string>) => setName(event);
-
   return (
     <View style={[styles.container, { width }]}>
       <View
