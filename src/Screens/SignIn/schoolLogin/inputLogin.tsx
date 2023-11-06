@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.green,
-    width: 375,
+    width: windowWidth,
     height: 48,
     flexShrink: 0,
     justifyContent: "center",
