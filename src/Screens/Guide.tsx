@@ -15,7 +15,6 @@ import Guide3 from "../../assets/svg/guide3.svg";
 export default function Guide() {
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
-
   return (
     <View style={styles.container}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
