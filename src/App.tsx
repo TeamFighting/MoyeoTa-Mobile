@@ -58,11 +58,13 @@ export default function App() {
   }
 
   const Stack = createNativeStackNavigator();
-
+  console.log("useAuthStore", useAuthStore.getState().token);
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={useAuthStore === null ? "Slogan" : "Mainpage"}
+        initialRouteName={
+          useAuthStore.getState().token === null ? "Slogan" : "Mainpage"
+        }
       >
         <Stack.Screen
           name="Slogan"
