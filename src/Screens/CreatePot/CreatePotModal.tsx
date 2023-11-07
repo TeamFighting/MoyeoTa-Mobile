@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   modal: {
     position: "absolute",
-    width: "83%",
+    width: "79%",
     height: "44%",
     backgroundColor: "white",
     zIndex: 11,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   startText: {
-    fontSize: 18,
+    fontSize: 19,
     fontWeight: "700",
     marginTop: 20,
   },
