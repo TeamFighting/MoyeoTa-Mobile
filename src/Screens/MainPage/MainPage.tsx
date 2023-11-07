@@ -4,20 +4,11 @@ import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 import WebView from "react-native-webview";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function MainPage() {
-  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Pressable
-        onPress={() => {
-          navigation.goBack();
-        }}
-      >
-        <Text>뒤로</Text>
-      </Pressable>
-      <StatusBar />
+    <SafeAreaView style={styles.container}>
       <View style={styles.mapContainer}>
         <WebView
           source={{
@@ -28,7 +19,7 @@ function MainPage() {
           }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
