@@ -6,6 +6,14 @@ import { useSelectedTimeStore } from "../../../zustand/selectedTime";
 import { useModalVisibleStore } from "../../../zustand/setModalVisible";
 import { SafeAreaFrameContext } from "react-native-safe-area-context";
 
+declare global {
+  interface Window {
+    ReactNativeWebView: {
+      postMessage: (message: string) => void;
+    };
+  }
+}
+
 function CreatePotModal() {
   // newDate로 가져오니 한국 시간이랑 안맞아서 시차 추가
   const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
@@ -29,7 +37,6 @@ function CreatePotModal() {
   };
 
   const onPress = () => {
-    //선택 완료 버튼 누르면 선택한 시간을 selectedTime에 저장 모달 닫힘
     setSelectedTime(timestamp);
     setModalVisible(false);
   };

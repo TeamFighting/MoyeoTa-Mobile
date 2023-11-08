@@ -68,7 +68,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
         <View style={styles.signInBottom}>
           <Pressable
             onPress={() => {
-              navigation.navigate("SchoolLogin", { id: "SchoolLogin" });
+              navigation.navigate("Mainpage", { id: "Mainpage" });
             }}
           >
             <View style={styles.button}>

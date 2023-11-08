@@ -1,21 +1,34 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 import WebView from "react-native-webview";
 import CreatePotModal from "../CreatePot/CreatePotModal";
 import { useModalVisibleStore } from "../../../zustand/setModalVisible";
+import { useSelectedTimeStore } from "../../../zustand/selectedTime";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 function MainPage() {
   const navigation = useNavigation();
-
   const { modalVisible, setModalVisible } = useModalVisibleStore();
-  const WebViewRef = React.useRef<any>(null);
+  const WebViewRef = React.useRef<WebView | null>(null);
+  const selectedTimeStore = useSelectedTimeStore();
+
+  useEffect(() => {
+    const timestamp = selectedTimeStore.selectedTime;
+    if (timestamp) {
+      const timestampJson = JSON.stringify({
+        selectedTime: timestamp.toISOString(),
+      });
+      if (WebViewRef.current) {
+        WebViewRef.current.postMessage(timestampJson);
+        console.log("timestamp", timestamp.toISOString());
+      }
+    }
+  }, [selectedTimeStore.selectedTime]);
 
   const onMessage = (event: any) => {
-    // 메시지를 받으면 모달 오픈
     setModalVisible(true);
   };
 
