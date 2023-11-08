@@ -19,23 +19,21 @@ function CreatePotModal() {
   const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
 
   //최초 모달 띄웠을 때 현재 시간으로 설정
-  const [date, setDate] = useState(new Date());
+  const today = new Date();
 
   const [timestamp, setTimestamp] = useState(new Date());
   //선택한 시간을 저장
-  const { setSelectedTime, selectedTime } = useSelectedTimeStore();
+  const { setSelectedTime } = useSelectedTimeStore();
 
   //모달 띄웠는지 여부
   const { setModalVisible } = useModalVisibleStore();
 
   const onChange = (event: any, selectedDate: Date | undefined) => {
     // 선택한 시간이 있으면 그 시간으로 설정, 없으면 현재 시간으로 설정
-    const currentDate = selectedDate || date;
-
+    const currentDate = selectedDate || today;
     //모달에서 선택한 시간을 timestamp로 변환
     setTimestamp(new Date(currentDate.getTime() + KR_TIME_DIFF));
   };
-
   const onPress = () => {
     setSelectedTime(timestamp);
     setModalVisible(false);
@@ -47,7 +45,7 @@ function CreatePotModal() {
         <Text style={styles.startText}>출발시간</Text>
         <DateTimePicker
           testID="dateTimePicker"
-          value={date}
+          value={today}
           mode="datetime"
           display="spinner"
           onChange={onChange}
