@@ -22,6 +22,7 @@ import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
 import { useAuthStore } from "../zustand/authStore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -37,7 +38,7 @@ const loadFonts = async () => {
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
-
+  const [token, setToken] = useState("");
   useEffect(() => {
     const initialize = async () => {
       await SplashScreen.preventAutoHideAsync();
@@ -54,15 +55,14 @@ export default function App() {
   if (!isReady) {
     return null;
   }
-
+  AsyncStorage.getItem("accessToken", (err, result) => {
+    if (result) setToken(result);
+  });
   const Stack = createNativeStackNavigator();
-  console.log("useAuthStore", useAuthStore.getState().token);
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={
-          useAuthStore.getState().token === null ? "Slogan" : "Mainpage"
-        }
+        initialRouteName={(token.length != 0) === null ? "Slogan" : "Mainpage"}
       >
         <Stack.Screen
           name="Slogan"
