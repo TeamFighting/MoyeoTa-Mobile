@@ -8,6 +8,7 @@ import CreatePotModal from "../CreatePot/CreatePotModal";
 import { useModalVisibleStore } from "../../../zustand/setModalVisible";
 import { useSelectedTimeStore } from "../../../zustand/selectedTime";
 import { SafeAreaView } from "react-native-safe-area-context";
+import BottomTab from "../BottomTab/BottomTab";
 
 function MainPage() {
   const navigation = useNavigation();

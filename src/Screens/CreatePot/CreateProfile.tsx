@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import LeftArrow from "../../../assets/svg/leftArrow.svg";
 import Ximage from "../../../assets/svg/x_image.svg";
-import ProfileImage from "../../../assets/profileImage.png";
+// import ProfileImage from "../../../assets/profileImage.png";
 import { useNavigation } from "@react-navigation/native";
 
 export default function CreateProfile() {
@@ -44,10 +44,10 @@ export default function CreateProfile() {
         모여타에서는 닉네임, 성별, 나이대가 공개되어요
       </Text>
       <View style={styles.middle}>
-        <Image
-          source={ProfileImage}
+        {/* <Image
+          // source={ProfileImage}
           style={{ marginTop: 52, width: 100, height: 100 }}
-        />
+        /> */}
         <TextInput
           style={styles.input}
           placeholder="모연두"
@@ -60,7 +60,7 @@ export default function CreateProfile() {
         <View style={styles.button}>
           <Pressable
             onPress={() => {
-              navigation.navigate("CreatePot", { id: "CreatePot" });
+              // navigation.navigate("CreatePot" as never, { id: "CreatePot" });
             }}
           >
             <Text style={styles.buttonText}>확인</Text>

@@ -24,6 +24,8 @@ import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
 import MainPage from "./Screens/MainPage/MainPage";
 import { useAuthStore } from "../zustand/authStore";
+import BottomTab from "./Screens/BottomTab/BottomTab";
+import MyPage from "./Screens/MyPage/MyPage";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -141,9 +143,10 @@ export default function App() {
           component={SchoolList}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
-          name="Mainpage"
-          component={MainPage}
+          name="Main"
+          component={BottomTab}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -82,7 +82,7 @@ export default function Guide() {
           ⦁ 유의사항 : 서비스 지역은 확장 중에 있으며 출발지 기준으로 바로 바로
           실시간으로 빠른 매칭이 안되는 경우가 있어요
         </Text>
-        <Pressable onPress={() => navigation.navigate("Mainpage" as never)}>
+        <Pressable onPress={() => navigation.navigate("Main" as never)}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>확인</Text>
           </View>
