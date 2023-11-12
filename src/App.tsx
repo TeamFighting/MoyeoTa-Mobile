@@ -39,10 +39,11 @@ const loadFonts = async () => {
 export default function App() {
   const [isReady, setIsReady] = useState(false);
   const [token, setToken] = useState("");
+  const [isTokenReady, setIsTokenReady] = useState(false);
+
   useEffect(() => {
     const initialize = async () => {
       await SplashScreen.preventAutoHideAsync();
-
       await loadFonts();
       setTimeout(() => {
         SplashScreen.hideAsync();
@@ -50,20 +51,22 @@ export default function App() {
       setIsReady(true);
     };
     initialize();
+    AsyncStorage.getItem("accessToken", (err, result) => {
+      if (result) setToken(result);
+      setIsTokenReady(true);
+    });
   }, []);
 
-  if (!isReady) {
+  if (!isReady || !isTokenReady) {
     return null;
   }
-  AsyncStorage.getItem("accessToken", (err, result) => {
-    if (result) setToken(result);
-  });
+
+  console.log(token == "");
+  console.log("token", token);
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName={(token.length != 0) === null ? "Slogan" : "Mainpage"}
-      >
+      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "Main"}>
         <Stack.Screen
           name="Slogan"
           component={Slogan}
