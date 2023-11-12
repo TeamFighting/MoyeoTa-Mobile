@@ -1,7 +1,7 @@
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainPage from "../MainPage/MainPage";
 import MyPage from "../MyPage/MyPage";
-
 const Tab = createBottomTabNavigator();
 
 function BottomTab() {

@@ -1,13 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
-import { useFonts } from "expo-font";
+import React from "react";
+import { StyleSheet } from "react-native";
 import Onboarding from "./components/Onboarding";
 import Slogan from "./Screens/Slogan";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Kakao from "./Screens/SignIn/socialLogin/Kakao";
 import SignIn from "./Screens/SignIn/SignIn";
-import axios from "axios";
 import Naver from "./Screens/SignIn/socialLogin/Naver";
 import Guide from "./Screens/Guide";
 import { SplashScreen } from "expo-router";
@@ -22,10 +20,8 @@ import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
 import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
 import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
-import MainPage from "./Screens/MainPage/MainPage";
-import { useAuthStore } from "../zustand/authStore";
 import BottomTab from "./Screens/BottomTab/BottomTab";
-import MyPage from "./Screens/MyPage/MyPage";
+import { useAuthStore } from "../zustand/authStore";
 
 const loadFonts = async () => {
   await Font.loadAsync({
