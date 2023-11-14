@@ -1,7 +1,7 @@
 import { NavigationProp } from "@react-navigation/core";
 import axios from "axios";
 import { useAuthStore } from "../../../../zustand/authStore";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 interface OAuth2RedirectHandlerProps {
   data: string;
   navigation: NavigationProp<ReactNavigation.RootParamList>;
@@ -23,6 +23,7 @@ async function requestToken(
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
+          AsyncStorage.setItem("accessToken", token);
           navigation.navigate("Guide" as never);
         } else {
           console.log("유효하지 않은 토큰");
@@ -41,6 +42,7 @@ async function requestToken(
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
+          AsyncStorage.setItem("accessToken", token);
           navigation.navigate("Guide" as never);
         } else {
           console.log("유효하지 않은 토큰");
@@ -59,6 +61,7 @@ async function requestToken(
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
+          AsyncStorage.setItem("accessToken", token);
           navigation.navigate("Guide" as never);
         } else {
           console.log("유효하지 않은 토큰");
