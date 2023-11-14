@@ -10,7 +10,7 @@ function BottomTab() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="홈냐"
+        name="홈"
         options={{
           title: "홈",
           headerShown: false,
