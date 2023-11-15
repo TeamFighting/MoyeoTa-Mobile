@@ -23,6 +23,7 @@ import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
 import { useAuthStore } from "../zustand/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Account from "./Screens/MyPage/AccountPage";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -146,6 +147,11 @@ export default function App() {
         <Stack.Screen
           name="Main"
           component={BottomTab}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Account"
+          component={Account}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import UserInfo from "../../../assets/svg/UserInfo.svg";
@@ -13,11 +13,13 @@ import Pencil from "../../../assets/svg/Pencil.svg";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMyInfoStore } from "../../../zustand/myInfoStore";
+import { useNavigation } from "@react-navigation/native";
 
 function MyPage() {
   useEffect(() => {
     getMyInfo();
   }, []);
+  const navigation = useNavigation();
 
   const [token, setToken] = React.useState("");
 
@@ -110,10 +112,12 @@ function MyPage() {
       </View>
       <View style={Styles.TotalList}>
         <View style={Styles.ListWrapper}>
-          <View style={Styles.List}>
-            <UserInfo />
-            <Text style={Styles.ListText}>계정관리</Text>
-          </View>
+          <Pressable onPress={() => navigation.navigate("Account" as never)}>
+            <View style={Styles.List}>
+              <UserInfo />
+              <Text style={Styles.ListText}>계정관리</Text>
+            </View>
+          </Pressable>
           <View style={{ height: 24 }}>
             <RightArrow />
           </View>
