@@ -41,7 +41,7 @@ function UpdateProfile() {
       <Text style={styles.title}>프로필을 설정해주세요</Text>
       <Text style={styles.description}>
         사진과 닉네임, 성별, 나이대가 공개돼요
-        {"\n"} 합승할 파티원에게 보여줄 프로필을 설정해보세요
+        {"\n"}합승할 파티원에게 보여줄 프로필을 설정해보세요
       </Text>
       <View style={styles.middle}>
         <Image
