@@ -6,11 +6,11 @@ import {
   useWindowDimensions,
 } from "react-native";
 import React from "react";
-import LeftArrow from "../../assets/svg/leftArrow.svg";
+import LeftArrow from "../../assets/svg/LeftArrow.svg";
 import { useNavigation } from "@react-navigation/native";
-import Guide1 from "../../assets/svg/guide1.svg";
-import Guide2 from "../../assets/svg/guide2.svg";
-import Guide3 from "../../assets/svg/guide3.svg";
+import Guide1 from "../../assets/svg/Guide1.svg";
+import Guide2 from "../../assets/svg/Guide2.svg";
+import Guide3 from "../../assets/svg/Guide3.svg";
 
 export default function Guide() {
   const { width } = useWindowDimensions();

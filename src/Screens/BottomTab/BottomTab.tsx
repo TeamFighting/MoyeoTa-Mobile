@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainPage from "../MainPage/MainPage";
 import MyPage from "../MyPage/MyPage";
 import Home from "../../../assets/svg/Home.svg";
-import User from "../../../assets/svg/user.svg";
+import User from "../../../assets/svg/User.svg";
 const Tab = createBottomTabNavigator();
 
 function BottomTab() {
