@@ -17,6 +17,10 @@ import { useNavigation } from "@react-navigation/native";
 
 function AccountPage() {
   const navigation = useNavigation();
+
+  const { myInfo, setMyInfo } = useMyInfoStore();
+  const email = myInfo.email;
+  const phoneNumber = myInfo.phoneNumber;
   return (
     <SafeAreaView style={Styles.container}>
       <View style={Styles.header}>
@@ -35,12 +39,12 @@ function AccountPage() {
         <Text style={Styles.UpdateTitle}>개인정보 수정</Text>
         <View style={Styles.infoWrapper}>
           <Text style={Styles.infoTitle}>사용자명</Text>
-          <Text style={Styles.info}>오세빈</Text>
+          <Text style={Styles.info}>{myInfo.name}</Text>
           <Text style={Styles.infoTitle}>전화번호</Text>
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TextInput
               style={Styles.input}
-              value="010-3937-3291"
+              value={phoneNumber}
               placeholderTextColor={Styles.placeholder.color}
               clearButtonMode="always"
             />
@@ -49,7 +53,7 @@ function AccountPage() {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TextInput
               style={Styles.input}
-              value="moyeondoo@gmail.com"
+              value={email}
               placeholderTextColor={Styles.placeholder.color}
               clearButtonMode="always"
             />
