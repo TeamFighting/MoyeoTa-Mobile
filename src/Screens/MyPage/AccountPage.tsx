@@ -40,7 +40,7 @@ function AccountPage() {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TextInput
               style={Styles.input}
-              placeholder="010-3937-3291"
+              value="010-3937-3291"
               placeholderTextColor={Styles.placeholder.color}
               clearButtonMode="always"
             />
@@ -49,7 +49,7 @@ function AccountPage() {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TextInput
               style={Styles.input}
-              placeholder="moyeondoo@gmail.com"
+              value="moyeondoo@gmail.com"
               placeholderTextColor={Styles.placeholder.color}
               clearButtonMode="always"
             />
@@ -133,7 +133,7 @@ const Styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#F5F6F8",
     padding: 16,
-    fontFamily: "Pretendard",
+    fontFamily: "PretendardBold",
     fontSize: 14,
   },
   placeholder: {
