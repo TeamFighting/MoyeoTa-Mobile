@@ -48,29 +48,9 @@ function MyPage() {
       </View>
       <View style={{ width: "100%", backgroundColor: "#eeeeee", height: 9 }} />
       <View style={Styles.Profile}>
-        <View
-          style={{
-            width: 60,
-            height: 60,
-            backgroundColor: "#eee",
-            borderRadius: 100,
-            justifyContent: "center",
-            alignItems: "center",
-            borderWidth: 1,
-            borderColor: "red",
-          }}
-        >
+        <View style={Styles.ProfileImg}>
           <Image
-            style={{
-              width: 60,
-              height: 60,
-              backgroundColor: "#eee",
-              borderRadius: 100,
-              justifyContent: "center",
-              alignItems: "center",
-              borderWidth: 1,
-              borderColor: "red",
-            }}
+            style={Styles.ProfileImg}
             source={{
               uri: userInfo.profileImage,
             }}
@@ -79,7 +59,13 @@ function MyPage() {
         <View style={{ display: "flex" }}>
           <View style={{ display: "flex", flexDirection: "row" }}>
             <Text
-              style={(Styles.ContentText, { fontSize: 22, fontWeight: 700 })}
+              style={{
+                color: "#343434",
+                fontFamily: "Pretendard",
+                fontSize: 22,
+                fontWeight: "200",
+                fontStyle: "normal",
+              }}
             >
               닉네임
             </Text>
@@ -93,44 +79,16 @@ function MyPage() {
               flexDirection: "row",
             }}
           >
-            <View
-              style={{
-                width: 26,
-                backgroundColor: "#eee",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 4,
-              }}
-            >
-              <Text style={{ color: "#7E7E7E", fontSize: 10, fontWeight: 600 }}>
+            <View style={Styles.Tag}>
+              <Text style={Styles.TagText}>
                 {myInfo.gender ? "남자" : "여자"}
               </Text>
             </View>
-            <View
-              style={{
-                width: 26,
-                backgroundColor: "#eee",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 4,
-              }}
-            >
-              <Text style={{ color: "#7E7E7E", fontSize: 10, fontWeight: 600 }}>
-                20대
-              </Text>
+            <View style={Styles.Tag}>
+              <Text style={Styles.TagText}>20대</Text>
             </View>
-            <View
-              style={{
-                height: 20,
-                backgroundColor: "#eee",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 4,
-              }}
-            >
-              <Text style={{ color: "#7E7E7E", fontSize: 10, fontWeight: 600 }}>
-                실명인증완료
-              </Text>
+            <View style={Styles.Tag}>
+              <Text style={Styles.TagText}>실명인증완료</Text>
             </View>
           </View>
         </View>
@@ -138,7 +96,17 @@ function MyPage() {
       <View style={Styles.FavoritePotWrapper}>
         <View style={Styles.FavoritePot}>
           <Favorite style={{ width: 24 }} />
-          <Text style={Styles.ListText}>찜한 팟</Text>
+          <Text
+            style={{
+              color: "#343434",
+              fontFamily: "Pretendard",
+              fontSize: 18,
+              fontStyle: "normal",
+              fontWeight: "500",
+            }}
+          >
+            찜한 팟
+          </Text>
         </View>
       </View>
       <View style={Styles.TotalList}>
@@ -218,6 +186,24 @@ const Styles = StyleSheet.create({
     gap: 14,
     marginLeft: 28,
   },
+  ProfileImg: {
+    width: 60,
+    height: 60,
+    backgroundColor: "#eee",
+    borderRadius: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "red",
+  },
+  Tag: {
+    height: 20,
+    backgroundColor: "#eee",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+  },
+  TagText: { color: "#7E7E7E", fontSize: 10, fontWeight: "600" },
   FavoritePotWrapper: {
     height: 85,
     width: "100%",
