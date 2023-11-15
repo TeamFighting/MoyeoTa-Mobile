@@ -22,7 +22,6 @@ function MyPage() {
   const [token, setToken] = React.useState("");
 
   const [userInfo, setUserInfo] = React.useState<any>({});
-
   const { myInfo, setMyInfo } = useMyInfoStore();
   console.log(myInfo);
   async function getMyInfo() {
@@ -32,7 +31,7 @@ function MyPage() {
       });
       const response = await axios.get("http://moyeota.shop/api/users", {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzAxNzkyOTY1fQ.fyOZxkoMwlB3RzSOy9LWqwd__KBW8DJaolBc9Aw7Wxk`,
+          Authorization: `Bearer ${process.env.EXPO_PUBLIC_TEST_ACCESSTOKEN}`,
         },
       });
       setMyInfo(response.data.data);
