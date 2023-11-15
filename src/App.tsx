@@ -66,7 +66,7 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "Main"}>
+      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "Slogan"}>
         <Stack.Screen
           name="Slogan"
           component={Slogan}
