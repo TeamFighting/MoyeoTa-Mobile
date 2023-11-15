@@ -58,20 +58,24 @@ function MyPage() {
           />
         </View>
         <View style={{ display: "flex" }}>
-          <View style={{ display: "flex", flexDirection: "row" }}>
-            <Text
-              style={{
-                color: "#343434",
-                fontFamily: "Pretendard",
-                fontSize: 22,
-                fontWeight: "200",
-                fontStyle: "normal",
-              }}
-            >
-              닉네임
-            </Text>
-            <Pencil />
-          </View>
+          <Pressable
+            onPress={() => navigation.navigate("UpdateProfile" as never)}
+          >
+            <View style={{ display: "flex", flexDirection: "row" }}>
+              <Text
+                style={{
+                  color: "#343434",
+                  fontFamily: "Pretendard",
+                  fontSize: 22,
+                  fontWeight: "200",
+                  fontStyle: "normal",
+                }}
+              >
+                닉네임
+              </Text>
+              <Pencil />
+            </View>
+          </Pressable>
           <View
             style={{
               marginTop: 4,
