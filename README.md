@@ -1,5 +1,3 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Moyeota!&fontSize=90" />	
-
 <div align=center>
 
 ![Group 4534737 (2)](https://github.com/TeamFighting/MoyeoTa-Mobile/assets/108210492/2adad690-de8a-443a-a99b-1ecdcb7dff55)
