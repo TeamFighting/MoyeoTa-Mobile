@@ -28,7 +28,7 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
         return;
       }
       const response = await fetch(
-        "http://moyeota.shop:80/api/users/school-email/verification",
+        "https://54.180.20.255:80/api/users/school-email/verification",
         {
           method: "POST",
           headers: {
@@ -63,7 +63,7 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   const handleResendCode = async () => {
     try {
       const response = await fetch(
-        "http://moyeota.shop:80/api/users/school-email/resend",
+        "https://54.180.20.255:80/api/users/school-email/resend",
         {
           method: "POST",
           headers: {

@@ -15,7 +15,7 @@ async function requestToken(
 ) {
   if (from === "Kakao") {
     axios
-      .post("http://moyeota.shop/api/users/kakao", {
+      .post("https://54.180.20.255/api/users/kakao", {
         authorizationCode: code,
       })
       .then((response) => {
@@ -34,7 +34,7 @@ async function requestToken(
       });
   } else if (from === "Google") {
     axios
-      .post("http://moyeota.shop/api/users/google", {
+      .post("https://54.180.20.255/api/users/google", {
         authorizationCode: code,
       })
       .then((response) => {
@@ -53,7 +53,7 @@ async function requestToken(
       });
   } else if (from === "Naver") {
     axios
-      .post("http://moyeota.shop/api/users/naver", {
+      .post("https://54.180.20.255/api/users/naver", {
         authorizationCode: code,
       })
       .then((response) => {

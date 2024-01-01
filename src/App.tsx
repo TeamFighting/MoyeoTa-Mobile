@@ -25,6 +25,7 @@ import { useAuthStore } from "../zustand/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Account from "./Screens/MyPage/AccountPage";
 import UpdateProfile from "./Screens/MyPage/UpdateProfile";
+import MainPage from "./Screens/MainPage/MainPage";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -68,7 +69,12 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "Slogan"}>
+      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "MainPage"}>
+        <Stack.Screen
+          name="MainPage"
+          component={MainPage}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Slogan"
           component={Slogan}

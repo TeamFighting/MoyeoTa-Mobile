@@ -61,7 +61,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const sendVerificationCodeToEmail = async (email: string, headers: any) => {
     try {
       const response = await fetch(
-        "http://moyeota.shop:80/api/users/school-email",
+        "https://54.180.20.255:80/api/users/school-email",
         {
           method: "POST",
           headers: headers,
