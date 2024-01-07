@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  TouchableOpacity,
-} from "react-native";
-import Kakaotalk from "../../../assets/svg/Kakaotalk.svg";
-import Naver from "../../../assets/svg/Naver.svg";
-import Google from "../../../assets/svg/Google.svg";
-import LeftArrow from "../../../assets/svg/LeftArrow.svg";
+import { Dimensions, StyleSheet, Text, View, Pressable } from "react-native";
+import Kakaotalk from "../../../assets/svg/kakaotalk.svg";
+import Naver from "../../../assets/svg/naver.svg";
+import Google from "../../../assets/svg/google.svg";
 import { colors } from "../../styles/color";
 
 export type RootStackParamList = {
