@@ -1,5 +1,5 @@
 // 받아온 내 정보 저장
-import create from "zustand";
+import { create } from "zustand";
 
 interface MyInfoState {
   myInfo: {
