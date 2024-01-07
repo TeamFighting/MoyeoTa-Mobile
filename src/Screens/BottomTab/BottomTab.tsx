@@ -3,14 +3,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MainPage from "../MainPage/MainPage";
 import MyPage from "../MyPage/MyPage";
 import Home from "../../../assets/svg/Home.svg";
-import User from "../../../assets/svg/User.svg";
+import User from "../../../assets/svg/user.svg";
 const Tab = createBottomTabNavigator();
 
 function BottomTab() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="홈"
+        name="홈냐"
         options={{
           title: "홈",
           headerShown: false,

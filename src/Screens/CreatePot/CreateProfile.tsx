@@ -9,8 +9,8 @@ import {
   Image,
 } from "react-native";
 import React, { useState } from "react";
-import LeftArrow from "../../../assets/svg/LeftArrow.svg";
-import Ximage from "../../../assets/svg/X_image.svg";
+import LeftArrow from "../../../assets/svg/leftArrow.svg";
+import Ximage from "../../../assets/svg/x_image.svg";
 // import ProfileImage from "../../../assets/profileImage.png";
 import { useNavigation } from "@react-navigation/native";
 

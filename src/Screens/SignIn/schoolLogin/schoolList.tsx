@@ -9,8 +9,8 @@ import {
   ActivityIndicator,
   TextInput,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
-import QuestionMark from "../../../../assets/svg/QuestionMark.svg";
+import LeftArrow from "../../../../assets/svg/leftArrow.svg";
+import QuestionMark from "../../../../assets/svg/questionMark.svg";
 import { colors } from "../../../styles/color";
 import axios from "axios";
 import xmljs from "xml-js";
