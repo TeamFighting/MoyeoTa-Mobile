@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import {
   View,
   Text,
-  Image,
   TextInput,
   TouchableOpacity,
   Pressable,
@@ -11,7 +10,6 @@ import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LeftArrow from "../../../assets/svg/LeftArrow.svg";
 import Ximage from "../../../assets/svg/X_image.svg";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMyInfoStore } from "../../../zustand/myInfoStore";
 import { useNavigation } from "@react-navigation/native";
 

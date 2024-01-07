@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import LeftArrow from "../../../assets/svg/LeftArrow.svg";
 import Ximage from "../../../assets/svg/X_image.svg";
-import ProfileImage from "../../../assets/profileImage.png";
+// import ProfileImage from "../../../assets/profileImage.png";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useMyInfoStore } from "../../../zustand/myInfoStore";
@@ -44,10 +44,6 @@ function UpdateProfile() {
         {"\n"}합승할 파티원에게 보여줄 프로필을 설정해보세요
       </Text>
       <View style={styles.middle}>
-        <Image
-          source={ProfileImage}
-          style={{ marginTop: 26, width: 100, height: 100 }}
-        />
         <View
           style={{
             marginTop: 4,

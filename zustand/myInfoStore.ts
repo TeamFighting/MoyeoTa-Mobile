@@ -7,7 +7,7 @@ interface MyInfoState {
     loginId: string;
     name: string;
     profileImage: string | null;
-    phoneNumber: string | null;
+    phoneNumber: string;
     email: string;
     status: boolean | null;
     averageStarRate: number;
@@ -24,7 +24,7 @@ export const useMyInfoStore = create<MyInfoState>((set) => ({
     loginId: "",
     name: "",
     profileImage: null,
-    phoneNumber: null,
+    phoneNumber: "",
     email: "",
     status: null,
     averageStarRate: 0,
