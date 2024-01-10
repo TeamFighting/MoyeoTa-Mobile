@@ -31,7 +31,7 @@ function MyPage() {
       AsyncStorage.getItem("accessToken", (err, result) => {
         if (result) setToken(result);
       });
-      const response = await axios.get("https://54.180.20.255/api/users", {
+      const response = await axios.get("https://moyeota.shop/users", {
         headers: {
           Authorization: `Bearer ${process.env.EXPO_PUBLIC_TEST_ACCESSTOKEN}`,
         },
