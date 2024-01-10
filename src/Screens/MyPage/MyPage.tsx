@@ -5,19 +5,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMyInfoStore } from "../../libs/states/myInfoStore";
-import { useNavigation } from "@react-navigation/native";
 import UserInfo from "./Components/UserInfo";
 import FavoritePot from "./Components/FavoritePot";
 import ManagementLists from "./Components/ManagementLists";
 
 function MyPage() {
-  useEffect(() => {
-    getMyInfo();
-  }, []);
-
-  const navigation = useNavigation();
-  const [token, setToken] = useState("");
-  const { myInfo, setMyInfo } = useMyInfoStore();
+  getMyInfo();
 
   const Token = AsyncStorage.getItem("accessToken");
 
@@ -28,8 +21,6 @@ function MyPage() {
           Authorization: `Bearer ${Token}`,
         },
       });
-
-      console.log("HERE", response.data.data);
     } catch (e) {
       console.log("MyPage", e);
     }
@@ -40,13 +31,11 @@ function MyPage() {
         <Text style={Styles.headerText}>내 정보</Text>
       </View>
       <View style={{ width: "100%", backgroundColor: "#eeeeee", height: 9 }} />
-      <UserInfo myInfo={myInfo} />
+      <UserInfo />
       <View style={Styles.FavoritePotWrapper}>
         <FavoritePot />
       </View>
-      <View style={Styles.TotalList}>
-        <ManagementLists />
-      </View>
+      <ManagementLists />
     </SafeAreaView>
   );
 }

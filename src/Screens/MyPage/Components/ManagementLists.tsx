@@ -12,12 +12,9 @@ import { useNavigation } from "@react-navigation/native";
 function ManagementLists() {
   const navigation = useNavigation();
   return (
-    <View>
+    <View style={Styles.TotalList}>
       <View style={Styles.ListWrapper}>
-        <Pressable
-          style={{ backgroundColor: "black" }}
-          onPress={() => navigation.navigate("Account" as never)}
-        >
+        <Pressable onPress={() => navigation.navigate("Account" as never)}>
           <View style={Styles.List}>
             <View style={Styles.Icon}>
               <UserInfoIcon />

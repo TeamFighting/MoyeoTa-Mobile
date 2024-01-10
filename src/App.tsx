@@ -24,6 +24,10 @@ import BottomTab from "./Screens/BottomTab/BottomTab";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import UpdateProfile from "./Screens/MyPage/UpdateProfilePage";
 import ManageAccountPage from "./Screens/MyPage/ManageAccountPage";
+import MyPage from "./Screens/MyPage/MyPage";
+import FavoritePot from "./Screens/MyPage/Components/FavoritePot";
+import UserInfo from "./Screens/MyPage/Components/UserInfo";
+import ManagementLists from "./Screens/MyPage/Components/ManagementLists";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -144,7 +148,6 @@ export default function App() {
             component={SchoolList}
             options={{ headerShown: false }}
           />
-
           <Stack.Screen
             name="Main"
             component={BottomTab}
@@ -158,6 +161,26 @@ export default function App() {
           <Stack.Screen
             name="UpdateProfile"
             component={UpdateProfile}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MyPage"
+            component={MyPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UserInfo"
+            component={UserInfo}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FavoritePot"
+            component={FavoritePot}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ManagementLists"
+            component={ManagementLists}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
