@@ -4,28 +4,26 @@ import Onboarding from "./components/Onboarding";
 import Slogan from "./Screens/Slogan";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Kakao from "./Screens/SignIn/socialLogin/Kakao";
+import Kakao from "./Screens/SignIn/SocialLogin/Kakao";
 import SignIn from "./Screens/SignIn";
-import Naver from "./Screens/SignIn/socialLogin/Naver";
+import Naver from "./Screens/SignIn/SocialLogin/Naver";
 import Guide from "./Screens/Guide";
 import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
-import Google from "./Screens/SignIn/socialLogin/Google";
+import Google from "./Screens/SignIn/SocialLogin/Google";
 import CreateProfile from "./Screens/CreatePotPage/CreateProfile";
 import CreatePot from "./Screens/CreatePotPage/CreatePot";
-import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
-import SchoolLoginSelect from "./Screens/SignIn/schoolLogin/schoolLoginSelect";
-import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
-import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
-import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
-import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
+import SchoolLogin from "./Screens/SignIn/SchoolLogin/SchoolLoginGuide";
+import SchoolLoginSelect from "./Screens/SignIn/SchoolLogin/schoolLoginSelect";
+import InputLogin from "./Screens/SignIn/SchoolLogin/InputLogin";
+import EmailAuth from "./Screens/SignIn/SchoolLogin/EmailAuth";
+import EmailSuccess from "./Screens/SignIn/SchoolLogin/EmailSuccess";
+import SchoolList from "./Screens/SignIn/SchoolLogin/SchoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
-import { useAuthStore } from "./libs/states/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Account from "./Screens/MyPage/AccountPage";
 import UpdateProfile from "./Screens/MyPage/UpdateProfilePage";
-import MainPage from "./Screens/MainPage";
+import ManageAccountPage from "./Screens/MyPage/ManageAccountPage";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -153,8 +151,8 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Account"
-            component={Account}
+            name="ManageAccountPage"
+            component={ManageAccountPage}
             options={{ headerShown: false }}
           />
           <Stack.Screen

@@ -15,7 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMyInfoStore } from "../../libs/states/myInfoStore";
 import { useNavigation } from "@react-navigation/native";
 
-function AccountPage() {
+function ManageAccountPage() {
   const navigation = useNavigation();
 
   const { myInfo, setMyInfo } = useMyInfoStore();
@@ -170,4 +170,4 @@ const Styles = StyleSheet.create({
     color: "#5D5D5D",
   },
 });
-export default AccountPage;
+export default ManageAccountPage;

@@ -24,6 +24,8 @@ function UpdateProfile() {
     setName(inputName);
   };
 
+  // 추후구현
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -78,7 +80,8 @@ function UpdateProfile() {
         <TextInput
           style={styles.input}
           onChangeText={onChangeName}
-          value="모연두" //닉네임
+          value={myInfo.name ? myInfo.name : ""}
+          placeholder="닉네임을 입력해주세요"
           clearButtonMode="always"
         />
       </View>
