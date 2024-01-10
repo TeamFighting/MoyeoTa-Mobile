@@ -7,8 +7,8 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
-import QuestionMark from "../../../../assets/svg/QuestionMark.svg";
+import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
+import QuestionMark from "../../../../assets/svg/QuestionMarkIcon.svg";
 import { colors } from "../../../styles/color";
 import { useAuthStore } from "../../../../zustand/authStore";
 
@@ -61,7 +61,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const sendVerificationCodeToEmail = async (email: string, headers: any) => {
     try {
       const response = await fetch(
-        "https://54.180.20.255:80/api/users/school-email",
+        "https://moyeota.shop/api/users/school-email",
         {
           method: "POST",
           headers: headers,

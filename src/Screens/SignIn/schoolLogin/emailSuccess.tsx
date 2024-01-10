@@ -7,8 +7,8 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
-import Ximage from "../../../../assets/svg/X_image.svg";
+import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
+import Ximage from "../../../../assets/svg/X_imageIcon.svg";
 import Image from "../../../../assets/svg/Slogan.svg";
 import { colors } from "../../../styles/color";
 

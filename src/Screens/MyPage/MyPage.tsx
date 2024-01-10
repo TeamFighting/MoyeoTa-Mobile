@@ -1,39 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import UserInfo from "../../../assets/svg/UserInfo.svg";
-import CreditCard from "../../../assets/svg/CreditCard.svg";
-import Speakerphone from "../../../assets/svg/Speakerphone.svg";
-import Star from "../../../assets/svg/Star.svg";
-import Bell from "../../../assets/svg/Bell.svg";
-import Favorite from "../../../assets/svg/Favorite.svg";
-import RightArrow from "../../../assets/svg/RightArrow.svg";
-import Pencil from "../../../assets/svg/Pencil.svg";
+import UserInfoIcon from "../../../assets/svg/UserInfoIcon.svg";
+import CreditCard from "../../../assets/svg/CreditCardIcon.svg";
+import Speakerphone from "../../../assets/svg/SpeakerphoneIcon.svg";
+import Star from "../../../assets/svg/StarIcon.svg";
+import Bell from "../../../assets/svg/BellIcon.svg";
+import Favorite from "../../../assets/svg/FavoriteIcon.svg";
+import RightArrow from "../../../assets/svg/RightArrowIcon.svg";
+import Pencil from "../../../assets/svg/PencilIcon.svg";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMyInfoStore } from "../../../zustand/myInfoStore";
 import { useNavigation } from "@react-navigation/native";
+import { MyInfoType } from "../../\btypes";
 
 function MyPage() {
   useEffect(() => {
     getMyInfo();
   }, []);
+
   const navigation = useNavigation();
-
-  const [token, setToken] = React.useState("");
-
-  const [userInfo, setUserInfo] = React.useState<any>({});
+  const [token, setToken] = useState("");
+  const [userInfo, setUserInfo] = useState<MyInfoType>({} as MyInfoType);
   const { myInfo, setMyInfo } = useMyInfoStore();
+
   console.log(myInfo);
+
   async function getMyInfo() {
     try {
       AsyncStorage.getItem("accessToken", (err, result) => {
         if (result) setToken(result);
       });
-      const response = await axios.get("https://moyeota.shop/users", {
+      const response = await axios.get("https://moyeota.shop/api/users", {
         headers: {
-          Authorization: `Bearer ${process.env.EXPO_PUBLIC_TEST_ACCESSTOKEN}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       setMyInfo(response.data.data);
@@ -57,7 +59,14 @@ function MyPage() {
             }}
           />
         </View>
-        <View style={{ display: "flex" }}>
+        <View
+          style={{
+            display: "flex",
+            height: "70%",
+            width: "30%",
+            justifyContent: "center",
+          }}
+        >
           <Pressable
             onPress={() => navigation.navigate("UpdateProfile" as never)}
           >
@@ -71,7 +80,7 @@ function MyPage() {
                   fontStyle: "normal",
                 }}
               >
-                닉네임
+                my닉네임
               </Text>
               <Pencil />
             </View>
@@ -90,10 +99,14 @@ function MyPage() {
               </Text>
             </View>
             <View style={Styles.Tag}>
-              <Text style={Styles.TagText}>20대</Text>
+              <Text style={Styles.TagText}>
+                {myInfo.age != null ? `${myInfo.age}대` : "나이 미입력"}
+              </Text>
             </View>
             <View style={Styles.Tag}>
-              <Text style={Styles.TagText}>실명인증완료</Text>
+              <Text style={Styles.TagText}>
+                {myInfo.school != null ? "실명인증완료" : "실명 미인증"}
+              </Text>
             </View>
           </View>
         </View>
@@ -118,7 +131,9 @@ function MyPage() {
         <View style={Styles.ListWrapper}>
           <Pressable onPress={() => navigation.navigate("Account" as never)}>
             <View style={Styles.List}>
-              <UserInfo />
+              <View style={Styles.Icon}>
+                <UserInfoIcon />
+              </View>
               <Text style={Styles.ListText}>계정관리</Text>
             </View>
           </Pressable>
@@ -262,5 +277,6 @@ const Styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "500",
   },
+  Icon: {},
 });
 export default MyPage;

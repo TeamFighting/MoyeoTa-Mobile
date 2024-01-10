@@ -7,7 +7,7 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
+import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
 import { colors } from "../../../styles/color";
 import { useAuthStore } from "../../../../zustand/authStore";
 

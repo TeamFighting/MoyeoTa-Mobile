@@ -15,13 +15,15 @@ async function requestToken(
 ) {
   if (from === "Kakao") {
     axios
-      .post("https://54.180.20.255/api/users/kakao", {
+      .post("https://moyeota.shop/api/oauth/kakao", {
         authorizationCode: code,
       })
       .then((response) => {
         console.log("res", response);
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
+          console.log("get token", token);
+
           useAuthStore.getState().setToken(token);
           AsyncStorage.setItem("accessToken", token);
           navigation.navigate("Guide" as never);
@@ -34,7 +36,7 @@ async function requestToken(
       });
   } else if (from === "Google") {
     axios
-      .post("https://54.180.20.255/api/users/google", {
+      .post("https://moyeota.shop/api/oauth/google", {
         authorizationCode: code,
       })
       .then((response) => {
@@ -53,7 +55,7 @@ async function requestToken(
       });
   } else if (from === "Naver") {
     axios
-      .post("https://54.180.20.255/api/users/naver", {
+      .post("https://moyeota.shop/api/oauth/naver", {
         authorizationCode: code,
       })
       .then((response) => {
@@ -82,10 +84,8 @@ function OAuth2RedirectHandler({
   const condition = data.indexOf(exp);
 
   if (condition !== -1) {
-    console.log("data", data);
     const requestCode = data.substring(condition + exp.length).split("&")[0];
     requestToken(requestCode, navigation, from);
-    console.log("requestCode", requestCode);
   }
 }
 

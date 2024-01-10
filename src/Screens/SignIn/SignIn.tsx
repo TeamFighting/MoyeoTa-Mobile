@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, Text, View, Pressable } from "react-native";
-import Kakaotalk from "../../../assets/svg/Kakaotalk.svg";
-import Naver from "../../../assets/svg/Naver.svg";
-import Google from "../../../assets/svg/Google.svg";
+import Kakaotalk from "../../../assets/svg/KakaotalkIcon.svg";
+import Naver from "../../../assets/svg/NaverIcon.svg";
+import Google from "../../../assets/svg/GoogleIcon.svg";
 import { colors } from "../../styles/color";
 
 export type RootStackParamList = {

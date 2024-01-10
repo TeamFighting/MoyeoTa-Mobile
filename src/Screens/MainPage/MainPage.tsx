@@ -7,14 +7,16 @@ import CreatePotModal from "../CreatePot/CreatePotModal";
 import { useModalVisibleStore } from "../../../zustand/setModalVisible";
 import { useSelectedTimeStore } from "../../../zustand/selectedTime";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BottomTab from "../BottomTab/BottomTab";
+import { useAuthStore } from "../../../zustand/authStore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function MainPage() {
-  const navigation = useNavigation();
   const { modalVisible, setModalVisible } = useModalVisibleStore();
   const WebViewRef = React.useRef<WebView | null>(null);
   const selectedTimeStore = useSelectedTimeStore();
-
+  const { token: accessToken } = useAuthStore();
+  // const token = AsyncStorage.getItem("accessToken");
+  console.log("token", accessToken);
   useEffect(() => {
     const timestamp = selectedTimeStore.selectedTime;
     if (timestamp) {
@@ -31,7 +33,6 @@ function MainPage() {
   const onMessage = (event: any) => {
     setModalVisible(true);
   };
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mapContainer}>

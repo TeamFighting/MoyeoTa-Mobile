@@ -65,16 +65,10 @@ export default function App() {
   }
 
   console.log(token == "");
-  console.log("token", token);
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "Main"}>
-        {/* <Stack.Screen
-          name="MainPage"
-          component={MainPage}
-          options={{ headerShown: false }}
-        /> */}
+      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "Slogan"}>
         <Stack.Screen
           name="Slogan"
           component={Slogan}

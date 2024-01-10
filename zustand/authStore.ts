@@ -1,6 +1,6 @@
-import { create, State } from "zustand";
+import { create } from "zustand";
 
-type AuthStore = State & {
+type AuthStore = {
   token: string | null;
   setToken: (token: string | null) => void;
 };

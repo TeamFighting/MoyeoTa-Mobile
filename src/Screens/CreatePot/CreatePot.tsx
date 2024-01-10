@@ -9,9 +9,9 @@ import {
   Image,
 } from "react-native";
 import React from "react";
-import LeftArrow from "../../../assets/svg/LeftArrow.svg";
-import RightArrow from "../../../assets/svg/RightArrow.svg";
-import Ximage from "../../../assets/svg/X_image.svg";
+import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
+import RightArrow from "../../../assets/svg/RightArrowIcon.svg";
+import Ximage from "../../../assets/svg/X_imageIcon.svg";
 import { useNavigation } from "@react-navigation/native";
 
 export default function CreatePot() {

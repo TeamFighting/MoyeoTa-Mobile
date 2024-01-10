@@ -1,35 +1,26 @@
 // 받아온 내 정보 저장
 import { create } from "zustand";
+import { MyInfoType } from "../src/\btypes";
 
-interface MyInfoState {
-  myInfo: {
-    id: string;
-    loginId: string;
-    name: string;
-    profileImage: string | null;
-    phoneNumber: string | null;
-    email: string;
-    status: boolean | null;
-    averageStarRate: number;
-    school: string | null;
-    gender: boolean;
-  };
-
-  setMyInfo: (myInfo: any) => void;
-}
+type MyInfoState = {
+  myInfo: MyInfoType;
+  setMyInfo: (myInfo: MyInfoType) => void;
+};
 
 export const useMyInfoStore = create<MyInfoState>((set) => ({
   myInfo: {
-    id: "",
+    age: 0,
+    averageStarRate: 0,
+    email: "",
+    gender: "",
+    id: 0,
     loginId: "",
     name: "",
-    profileImage: null,
-    phoneNumber: null,
-    email: "",
-    status: null,
-    averageStarRate: 0,
-    school: null,
-    gender: false,
+    nickname: "",
+    phoneNumber: "",
+    profileImage: "",
+    school: "",
+    status: false,
   },
-  setMyInfo: (myInfo) => set({ myInfo }),
+  setMyInfo: (myInfo) => set((state) => ({ myInfo })),
 }));
