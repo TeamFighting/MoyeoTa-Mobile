@@ -11,7 +11,7 @@ import {
 import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
 import Ximage from "../../../../assets/svg/X_imageIcon.svg";
 import SchoolImage from "../../../../assets/school_images/schoolImage.png";
-import { colors } from "../../../styles/color";
+import { colors } from "../../../libs/styles/color";
 
 function SchoolLoginGuide({ navigation }: { navigation: any }) {
   return (

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
 import QuestionMark from "../../../../assets/svg/QuestionMarkIcon.svg";
-import { colors } from "../../../styles/color";
+import { colors } from "../../../libs/styles/color";
 import axios from "axios";
 import xmljs from "xml-js";
 

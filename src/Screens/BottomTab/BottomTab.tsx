@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MainPage from "../MainPage/MainPage";
-import MyPage from "../MyPage/MyPage";
+import MainPage from "../MainPage";
+import MyPage from "../MyPage";
 import HomeIcon from "../../../assets/svg/HomeIcon.svg";
 import UserIcon from "../../../assets/svg/UserIcon.svg";
 const Tab = createBottomTabNavigator();

@@ -1,6 +1,6 @@
 import { NavigationProp } from "@react-navigation/core";
 import axios from "axios";
-import { useAuthStore } from "../../../../zustand/authStore";
+import { useAuthStore } from "../../../libs/states/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 interface OAuth2RedirectHandlerProps {
   data: string;

@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet, Text, View, Pressable } from "react-native";
 import Kakaotalk from "../../../assets/svg/KakaotalkIcon.svg";
 import Naver from "../../../assets/svg/NaverIcon.svg";
 import Google from "../../../assets/svg/GoogleIcon.svg";
-import { colors } from "../../styles/color";
+import { colors } from "../../libs/styles/color";
 
 export type RootStackParamList = {
   LoginScreen: undefined;

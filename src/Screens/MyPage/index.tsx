@@ -12,9 +12,9 @@ import RightArrow from "../../../assets/svg/RightArrowIcon.svg";
 import Pencil from "../../../assets/svg/PencilIcon.svg";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useMyInfoStore } from "../../../zustand/myInfoStore";
+import { useMyInfoStore } from "../../libs/states/myInfoStore";
 import { useNavigation } from "@react-navigation/native";
-import { MyInfoType } from "../../\btypes";
+import { MyInfoType } from "../../libs/types/types";
 
 function MyPage() {
   useEffect(() => {
@@ -23,25 +23,22 @@ function MyPage() {
 
   const navigation = useNavigation();
   const [token, setToken] = useState("");
-  const [userInfo, setUserInfo] = useState<MyInfoType>({} as MyInfoType);
   const { myInfo, setMyInfo } = useMyInfoStore();
 
-  console.log(myInfo);
+  const Token = AsyncStorage.getItem("accessToken");
 
   async function getMyInfo() {
     try {
-      AsyncStorage.getItem("accessToken", (err, result) => {
-        if (result) setToken(result);
-      });
       const response = await axios.get("https://moyeota.shop/api/users", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${Token}`,
         },
       });
-      setMyInfo(response.data.data);
-      setUserInfo(response.data.data);
+
+      console.log("HERE", response.data.data);
+      // setMyInfo(response.data.data);
     } catch (e) {
-      console.log(e);
+      console.log("MyPage", e);
     }
   }
   return (
@@ -55,7 +52,7 @@ function MyPage() {
           <Image
             style={Styles.ProfileImg}
             source={{
-              uri: userInfo.profileImage,
+              uri: myInfo.profileImage,
             }}
           />
         </View>
@@ -129,7 +126,10 @@ function MyPage() {
       </View>
       <View style={Styles.TotalList}>
         <View style={Styles.ListWrapper}>
-          <Pressable onPress={() => navigation.navigate("Account" as never)}>
+          <Pressable
+            style={{ backgroundColor: "black" }}
+            onPress={() => navigation.navigate("Account" as never)}
+          >
             <View style={Styles.List}>
               <View style={Styles.Icon}>
                 <UserInfoIcon />
@@ -256,6 +256,7 @@ const Styles = StyleSheet.create({
     fontWeight: "500",
     marginLeft: 16,
   },
+
   ListWrapper: {
     display: "flex",
     flexDirection: "row",
@@ -264,6 +265,7 @@ const Styles = StyleSheet.create({
     width: "89%",
     gap: 16,
   },
+
   List: {
     height: 24,
     display: "flex",

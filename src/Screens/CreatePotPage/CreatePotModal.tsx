@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { useSelectedTimeStore } from "../../../zustand/selectedTime";
-import { useModalVisibleStore } from "../../../zustand/setModalVisible";
+import { useSelectedTimeStore } from "../../libs/states/selectedTime";
+import { useModalVisibleStore } from "../../libs/states/setModalVisible";
 import { SafeAreaFrameContext } from "react-native-safe-area-context";
 
 declare global {

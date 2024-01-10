@@ -3,11 +3,11 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 import WebView from "react-native-webview";
-import CreatePotModal from "../CreatePot/CreatePotModal";
-import { useModalVisibleStore } from "../../../zustand/setModalVisible";
-import { useSelectedTimeStore } from "../../../zustand/selectedTime";
+import CreatePotModal from "../CreatePotPage/CreatePotModal";
+import { useModalVisibleStore } from "../../libs/states/setModalVisible";
+import { useSelectedTimeStore } from "../../libs/states/selectedTime";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useAuthStore } from "../../../zustand/authStore";
+import { useAuthStore } from "../../libs/states/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function MainPage() {

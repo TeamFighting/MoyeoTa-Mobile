@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
 import Ximage from "../../../assets/svg/X_imageIcon.svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useMyInfoStore } from "../../../zustand/myInfoStore";
+import { useMyInfoStore } from "../../libs/states/myInfoStore";
 import { useNavigation } from "@react-navigation/native";
 
 function AccountPage() {
@@ -21,6 +21,7 @@ function AccountPage() {
   const { myInfo, setMyInfo } = useMyInfoStore();
   const email = myInfo.email;
   const phoneNumber = myInfo.phoneNumber;
+
   return (
     <SafeAreaView style={Styles.container}>
       <View style={Styles.header}>
@@ -44,7 +45,7 @@ function AccountPage() {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TextInput
               style={Styles.input}
-              value={phoneNumber}
+              // value={phoneNumber}
               placeholderTextColor={Styles.placeholder.color}
               clearButtonMode="always"
             />

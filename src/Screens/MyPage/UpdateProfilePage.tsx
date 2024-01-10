@@ -5,22 +5,21 @@ import {
   Pressable,
   useWindowDimensions,
   TextInput,
-  TouchableOpacity,
   Image,
 } from "react-native";
 import React, { useState } from "react";
 import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
 import Ximage from "../../../assets/svg/X_imageIcon.svg";
-import ProfileImage from "../../../assets/profileImage.png";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useMyInfoStore } from "../../../zustand/myInfoStore";
+import { useMyInfoStore } from "../../libs/states/myInfoStore";
+import { defaultProfile } from "../../libs/styles/imgUrl";
 
 function UpdateProfile() {
-  const { width } = useWindowDimensions();
   const navigation = useNavigation();
-  const [name, setName] = React.useState("");
-  const { myInfo, setMyInfo } = useMyInfoStore();
+  const [name, setName] = useState("");
+  const { myInfo } = useMyInfoStore();
+
   const onChangeName = (inputName: string) => {
     setName(inputName);
   };
@@ -45,9 +44,17 @@ function UpdateProfile() {
       </Text>
       <View style={styles.middle}>
         <Image
-          source={ProfileImage}
-          style={{ marginTop: 26, width: 100, height: 100 }}
+          source={{
+            uri: myInfo.profileImage ? myInfo.profileImage : defaultProfile,
+          }}
+          style={{
+            borderRadius: 50,
+            marginTop: 26,
+            width: 100,
+            height: 100,
+          }}
         />
+
         <View
           style={{
             marginTop: 4,

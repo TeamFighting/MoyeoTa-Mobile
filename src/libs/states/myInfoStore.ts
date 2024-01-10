@@ -1,6 +1,6 @@
 // 받아온 내 정보 저장
 import { create } from "zustand";
-import { MyInfoType } from "../src/\btypes";
+import { MyInfoType } from "../types/types";
 
 type MyInfoState = {
   myInfo: MyInfoType;

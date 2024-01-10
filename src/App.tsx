@@ -5,15 +5,15 @@ import Slogan from "./Screens/Slogan";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Kakao from "./Screens/SignIn/socialLogin/Kakao";
-import SignIn from "./Screens/SignIn/SignIn";
+import SignIn from "./Screens/SignIn";
 import Naver from "./Screens/SignIn/socialLogin/Naver";
 import Guide from "./Screens/Guide";
 import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
 import Google from "./Screens/SignIn/socialLogin/Google";
-import CreateProfile from "./Screens/CreatePot/CreateProfile";
-import CreatePot from "./Screens/CreatePot/CreatePot";
+import CreateProfile from "./Screens/CreatePotPage/CreateProfile";
+import CreatePot from "./Screens/CreatePotPage/CreatePot";
 import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
 import SchoolLoginSelect from "./Screens/SignIn/schoolLogin/schoolLoginSelect";
 import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
@@ -21,11 +21,11 @@ import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
 import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
 import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
-import { useAuthStore } from "../zustand/authStore";
+import { useAuthStore } from "./libs/states/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Account from "./Screens/MyPage/AccountPage";
-import UpdateProfile from "./Screens/MyPage/UpdateProfile";
-import MainPage from "./Screens/MainPage/MainPage";
+import UpdateProfile from "./Screens/MyPage/UpdateProfilePage";
+import MainPage from "./Screens/MainPage";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -54,6 +54,7 @@ export default function App() {
       setIsReady(true);
     };
     initialize();
+
     AsyncStorage.getItem("accessToken", (err, result) => {
       if (result) setToken(result);
       setIsTokenReady(true);
@@ -62,107 +63,109 @@ export default function App() {
 
   if (!isReady || !isTokenReady) {
     return null;
+  } else {
+    console.log(token.length == 0);
+    const Stack = createNativeStackNavigator();
+    return (
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName={token.length == 0 ? "Slogan" : "Main"}
+        >
+          <Stack.Screen
+            name="Slogan"
+            component={Slogan}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Onboarding"
+            component={Onboarding}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Kakao"
+            component={Kakao}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Naver"
+            component={Naver}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Google"
+            component={Google}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Guide"
+            component={Guide}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CreateProfile"
+            component={CreateProfile}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CreatePot"
+            component={CreatePot}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SchoolLogin"
+            component={SchoolLogin}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SchoolLoginSelect"
+            component={SchoolLoginSelect}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="InputLogin"
+            component={InputLogin}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="EmailAuth"
+            component={EmailAuth}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="EmailSuccess"
+            component={EmailSuccess}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SchoolList"
+            component={SchoolList}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Main"
+            component={BottomTab}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Account"
+            component={Account}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UpdateProfile"
+            component={UpdateProfile}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
-
-  console.log(token == "");
-  const Stack = createNativeStackNavigator();
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "Slogan"}>
-        <Stack.Screen
-          name="Slogan"
-          component={Slogan}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Onboarding"
-          component={Onboarding}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignIn"
-          component={SignIn}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Kakao"
-          component={Kakao}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Naver"
-          component={Naver}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Google"
-          component={Google}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Guide"
-          component={Guide}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="CreateProfile"
-          component={CreateProfile}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="CreatePot"
-          component={CreatePot}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SchoolLogin"
-          component={SchoolLogin}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SchoolLoginSelect"
-          component={SchoolLoginSelect}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="InputLogin"
-          component={InputLogin}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="EmailAuth"
-          component={EmailAuth}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="EmailSuccess"
-          component={EmailSuccess}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SchoolList"
-          component={SchoolList}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Main"
-          component={BottomTab}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Account"
-          component={Account}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="UpdateProfile"
-          component={UpdateProfile}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
 }
 
 const styles = StyleSheet.create({
