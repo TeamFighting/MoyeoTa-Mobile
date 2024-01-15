@@ -1,23 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, Image } from "react-native";
 import { Styles } from "../styles";
 import { defaultProfile } from "../../../libs/styles/imgUrl";
-import { MyInfoType } from "../../../libs/types/\btypes";
 import PencilIcon from "../../../../assets/svg/PencilIcon.svg";
+import { useMyInfoStore } from "../../../libs/states/myInfoStore";
+import { ages } from "../../../libs/util/age";
 
 function UserInfo() {
   const navigation = useNavigation();
+  const { myInfo } = useMyInfoStore();
   return (
     <View style={Styles.Profile}>
       <View style={Styles.ProfileImg}>
         <Image
           style={Styles.ProfileImg}
-          source={
-            {
-              // uri: myInfo.profileImage ? myInfo.profileImage : defaultProfile,
-            }
-          }
+          source={{
+            uri:
+              myInfo.profileImage != null
+                ? myInfo.profileImage
+                : defaultProfile,
+          }}
         />
       </View>
       <View
@@ -41,7 +44,7 @@ function UserInfo() {
                 fontStyle: "normal",
               }}
             >
-              my닉네임
+              {myInfo.name}
             </Text>
             <PencilIcon />
           </View>
@@ -56,17 +59,17 @@ function UserInfo() {
         >
           <View style={Styles.Tag}>
             <Text style={Styles.TagText}>
-              {/* {myInfo.gender ? "남자" : "여자"} */}
+              {myInfo.gender ? "남자" : "여자"}
             </Text>
           </View>
           <View style={Styles.Tag}>
             <Text style={Styles.TagText}>
-              {/* {myInfo.age != null ? `${myInfo.age}대` : "나이 미입력"} */}
+              {myInfo.age != null ? `${ages(myInfo.age)}대` : "나이 미입력"}
             </Text>
           </View>
           <View style={Styles.Tag}>
             <Text style={Styles.TagText}>
-              {/* {myInfo.school != null ? "실명인증완료" : "실명 미인증"} */}
+              {myInfo.school != null ? "실명인증완료" : "실명 미인증"}
             </Text>
           </View>
         </View>

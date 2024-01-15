@@ -33,7 +33,7 @@ function ManagementLists() {
         </View>
         <RightArrowIcon />
       </View>
-      <View style={Styles.divider} />
+      <View style={Styles.ThinDivider} />
       <View style={Styles.ListWrapper}>
         <View style={Styles.List}>
           <StarIcon />

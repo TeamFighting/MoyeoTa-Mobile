@@ -9,6 +9,7 @@ import { useSelectedTimeStore } from "../../libs/states/selectedTime";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuthStore } from "../../libs/states/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 function MainPage() {
   const { modalVisible, setModalVisible } = useModalVisibleStore();
@@ -36,6 +37,7 @@ function MainPage() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mapContainer}>
+        {/* <TouchableWithoutFeedback style={{ flex: 1, paddingHorizontal: 16 }}> */}
         <WebView
           ref={WebViewRef}
           source={{
@@ -44,6 +46,7 @@ function MainPage() {
           onMessage={onMessage}
         />
         {modalVisible && <CreatePotModal />}
+        {/* </TouchableWithoutFeedback> */}
       </View>
     </SafeAreaView>
   );

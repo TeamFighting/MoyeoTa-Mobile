@@ -9,7 +9,7 @@ type MyInfoState = {
 
 export const useMyInfoStore = create<MyInfoState>((set) => ({
   myInfo: {
-    age: 0,
+    age: "",
     averageStarRate: 0,
     email: "",
     gender: "",

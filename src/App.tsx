@@ -22,7 +22,7 @@ import EmailSuccess from "./Screens/SignIn/SchoolLogin/EmailSuccess";
 import SchoolList from "./Screens/SignIn/SchoolLogin/SchoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import UpdateProfile from "./Screens/MyPage/UpdateProfilePage";
+import UpdateProfilePage from "./Screens/MyPage/UpdateProfilePage";
 import ManageAccountPage from "./Screens/MyPage/ManageAccountPage";
 import MyPage from "./Screens/MyPage/MyPage";
 import FavoritePot from "./Screens/MyPage/Components/FavoritePot";
@@ -57,21 +57,24 @@ export default function App() {
     };
     initialize();
 
-    AsyncStorage.getItem("accessToken", (err, result) => {
-      if (result) setToken(result);
-      setIsTokenReady(true);
-    });
+    AsyncStorage.getItem("accessToken")
+      .then((result) => {
+        if (result) setToken(result);
+        setIsTokenReady(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   if (!isReady || !isTokenReady) {
     return null;
   } else {
-    console.log(token.length == 0);
     const Stack = createNativeStackNavigator();
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={token.length == 0 ? "Slogan" : "Main"}
+          initialRouteName={token.length == 0 ? "Slogan" : "Slogan"}
         >
           <Stack.Screen
             name="Slogan"
@@ -158,11 +161,7 @@ export default function App() {
             component={ManageAccountPage}
             options={{ headerShown: false }}
           />
-          <Stack.Screen
-            name="UpdateProfile"
-            component={UpdateProfile}
-            options={{ headerShown: false }}
-          />
+
           <Stack.Screen
             name="MyPage"
             component={MyPage}
@@ -181,6 +180,11 @@ export default function App() {
           <Stack.Screen
             name="ManagementLists"
             component={ManagementLists}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UpdateProfilePage"
+            component={UpdateProfilePage}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

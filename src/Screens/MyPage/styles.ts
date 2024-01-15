@@ -16,7 +16,12 @@ export const Styles = StyleSheet.create({
     fontWeight: "bold",
     paddingBottom: 21,
   },
-  divider: {
+  ThickDivider: {
+    height: 9,
+    width: "100%",
+    backgroundColor: "#eeeeee",
+  },
+  ThinDivider: {
     height: 6,
     width: "100%",
     backgroundColor: "#eeeeee",

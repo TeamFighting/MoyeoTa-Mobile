@@ -14,17 +14,40 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useMyInfoStore } from "../../libs/states/myInfoStore";
 import { defaultProfile } from "../../libs/styles/imgUrl";
+import axios from "axios";
+import { useAuthStore } from "../../libs/states/authStore";
 
 function UpdateProfile() {
   const navigation = useNavigation();
   const [name, setName] = useState("");
   const { myInfo } = useMyInfoStore();
+  const { token } = useAuthStore();
 
   const onChangeName = (inputName: string) => {
     setName(inputName);
   };
 
-  // 추후구현
+  async function setNickName() {
+    console.log("HERE");
+    console.log(name);
+    console.log(token);
+    try {
+      const response = await axios.put(
+        "https://moyeota.shop/api/users/nickname",
+        {
+          nickName: name,
+        },
+        {
+          headers: {
+            AuthorizationCode: token,
+          },
+        }
+      );
+      console.log("res", response);
+    } catch (e) {
+      console.log("Nickname", e);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -47,7 +70,10 @@ function UpdateProfile() {
       <View style={styles.middle}>
         <Image
           source={{
-            uri: myInfo.profileImage ? myInfo.profileImage : defaultProfile,
+            uri:
+              myInfo.profileImage != null
+                ? myInfo.profileImage
+                : defaultProfile,
           }}
           style={{
             borderRadius: 50,
@@ -80,21 +106,17 @@ function UpdateProfile() {
         <TextInput
           style={styles.input}
           onChangeText={onChangeName}
-          value={myInfo.name ? myInfo.name : ""}
+          defaultValue={myInfo.name ? myInfo.name : ""}
           placeholder="닉네임을 입력해주세요"
           clearButtonMode="always"
         />
       </View>
       <View style={styles.buttonBottom}>
-        <View style={styles.button}>
-          <Pressable
-            onPress={() => {
-              // navigation.navigate("CreatePot" as never, { id: "CreatePot" });
-            }}
-          >
+        <Pressable onPress={setNickName}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}>저장하기</Text>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

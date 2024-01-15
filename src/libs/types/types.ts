@@ -1,5 +1,5 @@
 export type MyInfoType = {
-  age: number | null;
+  age: string | null;
   averageStarRate: number | null;
   email: string;
   gender: string | null;
