@@ -45,7 +45,7 @@ function CreatePotModal() {
         <Text style={styles.startText}>출발시간</Text>
         <DateTimePicker
           testID="dateTimePicker"
-          value={today}
+          value={timestamp}
           mode="datetime"
           display="spinner"
           onChange={onChange}
