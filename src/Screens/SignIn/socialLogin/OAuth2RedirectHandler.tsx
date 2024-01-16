@@ -19,7 +19,7 @@ async function requestToken(
         authorizationCode: code,
       })
       .then((response) => {
-        console.log("res", response);
+        console.log("토큰이다 이것들아", response.data.data.accessToken);
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           console.log("get token", token);
@@ -40,7 +40,8 @@ async function requestToken(
         authorizationCode: code,
       })
       .then((response) => {
-        console.log("res", response);
+        console.log("토큰이다 이것들아", response.data.data.accessToken);
+
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
@@ -59,7 +60,7 @@ async function requestToken(
         authorizationCode: code,
       })
       .then((response) => {
-        console.log("res", response.data.data.refreshToken);
+        console.log("토큰이다 이것들아", response.data.data.accessToken);
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);

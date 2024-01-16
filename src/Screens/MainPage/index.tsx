@@ -14,22 +14,19 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 function MainPage() {
   const { modalVisible, setModalVisible } = useModalVisibleStore();
   const WebViewRef = React.useRef<WebView | null>(null);
-  const selectedTimeStore = useSelectedTimeStore();
-  const { token: accessToken } = useAuthStore();
-  // const token = AsyncStorage.getItem("accessToken");
-  console.log("token", accessToken);
+  const { selectedTime } = useSelectedTimeStore();
   useEffect(() => {
-    const timestamp = selectedTimeStore.selectedTime;
+    const timestamp = selectedTime;
     if (timestamp) {
       const timestampJson = JSON.stringify({
         selectedTime: timestamp.toISOString(),
       });
       if (WebViewRef.current) {
         WebViewRef.current.postMessage(timestampJson);
-        console.log("timestamp", timestamp.toISOString());
+        console.log("sent", timestamp.toISOString());
       }
     }
-  }, [selectedTimeStore.selectedTime]);
+  }, [selectedTime]);
 
   const onMessage = (event: any) => {
     setModalVisible(true);
@@ -37,7 +34,6 @@ function MainPage() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mapContainer}>
-        {/* <TouchableWithoutFeedback style={{ flex: 1, paddingHorizontal: 16 }}> */}
         <WebView
           ref={WebViewRef}
           source={{
@@ -46,7 +42,6 @@ function MainPage() {
           onMessage={onMessage}
         />
         {modalVisible && <CreatePotModal />}
-        {/* </TouchableWithoutFeedback> */}
       </View>
     </SafeAreaView>
   );
