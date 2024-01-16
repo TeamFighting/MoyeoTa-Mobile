@@ -1,6 +1,6 @@
 import { NavigationProp } from "@react-navigation/core";
 import axios from "axios";
-import { useAuthStore } from "../../../../zustand/authStore";
+import { useAuthStore } from "../../../libs/states/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 interface OAuth2RedirectHandlerProps {
   data: string;
@@ -15,13 +15,15 @@ async function requestToken(
 ) {
   if (from === "Kakao") {
     axios
-      .post("https://54.180.20.255/api/users/kakao", {
+      .post("https://moyeota.shop/api/oauth/kakao", {
         authorizationCode: code,
       })
       .then((response) => {
-        console.log("res", response);
+        console.log("토큰이다 이것들아", response.data.data.accessToken);
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
+          console.log("get token", token);
+
           useAuthStore.getState().setToken(token);
           AsyncStorage.setItem("accessToken", token);
           navigation.navigate("Guide" as never);
@@ -34,11 +36,12 @@ async function requestToken(
       });
   } else if (from === "Google") {
     axios
-      .post("https://54.180.20.255/api/users/google", {
+      .post("https://moyeota.shop/api/oauth/google", {
         authorizationCode: code,
       })
       .then((response) => {
-        console.log("res", response);
+        console.log("토큰이다 이것들아", response.data.data.accessToken);
+
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
@@ -53,11 +56,11 @@ async function requestToken(
       });
   } else if (from === "Naver") {
     axios
-      .post("https://54.180.20.255/api/users/naver", {
+      .post("https://moyeota.shop/api/oauth/naver", {
         authorizationCode: code,
       })
       .then((response) => {
-        console.log("res", response.data.data.refreshToken);
+        console.log("토큰이다 이것들아", response.data.data.accessToken);
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
@@ -82,10 +85,8 @@ function OAuth2RedirectHandler({
   const condition = data.indexOf(exp);
 
   if (condition !== -1) {
-    console.log("data", data);
     const requestCode = data.substring(condition + exp.length).split("&")[0];
     requestToken(requestCode, navigation, from);
-    console.log("requestCode", requestCode);
   }
 }
 

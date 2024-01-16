@@ -7,9 +7,9 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
-import { colors } from "../../../styles/color";
-import { useAuthStore } from "../../../../zustand/authStore";
+import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
+import { colors } from "../../../libs/styles/color";
+import { useAuthStore } from "../../../libs/states/authStore";
 
 function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   const [verificationCode, setVerificationCode] = useState<string>("");

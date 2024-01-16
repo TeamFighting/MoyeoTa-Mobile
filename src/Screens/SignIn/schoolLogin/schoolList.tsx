@@ -9,9 +9,8 @@ import {
   ActivityIndicator,
   TextInput,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
-import QuestionMark from "../../../../assets/svg/QuestionMark.svg";
-import { colors } from "../../../styles/color";
+import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
+import QuestionMark from "../../../../assets/svg/QuestionMarkIcon.svg";
 import axios from "axios";
 import xmljs from "xml-js";
 
@@ -67,7 +66,7 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
     );
   }
 
-  const handleSchoolClick = (item) => {
+  const handleSchoolClick = (item: any) => {
     navigation.navigate("InputLogin", { selectedSchool: item });
   };
 
@@ -105,7 +104,7 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
           )}
           onEndReached={loadMoreData}
           onEndReachedThreshold={0.1}
-          ListFooterComponent={
+          ListFooterComponentStyle={
             isLoading && <ActivityIndicator size="large" color="#000" />
           }
         />

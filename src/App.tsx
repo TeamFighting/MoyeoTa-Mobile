@@ -4,28 +4,30 @@ import Onboarding from "./components/Onboarding";
 import Slogan from "./Screens/Slogan";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Kakao from "./Screens/SignIn/socialLogin/Kakao";
-import SignIn from "./Screens/SignIn/SignIn";
-import Naver from "./Screens/SignIn/socialLogin/Naver";
+import Kakao from "./Screens/SignIn/SocialLogin/Kakao";
+import SignIn from "./Screens/SignIn";
+import Naver from "./Screens/SignIn/SocialLogin/Naver";
 import Guide from "./Screens/Guide";
 import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
-import Google from "./Screens/SignIn/socialLogin/Google";
-import CreateProfile from "./Screens/CreatePot/CreateProfile";
-import CreatePot from "./Screens/CreatePot/CreatePot";
-import SchoolLogin from "./Screens/SignIn/schoolLogin/schoolLoginGuide";
-import SchoolLoginSelect from "./Screens/SignIn/schoolLogin/schoolLoginSelect";
-import InputLogin from "./Screens/SignIn/schoolLogin/inputLogin";
-import EmailAuth from "./Screens/SignIn/schoolLogin/emailAuth";
-import EmailSuccess from "./Screens/SignIn/schoolLogin/emailSuccess";
-import SchoolList from "./Screens/SignIn/schoolLogin/schoolList";
+import Google from "./Screens/SignIn/SocialLogin/Google";
+import CreateProfile from "./Screens/CreatePotPage/CreateProfile";
+import CreatePot from "./Screens/CreatePotPage/CreatePot";
+import SchoolLogin from "./Screens/SignIn/SchoolLogin/SchoolLoginGuide";
+import SchoolLoginSelect from "./Screens/SignIn/SchoolLogin/schoolLoginSelect";
+import InputLogin from "./Screens/SignIn/SchoolLogin/InputLogin";
+import EmailAuth from "./Screens/SignIn/SchoolLogin/EmailAuth";
+import EmailSuccess from "./Screens/SignIn/SchoolLogin/EmailSuccess";
+import SchoolList from "./Screens/SignIn/SchoolLogin/SchoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
-import { useAuthStore } from "../zustand/authStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Account from "./Screens/MyPage/AccountPage";
-import UpdateProfile from "./Screens/MyPage/UpdateProfile";
-import MainPage from "./Screens/MainPage/MainPage";
+import UpdateProfilePage from "./Screens/MyPage/UpdateProfilePage";
+import ManageAccountPage from "./Screens/MyPage/ManageAccountPage";
+import MyPage from "./Screens/MyPage/MyPage";
+import FavoritePot from "./Screens/MyPage/Components/FavoritePot";
+import UserInfo from "./Screens/MyPage/Components/UserInfo";
+import ManagementLists from "./Screens/MyPage/Components/ManagementLists";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -54,121 +56,141 @@ export default function App() {
       setIsReady(true);
     };
     initialize();
-    AsyncStorage.getItem("accessToken", (err, result) => {
-      if (result) setToken(result);
-      setIsTokenReady(true);
-    });
+
+    AsyncStorage.getItem("accessToken")
+      .then((result) => {
+        if (result) setToken(result);
+        setIsTokenReady(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   if (!isReady || !isTokenReady) {
     return null;
+  } else {
+    const Stack = createNativeStackNavigator();
+    return (
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName={token.length == 0 ? "Slogan" : "Slogan"}
+        >
+          <Stack.Screen
+            name="Slogan"
+            component={Slogan}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Onboarding"
+            component={Onboarding}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Kakao"
+            component={Kakao}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Naver"
+            component={Naver}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Google"
+            component={Google}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Guide"
+            component={Guide}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CreateProfile"
+            component={CreateProfile}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CreatePot"
+            component={CreatePot}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SchoolLogin"
+            component={SchoolLogin}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SchoolLoginSelect"
+            component={SchoolLoginSelect}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="InputLogin"
+            component={InputLogin}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="EmailAuth"
+            component={EmailAuth}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="EmailSuccess"
+            component={EmailSuccess}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SchoolList"
+            component={SchoolList}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Main"
+            component={BottomTab}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ManageAccountPage"
+            component={ManageAccountPage}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="MyPage"
+            component={MyPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UserInfo"
+            component={UserInfo}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FavoritePot"
+            component={FavoritePot}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ManagementLists"
+            component={ManagementLists}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UpdateProfilePage"
+            component={UpdateProfilePage}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
-
-  console.log(token == "");
-  console.log("token", token);
-  const Stack = createNativeStackNavigator();
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={token == "" ? "Slogan" : "MainPage"}>
-        <Stack.Screen
-          name="MainPage"
-          component={MainPage}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Slogan"
-          component={Slogan}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Onboarding"
-          component={Onboarding}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignIn"
-          component={SignIn}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Kakao"
-          component={Kakao}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Naver"
-          component={Naver}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Google"
-          component={Google}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Guide"
-          component={Guide}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="CreateProfile"
-          component={CreateProfile}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="CreatePot"
-          component={CreatePot}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SchoolLogin"
-          component={SchoolLogin}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SchoolLoginSelect"
-          component={SchoolLoginSelect}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="InputLogin"
-          component={InputLogin}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="EmailAuth"
-          component={EmailAuth}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="EmailSuccess"
-          component={EmailSuccess}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SchoolList"
-          component={SchoolList}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Main"
-          component={BottomTab}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Account"
-          component={Account}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="UpdateProfile"
-          component={UpdateProfile}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
 }
 
 const styles = StyleSheet.create({

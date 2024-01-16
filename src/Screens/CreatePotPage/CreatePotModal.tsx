@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { useSelectedTimeStore } from "../../../zustand/selectedTime";
-import { useModalVisibleStore } from "../../../zustand/setModalVisible";
+import { useSelectedTimeStore } from "../../libs/states/selectedTime";
+import { useModalVisibleStore } from "../../libs/states/setModalVisible";
 import { SafeAreaFrameContext } from "react-native-safe-area-context";
 
 declare global {
@@ -45,7 +45,7 @@ function CreatePotModal() {
         <Text style={styles.startText}>출발시간</Text>
         <DateTimePicker
           testID="dateTimePicker"
-          value={today}
+          value={timestamp}
           mode="datetime"
           display="spinner"
           onChange={onChange}

@@ -9,18 +9,19 @@ import {
 } from "react-native";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import LeftArrow from "../../../assets/svg/LeftArrow.svg";
-import Ximage from "../../../assets/svg/X_image.svg";
+import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
+import Ximage from "../../../assets/svg/X_imageIcon.svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useMyInfoStore } from "../../../zustand/myInfoStore";
+import { useMyInfoStore } from "../../libs/states/myInfoStore";
 import { useNavigation } from "@react-navigation/native";
 
-function AccountPage() {
+function ManageAccountPage() {
   const navigation = useNavigation();
 
   const { myInfo, setMyInfo } = useMyInfoStore();
   const email = myInfo.email;
   const phoneNumber = myInfo.phoneNumber;
+
   return (
     <SafeAreaView style={Styles.container}>
       <View style={Styles.header}>
@@ -44,7 +45,7 @@ function AccountPage() {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <TextInput
               style={Styles.input}
-              value={phoneNumber}
+              // value={phoneNumber}
               placeholderTextColor={Styles.placeholder.color}
               clearButtonMode="always"
             />
@@ -169,4 +170,4 @@ const Styles = StyleSheet.create({
     color: "#5D5D5D",
   },
 });
-export default AccountPage;
+export default ManageAccountPage;

@@ -5,25 +5,49 @@ import {
   Pressable,
   useWindowDimensions,
   TextInput,
-  TouchableOpacity,
   Image,
 } from "react-native";
 import React, { useState } from "react";
-import LeftArrow from "../../../assets/svg/LeftArrow.svg";
-import Ximage from "../../../assets/svg/X_image.svg";
-import ProfileImage from "../../../assets/profileImage.png";
+import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
+import Ximage from "../../../assets/svg/X_imageIcon.svg";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useMyInfoStore } from "../../../zustand/myInfoStore";
+import { useMyInfoStore } from "../../libs/states/myInfoStore";
+import { defaultProfile } from "../../libs/styles/imgUrl";
+import axios from "axios";
+import { useAuthStore } from "../../libs/states/authStore";
 
 function UpdateProfile() {
-  const { width } = useWindowDimensions();
   const navigation = useNavigation();
-  const [name, setName] = React.useState("");
-  const { myInfo, setMyInfo } = useMyInfoStore();
+  const [name, setName] = useState("");
+  const { myInfo } = useMyInfoStore();
+  const { token } = useAuthStore();
+
   const onChangeName = (inputName: string) => {
     setName(inputName);
   };
+
+  async function setNickName() {
+    console.log("HERE");
+    console.log(name);
+    console.log(token);
+    try {
+      const response = await axios.put(
+        "https://moyeota.shop/api/users/nickname",
+        {
+          nickName: name,
+        },
+        {
+          headers: {
+            AuthorizationCode: token,
+          },
+        }
+      );
+      console.log("res", response);
+    } catch (e) {
+      console.log("Nickname", e);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -45,9 +69,20 @@ function UpdateProfile() {
       </Text>
       <View style={styles.middle}>
         <Image
-          source={ProfileImage}
-          style={{ marginTop: 26, width: 100, height: 100 }}
+          source={{
+            uri:
+              myInfo.profileImage != null
+                ? myInfo.profileImage
+                : defaultProfile,
+          }}
+          style={{
+            borderRadius: 50,
+            marginTop: 26,
+            width: 100,
+            height: 100,
+          }}
         />
+
         <View
           style={{
             marginTop: 4,
@@ -71,20 +106,17 @@ function UpdateProfile() {
         <TextInput
           style={styles.input}
           onChangeText={onChangeName}
-          value="모연두" //닉네임
+          defaultValue={myInfo.name ? myInfo.name : ""}
+          placeholder="닉네임을 입력해주세요"
           clearButtonMode="always"
         />
       </View>
       <View style={styles.buttonBottom}>
-        <View style={styles.button}>
-          <Pressable
-            onPress={() => {
-              // navigation.navigate("CreatePot" as never, { id: "CreatePot" });
-            }}
-          >
+        <Pressable onPress={setNickName}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}>저장하기</Text>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
