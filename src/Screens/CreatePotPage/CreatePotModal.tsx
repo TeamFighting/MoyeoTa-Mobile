@@ -97,18 +97,17 @@ const styles = StyleSheet.create({
   modal: {
     position: "absolute",
     width: "79%",
-    height: "44%",
+    height: "50%",
     backgroundColor: "white",
     zIndex: 11,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
-    gap: 20,
+    gap: 10,
   },
   startText: {
     fontSize: 19,
     fontWeight: "700",
-    marginTop: 20,
   },
   selectedText: {
     color: "#FFF",
