@@ -32,10 +32,11 @@ function CreatePotModal() {
     // 선택한 시간이 있으면 그 시간으로 설정, 없으면 현재 시간으로 설정
     const currentDate = selectedDate || today;
     //모달에서 선택한 시간을 timestamp로 변환
-    setTimestamp(new Date(currentDate.getTime() + KR_TIME_DIFF));
+    setTimestamp(new Date(currentDate.getTime()));
   };
   const onPress = () => {
-    setSelectedTime(timestamp);
+    const selectedTime = new Date(timestamp.getTime() + KR_TIME_DIFF);
+    setSelectedTime(selectedTime);
     setModalVisible(false);
   };
 
