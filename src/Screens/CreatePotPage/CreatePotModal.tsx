@@ -44,15 +44,17 @@ function CreatePotModal() {
     <View style={styles.modalWrapper}>
       <View style={styles.modal}>
         <Text style={styles.startText}>출발시간</Text>
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={timestamp}
-          mode="datetime"
-          display="spinner"
-          onChange={onChange}
-          textColor="black"
-          locale="ko"
-        />
+        <View style={{ marginTop: 20 }}>
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={timestamp}
+            mode="datetime"
+            display="spinner"
+            onChange={onChange}
+            textColor="black"
+            locale="ko"
+          />
+        </View>
         <Pressable
           style={{
             height: 48,
