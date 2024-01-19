@@ -13,7 +13,6 @@ import Guide2 from "../../assets/svg/Guide2.svg";
 import Guide3 from "../../assets/svg/Guide3.svg";
 
 export default function Guide() {
-  const { width } = useWindowDimensions();
   const navigation = useNavigation();
 
   return (
