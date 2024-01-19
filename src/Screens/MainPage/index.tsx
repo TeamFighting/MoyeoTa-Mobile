@@ -15,6 +15,8 @@ function MainPage() {
   const { modalVisible, setModalVisible } = useModalVisibleStore();
   const WebViewRef = React.useRef<WebView | null>(null);
   const { selectedTime } = useSelectedTimeStore();
+  const { token } = useAuthStore();
+  console.log("index.ts", token);
   useEffect(() => {
     const timestamp = selectedTime;
     if (timestamp) {
@@ -26,11 +28,20 @@ function MainPage() {
         console.log("sent", timestamp.toISOString());
       }
     }
-  }, [selectedTime]);
+    if (token && WebViewRef.current) {
+      const accessTokenJson = JSON.stringify({
+        token: token,
+      });
+
+      WebViewRef.current.postMessage(accessTokenJson);
+      console.log("sent", token);
+    }
+  }, [selectedTime, token]);
 
   const onMessage = (event: any) => {
     setModalVisible(true);
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mapContainer}>
@@ -40,6 +51,7 @@ function MainPage() {
             uri: `https://moyeota-webview.netlify.app/mainpage`,
           }}
           onMessage={onMessage}
+          style={{ overflow: "scroll", height: "100%" }}
         />
         {modalVisible && <CreatePotModal />}
       </View>

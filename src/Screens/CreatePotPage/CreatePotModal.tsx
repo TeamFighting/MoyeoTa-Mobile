@@ -36,6 +36,7 @@ function CreatePotModal() {
   };
   const onPress = () => {
     const selectedTime = new Date(timestamp.getTime() + KR_TIME_DIFF);
+    console.log(selectedTime);
     setSelectedTime(selectedTime);
     setModalVisible(false);
   };
