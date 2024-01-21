@@ -129,17 +129,25 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
         </View>
       </View>
       <Pressable onPress={handleNextButtonPress}>
-        <View style={[styles.signInBottom, styles.button]}>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 18,
-              fontFamily: "PretendardBold",
-              fontWeight: "700",
-            }}
-          >
-            다음
-          </Text>
+        <View
+          style={{
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <View style={[styles.signInBottom, styles.button]}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                fontFamily: "PretendardBold",
+                fontWeight: "700",
+              }}
+            >
+              다음
+            </Text>
+          </View>
         </View>
       </Pressable>
     </View>
@@ -182,15 +190,17 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.green,
-    width: windowWidth,
     height: 48,
     flexShrink: 0,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10,
+    width: 335,
+    borderRadius: 12,
   },
   signInBottom: {
     alignItems: "center",
+    backgroundColor: "#000",
   },
   description: {
     fontSize: 14,
