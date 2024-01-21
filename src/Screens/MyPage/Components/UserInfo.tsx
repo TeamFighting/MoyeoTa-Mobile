@@ -10,6 +10,7 @@ import { ages } from "../../../libs/util/age";
 function UserInfo() {
   const navigation = useNavigation();
   const { myInfo } = useMyInfoStore();
+  console.log("my", myInfo);
   return (
     <View style={Styles.Profile}>
       <View style={Styles.ProfileImg}>
@@ -44,9 +45,7 @@ function UserInfo() {
                 fontStyle: "normal",
               }}
             >
-              {myInfo.nickname != null || myInfo.nickname != ""
-                ? myInfo.nickname
-                : myInfo.name}
+              {myInfo.nickName == undefined ? myInfo.name : myInfo.nickName}
             </Text>
             <PencilIcon />
           </View>
