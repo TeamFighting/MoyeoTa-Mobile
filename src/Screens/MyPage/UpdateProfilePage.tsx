@@ -20,7 +20,7 @@ import { useAuthStore } from "../../libs/states/authStore";
 function UpdateProfile() {
   const navigation = useNavigation();
   const [name, setName] = useState("");
-  const { myInfo } = useMyInfoStore();
+  const { myInfo, setMyInfo } = useMyInfoStore();
   const { token } = useAuthStore();
 
   const onChangeName = (inputName: string) => {
@@ -29,8 +29,8 @@ function UpdateProfile() {
 
   async function setNickName() {
     console.log("HERE");
-    console.log(name);
     console.log(token);
+    setMyInfo({ ...myInfo, nickname: name });
     try {
       const response = await axios.put(
         "https://moyeota.shop/api/users/nickname",
@@ -39,11 +39,15 @@ function UpdateProfile() {
         },
         {
           headers: {
-            AuthorizationCode: token,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("res", response);
+      console.log(response.data.data);
+      if (response.status === 200) {
+        alert("닉네임이 변경되었습니다.");
+        navigation.goBack();
+      }
     } catch (e) {
       console.log("Nickname", e);
     }

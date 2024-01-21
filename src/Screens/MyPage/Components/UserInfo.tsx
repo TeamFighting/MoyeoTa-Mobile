@@ -44,7 +44,9 @@ function UserInfo() {
                 fontStyle: "normal",
               }}
             >
-              {myInfo.name}
+              {myInfo.nickname != null || myInfo.nickname != ""
+                ? myInfo.nickname
+                : myInfo.name}
             </Text>
             <PencilIcon />
           </View>
