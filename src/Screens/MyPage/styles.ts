@@ -44,6 +44,7 @@ export const Styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
+    borderColor: "none",
   },
   Tag: {
     height: 20,
