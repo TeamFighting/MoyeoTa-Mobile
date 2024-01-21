@@ -22,7 +22,7 @@ function SchoolList({ route, navigation }: { route: any; navigation: any }) {
   const [filteredSchoolNames, setFilteredSchoolNames] = useState<string[]>([]);
 
   useEffect(() => {
-    const apiUrl = `http://www.career.go.kr/cnet/openapi/getOpenApi.xml?apiKey=${process.env.SCHOOL_API_KEY}&svcType=api&svcCode=SCHOOL&contentType=xml&gubun=univ_list&thisPage=${currentPage}`;
+    const apiUrl = `http://www.career.go.kr/cnet/openapi/getOpenApi.xml?apiKey=${process.env.EXPO_PUBLIC_SCHOOL_API_KEY}&svcType=api&svcCode=SCHOOL&contentType=xml&gubun=univ_list&thisPage=${currentPage}`;
 
     axios
       .get(apiUrl)

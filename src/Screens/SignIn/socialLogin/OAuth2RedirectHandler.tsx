@@ -26,7 +26,7 @@ async function requestToken(
 
           useAuthStore.getState().setToken(token);
           AsyncStorage.setItem("accessToken", token);
-          navigation.navigate("Guide" as never);
+          navigation.navigate("SchoolLogin" as never);
         } else {
           console.log("유효하지 않은 토큰");
         }
@@ -46,7 +46,7 @@ async function requestToken(
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
           AsyncStorage.setItem("accessToken", token);
-          navigation.navigate("Guide" as never);
+          navigation.navigate("SchoolLogin" as never);
         } else {
           console.log("유효하지 않은 토큰");
         }
@@ -65,7 +65,7 @@ async function requestToken(
           const token = response.data.data.accessToken;
           useAuthStore.getState().setToken(token);
           AsyncStorage.setItem("accessToken", token);
-          navigation.navigate("Guide" as never);
+          navigation.navigate("SchoolLogin" as never);
         } else {
           console.log("유효하지 않은 토큰");
         }

@@ -10,7 +10,8 @@ import {
 } from "react-native";
 import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
 import Ximage from "../../../../assets/svg/X_imageIcon.svg";
-import SchoolImage from "../../../../assets/school_images/schoolImage.png";
+import SchollImg from "../../../../assets/svg/SchoolIMG.svg";
+// import SchoolImage from "../../../../assets/school_images";
 import { colors } from "../../../libs/styles/color";
 
 function SchoolLoginGuide({ navigation }: { navigation: any }) {
@@ -37,10 +38,7 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
         </Pressable>
       </View>
       <View style={styles.introContainer}>
-        <Image
-          source={SchoolImage}
-          style={{ marginTop: 24, width: 64, height: 66, marginBottom: 16 }}
-        />
+        <SchollImg />
         <Text style={styles.intro}>학교 인증하고</Text>
         <Text style={styles.intro}>안전하게 이용해요!</Text>
         <Text style={styles.description}>인증 방식을 선택해주세요</Text>
