@@ -51,6 +51,8 @@ export const Styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 4,
+    paddingLeft: 6,
+    paddingRight: 6,
   },
   TagText: { color: "#7E7E7E", fontSize: 10, fontWeight: "600" },
   FavoritePotWrapper: {

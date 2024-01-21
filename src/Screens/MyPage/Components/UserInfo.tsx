@@ -10,7 +10,7 @@ import { ages } from "../../../libs/util/age";
 function UserInfo() {
   const navigation = useNavigation();
   const { myInfo } = useMyInfoStore();
-  console.log("my", myInfo);
+  console.log("mdy", myInfo);
   return (
     <View style={Styles.Profile}>
       <View style={Styles.ProfileImg}>
@@ -70,7 +70,7 @@ function UserInfo() {
           </View>
           <View style={Styles.Tag}>
             <Text style={Styles.TagText}>
-              {myInfo.school != null ? "실명인증완료" : "실명 미인증"}
+              {myInfo.school != undefined ? "실명인증완료" : "실명 미인증"}
             </Text>
           </View>
         </View>
