@@ -16,11 +16,10 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [email, setEmail] = useState("");
   const [year, setYear] = useState("");
   const [univName, setUnivName] = useState("");
-
+  const { token } = useAuthStore((state) => state);
   const selectedSchool = route.params.selectedSchool || "";
 
   const authToken = useAuthStore((state) => state.token);
-  console.log("authToken", authToken);
 
   const handleNextButtonPress = async () => {
     try {
@@ -38,11 +37,13 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
       }
 
       const headers = {
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       };
       const response = await sendVerificationCodeToEmail(email, headers);
-
+      if (response.status === 200) {
+        alert("메일 발송 완료");
+      }
       if (response.status === "ERROR") {
         alert(response.message);
       } else {
@@ -127,8 +128,8 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
           />
         </View>
       </View>
-      <View style={[styles.signInBottom, styles.button]}>
-        <Pressable onPress={handleNextButtonPress}>
+      <Pressable onPress={handleNextButtonPress}>
+        <View style={[styles.signInBottom, styles.button]}>
           <Text
             style={{
               color: "white",
@@ -139,8 +140,8 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
           >
             다음
           </Text>
-        </Pressable>
-      </View>
+        </View>
+      </Pressable>
     </View>
   );
 }

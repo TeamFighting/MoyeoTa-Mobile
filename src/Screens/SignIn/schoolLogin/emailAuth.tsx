@@ -19,7 +19,6 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   const [timer, setTimer] = useState<number>(300);
 
   const authToken = useAuthStore((state) => state.token);
-  console.log("authToken", authToken);
 
   const handleVerification = async () => {
     try {
@@ -28,7 +27,7 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
         return;
       }
       const response = await fetch(
-        "https://54.180.20.255:80/api/users/school-email/verification",
+        "https://moyeota.shop/api/users/school-email/verification",
         {
           method: "POST",
           headers: {
@@ -167,8 +166,8 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
             {timer % 60}초)
           </Text>
         </Pressable>
-        <View style={styles.button}>
-          <Pressable onPress={handleVerification} disabled={!verificationCode}>
+        <Pressable onPress={handleVerification} disabled={!verificationCode}>
+          <View style={styles.button}>
             <Text
               style={{
                 color: "white",
@@ -179,8 +178,8 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
             >
               다음
             </Text>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
       </View>
     </View>
   );
