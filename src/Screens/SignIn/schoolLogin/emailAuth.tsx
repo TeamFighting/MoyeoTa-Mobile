@@ -167,17 +167,25 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
           </Text>
         </Pressable>
         <Pressable onPress={handleVerification} disabled={!verificationCode}>
-          <View style={styles.button}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 18,
-                fontFamily: "PretendardBold",
-                fontWeight: "700",
-              }}
-            >
-              다음
-            </Text>
+          <View
+            style={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <View style={styles.button}>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  fontFamily: "PretendardBold",
+                  fontWeight: "700",
+                }}
+              >
+                다음
+              </Text>
+            </View>
           </View>
         </Pressable>
       </View>
@@ -219,15 +227,18 @@ const styles = StyleSheet.create({
   signInMiddle: {
     alignItems: "center",
   },
+
   button: {
     backgroundColor: colors.green,
-    width: windowWidth,
     height: 48,
     flexShrink: 0,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10,
+    width: 335,
+    borderRadius: 12,
   },
+
   signInBottom: {
     alignItems: "center",
   },
