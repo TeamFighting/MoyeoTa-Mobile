@@ -19,7 +19,6 @@ function MyPage() {
   }, []);
 
   async function getMyInfo() {
-    console.log(token);
     try {
       const response = await axios.get("https://moyeota.shop/api/users", {
         headers: {
@@ -27,6 +26,7 @@ function MyPage() {
         },
       });
       setMyInfo(response.data.data);
+      console.log(response.data.data);
     } catch (e) {
       console.log("MyPage", e);
     }

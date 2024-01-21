@@ -28,9 +28,7 @@ function UpdateProfile() {
   };
 
   async function setNickName() {
-    console.log("HERE");
-    console.log(token);
-    setMyInfo({ ...myInfo, nickname: name });
+    setMyInfo({ ...myInfo, nickName: name });
     try {
       const response = await axios.put(
         "https://moyeota.shop/api/users/nickname",
@@ -110,7 +108,9 @@ function UpdateProfile() {
         <TextInput
           style={styles.input}
           onChangeText={onChangeName}
-          defaultValue={myInfo.name ? myInfo.name : ""}
+          defaultValue={
+            myInfo.nickName == undefined ? myInfo.name : myInfo.nickName
+          }
           placeholder="닉네임을 입력해주세요"
           clearButtonMode="always"
         />

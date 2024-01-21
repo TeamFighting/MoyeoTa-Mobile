@@ -16,7 +16,7 @@ export const useMyInfoStore = create<MyInfoState>((set) => ({
     id: 0,
     loginId: "",
     name: "",
-    nickname: "",
+    nickName: "",
     phoneNumber: "",
     profileImage: "",
     school: "",

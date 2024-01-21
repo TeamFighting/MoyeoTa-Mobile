@@ -6,7 +6,7 @@ export type MyInfoType = {
   id: number;
   loginId: string;
   name: string;
-  nickname: string | null;
+  nickName: string | null;
   phoneNumber: string | null;
   profileImage: string;
   school: string | null;
