@@ -24,7 +24,7 @@ export default function Slogan() {
       </View>
       <SloganImage style={[styles.image, { width: width }]} />
       <View style={styles.buttonBottom}>
-        <Pressable onPress={() => navigation.navigate("SetProfile" as never)}>
+        <Pressable onPress={() => navigation.navigate("Onboarding" as never)}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>다음</Text>
           </View>

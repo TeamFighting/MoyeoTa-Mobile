@@ -4,7 +4,6 @@ import Constants from "expo-constants";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useSelectedTimeStore } from "../../libs/states/selectedTime";
 import { useModalVisibleStore } from "../../libs/states/setModalVisible";
-import { SafeAreaFrameContext } from "react-native-safe-area-context";
 
 declare global {
   interface Window {

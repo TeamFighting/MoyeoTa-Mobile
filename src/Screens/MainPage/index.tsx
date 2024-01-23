@@ -16,7 +16,6 @@ function MainPage() {
   const WebViewRef = React.useRef<WebView | null>(null);
   const { selectedTime } = useSelectedTimeStore();
   const { token } = useAuthStore();
-  console.log("index.ts", token);
   useEffect(() => {
     const timestamp = selectedTime;
     if (timestamp) {

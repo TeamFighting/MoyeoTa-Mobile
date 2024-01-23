@@ -16,6 +16,8 @@ import { useMyInfoStore } from "../../libs/states/myInfoStore";
 import { defaultProfile } from "../../libs/styles/imgUrl";
 import axios from "axios";
 import { useAuthStore } from "../../libs/states/authStore";
+import Toast from "react-native-toast-message";
+import { showToast } from "../../libs/util/showToast";
 
 function UpdateProfile({ route }: { route: any }) {
   const navigation = useNavigation();
@@ -42,11 +44,13 @@ function UpdateProfile({ route }: { route: any }) {
       );
       console.log(response.data.data);
       if (response.status === 200) {
-        alert("닉네임이 변경되었습니다.");
-        if (route.params.from == "Guide") navigation.navigate("Main" as never);
-        else {
-          navigation.goBack();
-        }
+        // alert("닉네임이 변경되었습니다.");
+        showToast("닉네임이 변경되었습니다.");
+      }
+      if (route.params.from == "Guide")
+        navigation.navigate("SetProfile" as never);
+      else {
+        navigation.goBack();
       }
     } catch (e) {
       console.log("Nickname", e);
@@ -124,6 +128,7 @@ function UpdateProfile({ route }: { route: any }) {
           </View>
         </Pressable>
       </View>
+      <Toast />
     </SafeAreaView>
   );
 }
