@@ -46,8 +46,8 @@ function EmailSuccess({ navigation }: { navigation: any }) {
       </View>
 
       <View style={styles.signInBottom}>
-        <View style={styles.button}>
-          <Pressable onPress={() => navigation.navigate("Guide" as never)}>
+        <Pressable onPress={() => navigation.navigate("Guide" as never)}>
+          <View style={styles.button}>
             <Text
               style={{
                 color: "white",
@@ -58,8 +58,8 @@ function EmailSuccess({ navigation }: { navigation: any }) {
             >
               확인
             </Text>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
       </View>
     </View>
   );

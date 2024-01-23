@@ -17,7 +17,7 @@ import { defaultProfile } from "../../libs/styles/imgUrl";
 import axios from "axios";
 import { useAuthStore } from "../../libs/states/authStore";
 
-function UpdateProfile() {
+function UpdateProfile({ route }: { route: any }) {
   const navigation = useNavigation();
   const [name, setName] = useState("");
   const { myInfo, setMyInfo } = useMyInfoStore();
@@ -26,7 +26,6 @@ function UpdateProfile() {
   const onChangeName = (inputName: string) => {
     setName(inputName);
   };
-
   async function setNickName() {
     setMyInfo({ ...myInfo, nickName: name });
     try {
@@ -44,7 +43,10 @@ function UpdateProfile() {
       console.log(response.data.data);
       if (response.status === 200) {
         alert("닉네임이 변경되었습니다.");
-        navigation.goBack();
+        if (route.params.from == "Guide") navigation.navigate("Main" as never);
+        else {
+          navigation.goBack();
+        }
       }
     } catch (e) {
       console.log("Nickname", e);
@@ -199,6 +201,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 4,
     marginTop: 26,
+    paddingHorizontal: 6,
   },
   TagText: { color: "#7E7E7E", fontSize: 10, fontWeight: "600" },
 });

@@ -11,27 +11,6 @@ import { useMyInfoStore } from "../../libs/states/myInfoStore";
 import { useAuthStore } from "../../libs/states/authStore";
 
 function MyPage() {
-  let storageToken: null | string = null;
-  const { setMyInfo } = useMyInfoStore();
-  const { token } = useAuthStore();
-  useEffect(() => {
-    getMyInfo();
-  }, []);
-
-  async function getMyInfo() {
-    try {
-      const response = await axios.get("https://moyeota.shop/api/users", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setMyInfo(response.data.data);
-      console.log(response.data.data);
-    } catch (e) {
-      console.log("MyPage", e);
-    }
-  }
-
   return (
     <SafeAreaView style={Styles.container}>
       <View style={Styles.header}>

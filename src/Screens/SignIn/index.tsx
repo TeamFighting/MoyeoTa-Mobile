@@ -75,17 +75,21 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               </Text>
             </View>
           </Pressable>
-          <View
-            style={[
-              styles.button,
-              {
-                backgroundColor: "#f1f1f1",
-                marginBottom: 22,
-                borderRadius: 12,
-              },
-            ]}
+          <Pressable
+            onPress={() => {
+              navigation.navigate("SetProfile" as never);
+            }}
           >
-            <Pressable onPress={() => navigation.goBack()}>
+            <View
+              style={[
+                styles.button,
+                {
+                  backgroundColor: "#f1f1f1",
+                  marginBottom: 22,
+                  borderRadius: 12,
+                },
+              ]}
+            >
               <Text
                 style={{
                   color: "#5d5d5d",
@@ -95,8 +99,8 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               >
                 닫기
               </Text>
-            </Pressable>
-          </View>
+            </View>
+          </Pressable>
           <Text
             style={{
               fontFamily: "Pretendard",

@@ -28,6 +28,7 @@ import MyPage from "./Screens/MyPage/MyPage";
 import FavoritePot from "./Screens/MyPage/Components/FavoritePot";
 import UserInfo from "./Screens/MyPage/Components/UserInfo";
 import ManagementLists from "./Screens/MyPage/Components/ManagementLists";
+import SetProfile from "./Screens/SignIn/SetProfile/SetProfile";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -149,6 +150,11 @@ export default function App() {
           <Stack.Screen
             name="SchoolList"
             component={SchoolList}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SetProfile"
+            component={SetProfile}
             options={{ headerShown: false }}
           />
           <Stack.Screen

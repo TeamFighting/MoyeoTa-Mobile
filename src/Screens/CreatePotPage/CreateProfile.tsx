@@ -13,12 +13,13 @@ import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
 import Ximage from "../../../assets/svg/X_imageIcon.svg";
 // import ProfileImage from "../../../assets/profileImage.png";
 import { useNavigation } from "@react-navigation/native";
+import { useMyInfoStore } from "../../libs/states/myInfoStore";
 
 export default function CreateProfile() {
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
   const [name, setName] = React.useState("");
-
+  const { myInfo } = useMyInfoStore((state) => state);
   const onChangeName = (inputName: string) => {
     setName(inputName);
   };
@@ -44,10 +45,10 @@ export default function CreateProfile() {
         모여타에서는 닉네임, 성별, 나이대가 공개되어요
       </Text>
       <View style={styles.middle}>
-        {/* <Image
-          // source={ProfileImage}
+        <Image
+          source={myInfo.profileImage}
           style={{ marginTop: 52, width: 100, height: 100 }}
-        /> */}
+        />
         <TextInput
           style={styles.input}
           placeholder="모연두"

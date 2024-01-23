@@ -5,15 +5,38 @@ import {
   Pressable,
   useWindowDimensions,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import LeftArrowIcon from "../../assets/svg/LeftArrowIcon.svg";
 import { useNavigation } from "@react-navigation/native";
 import Guide1 from "../../assets/svg/Guide1.svg";
 import Guide2 from "../../assets/svg/Guide2.svg";
 import Guide3 from "../../assets/svg/Guide3.svg";
+import { useMyInfoStore } from "../libs/states/myInfoStore";
+import { useAuthStore } from "../libs/states/authStore";
+import axios from "axios";
 
 export default function Guide() {
   const navigation = useNavigation();
+  let storageToken: null | string = null;
+  const { setMyInfo } = useMyInfoStore();
+  const { token } = useAuthStore();
+  useEffect(() => {
+    getMyInfo();
+  }, []);
+
+  async function getMyInfo() {
+    try {
+      const response = await axios.get("https://moyeota.shop/api/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMyInfo(response.data.data);
+      console.log(response.data.data);
+    } catch (e) {
+      console.log("MyPage", e);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -81,7 +104,11 @@ export default function Guide() {
           ⦁ 유의사항 : 서비스 지역은 확장 중에 있으며 출발지 기준으로 바로 바로
           실시간으로 빠른 매칭이 안되는 경우가 있어요
         </Text>
-        <Pressable onPress={() => navigation.navigate("Main" as never)}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("UpdateProfilePage", { from: "Guide" });
+          }}
+        >
           <View style={styles.button}>
             <Text style={styles.buttonText}>확인</Text>
           </View>

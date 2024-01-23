@@ -11,7 +11,6 @@ import {
 import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
 import Ximage from "../../../../assets/svg/X_imageIcon.svg";
 import SchollImg from "../../../../assets/svg/SchoolIMG.svg";
-// import SchoolImage from "../../../../assets/school_images";
 import { colors } from "../../../libs/styles/color";
 
 function SchoolLoginGuide({ navigation }: { navigation: any }) {
@@ -62,14 +61,15 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
       </View>
 
       <View style={styles.signInBottom}>
-        <View style={styles.button}>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("SchoolLoginSelect", {
-                id: "SchoolLoginSelect",
-              });
-            }}
-          >
+        <Pressable
+          onPress={() => {
+            console.log("학교 인증하기");
+            navigation.navigate("SchoolLoginSelect", {
+              id: "SchoolLoginSelect",
+            });
+          }}
+        >
+          <View style={styles.button}>
             <Text
               style={{
                 color: "white",
@@ -80,8 +80,8 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
             >
               다음
             </Text>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
         <View
           style={[
             styles.button,

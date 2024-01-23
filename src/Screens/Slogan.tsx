@@ -24,7 +24,7 @@ export default function Slogan() {
       </View>
       <SloganImage style={[styles.image, { width: width }]} />
       <View style={styles.buttonBottom}>
-        <Pressable onPress={() => navigation.navigate("Onboarding" as never)}>
+        <Pressable onPress={() => navigation.navigate("SetProfile" as never)}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>다음</Text>
           </View>
@@ -46,7 +46,6 @@ export default function Slogan() {
 }
 
 const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   container: {
