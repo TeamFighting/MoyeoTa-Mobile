@@ -11,6 +11,7 @@ import slides from "../../slides";
 import OnboardingItem from "./OnboardingItem";
 import Paginator from "./Paginator";
 import { useNavigation } from "@react-navigation/native";
+import { colors } from "../libs/styles/color";
 
 export default function Onboarding() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,6 +22,8 @@ export default function Onboarding() {
   const slidesRef = useRef(null);
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
   const navigation = useNavigation();
+  const [isPressed, setIsPressed] = React.useState(false);
+
   return (
     <View style={styles.container}>
       <View style={{ flex: 3 }}>
@@ -45,8 +48,23 @@ export default function Onboarding() {
         />
         <Paginator data={slides} scrollX={scrollX} />
         <View style={styles.buttonBottom}>
-          <Pressable onPress={() => navigation.navigate("SignIn" as never)}>
-            <View style={styles.button}>
+          <Pressable
+            onPressIn={() => {
+              setIsPressed(true);
+            }}
+            onPressOut={() => {
+              setIsPressed(false);
+            }}
+            onPress={() => navigation.navigate("SignIn" as never)}
+          >
+            <View
+              style={[
+                styles.button,
+                {
+                  backgroundColor: isPressed ? colors.darkgreen : colors.green,
+                },
+              ]}
+            >
               <Text
                 style={{
                   color: "white",

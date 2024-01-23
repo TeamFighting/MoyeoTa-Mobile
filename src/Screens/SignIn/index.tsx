@@ -12,6 +12,8 @@ export type RootStackParamList = {
 };
 
 function SignIn({ route, navigation }: { route: any; navigation: any }) {
+  const [isPressed, setIsPressed] = React.useState(false);
+
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View style={{ paddingTop: 52, paddingLeft: 14 }}>
@@ -59,11 +61,24 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
 
         <View style={styles.signInBottom}>
           <Pressable
+            onPressIn={() => {
+              setIsPressed(true);
+            }}
+            onPressOut={() => {
+              setIsPressed(false);
+            }}
             onPress={() => {
               navigation.navigate("Main", { id: "Mainpage" });
             }}
           >
-            <View style={styles.button}>
+            <View
+              style={[
+                styles.button,
+                {
+                  backgroundColor: isPressed ? colors.darkgreen : colors.green,
+                },
+              ]}
+            >
               <Text
                 style={{
                   color: "white",

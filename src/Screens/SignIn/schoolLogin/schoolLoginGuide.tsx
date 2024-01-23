@@ -14,6 +14,8 @@ import SchollImg from "../../../../assets/svg/SchoolIMG.svg";
 import { colors } from "../../../libs/styles/color";
 
 function SchoolLoginGuide({ navigation }: { navigation: any }) {
+  const [isPressed, setIsPressed] = useState(false);
+
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View
@@ -62,6 +64,12 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
 
       <View style={styles.signInBottom}>
         <Pressable
+          onPressIn={() => {
+            setIsPressed(true);
+          }}
+          onPressOut={() => {
+            setIsPressed(false);
+          }}
           onPress={() => {
             console.log("학교 인증하기");
             navigation.navigate("SchoolLoginSelect", {
@@ -69,7 +77,14 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
             });
           }}
         >
-          <View style={styles.button}>
+          <View
+            style={[
+              styles.button,
+              {
+                backgroundColor: isPressed ? colors.darkgreen : colors.green,
+              },
+            ]}
+          >
             <Text
               style={{
                 color: "white",

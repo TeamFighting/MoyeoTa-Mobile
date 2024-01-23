@@ -48,6 +48,7 @@ function SetProfile() {
       console.log(e);
     }
   };
+
   const KR_DIFF = 9 * 60 * 60 * 1000;
 
   console.log(gender, age);

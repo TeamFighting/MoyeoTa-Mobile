@@ -18,7 +18,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [univName, setUnivName] = useState("");
   const { token } = useAuthStore((state) => state);
   const selectedSchool = route.params.selectedSchool || "";
-
+  const [isPressed, setIsPressed] = useState(false);
   const authToken = useAuthStore((state) => state.token);
 
   const handleNextButtonPress = async () => {
@@ -128,7 +128,15 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
           />
         </View>
       </View>
-      <Pressable onPress={handleNextButtonPress}>
+      <Pressable
+        onPressIn={() => {
+          setIsPressed(true);
+        }}
+        onPressOut={() => {
+          setIsPressed(false);
+        }}
+        onPress={handleNextButtonPress}
+      >
         <View
           style={{
             width: "100%",
@@ -136,7 +144,15 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
             justifyContent: "center",
           }}
         >
-          <View style={[styles.signInBottom, styles.button]}>
+          <View
+            style={[
+              styles.signInBottom,
+              styles.button,
+              {
+                backgroundColor: isPressed ? colors.darkgreen : colors.green,
+              },
+            ]}
+          >
             <Text
               style={{
                 color: "white",

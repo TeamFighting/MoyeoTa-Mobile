@@ -17,8 +17,8 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   const [univName, setUnivName] = useState<string>(route.params.univName || "");
   const [resendDisabled, setResendDisabled] = useState(false);
   const [timer, setTimer] = useState<number>(300);
-
   const authToken = useAuthStore((state) => state.token);
+  const [isPressed, setIsPressed] = useState(false);
 
   const handleVerification = async () => {
     try {
@@ -62,7 +62,7 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
   const handleResendCode = async () => {
     try {
       const response = await fetch(
-        "https://54.180.20.255:80/api/users/school-email/resend",
+        "https://moyeota.shop/api/users/school-email",
         {
           method: "POST",
           headers: {
@@ -166,7 +166,16 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
             {timer % 60}초)
           </Text>
         </Pressable>
-        <Pressable onPress={handleVerification} disabled={!verificationCode}>
+        <Pressable
+          onPressIn={() => {
+            setIsPressed(true);
+          }}
+          onPressOut={() => {
+            setIsPressed(false);
+          }}
+          onPress={handleVerification}
+          disabled={!verificationCode}
+        >
           <View
             style={{
               width: "100%",
@@ -174,7 +183,14 @@ function EmailAuth({ route, navigation }: { route: any; navigation: any }) {
               justifyContent: "center",
             }}
           >
-            <View style={styles.button}>
+            <View
+              style={[
+                styles.button,
+                {
+                  backgroundColor: isPressed ? colors.darkgreen : colors.green,
+                }, // isPressing 상태에 따라 배경색 변경
+              ]}
+            >
               <Text
                 style={{
                   color: "white",

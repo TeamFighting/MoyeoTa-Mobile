@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   View,
@@ -7,12 +7,15 @@ import {
   Pressable,
   useWindowDimensions,
   Dimensions,
+  TouchableHighlight,
 } from "react-native";
 import SloganImage from "../../assets/svg/Slogan.svg";
+import { colors } from "../libs/styles/color";
 
 export default function Slogan() {
   const { width } = useWindowDimensions();
   const navigation = useNavigation();
+  const [isPressed, setIsPressed] = useState(false);
 
   return (
     <View style={[styles.container, { width }]}>
@@ -24,8 +27,21 @@ export default function Slogan() {
       </View>
       <SloganImage style={[styles.image, { width: width }]} />
       <View style={styles.buttonBottom}>
-        <Pressable onPress={() => navigation.navigate("Onboarding" as never)}>
-          <View style={styles.button}>
+        <Pressable
+          onPressIn={() => {
+            setIsPressed(true);
+          }}
+          onPressOut={() => {
+            setIsPressed(false);
+          }}
+          onPress={() => navigation.navigate("Onboarding" as never)}
+        >
+          <View
+            style={[
+              styles.button,
+              { backgroundColor: isPressed ? colors.darkgreen : colors.green }, // isPressing 상태에 따라 배경색 변경
+            ]}
+          >
             <Text style={styles.buttonText}>다음</Text>
           </View>
         </Pressable>
