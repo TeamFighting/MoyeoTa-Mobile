@@ -45,7 +45,8 @@ function UserInfo() {
                 fontStyle: "normal",
               }}
             >
-              {myInfo.nickName == undefined ? myInfo.name : myInfo.nickName}
+              {/* {myInfo.nickName == undefined ? myInfo.name : myInfo.nickName} */}
+              {myInfo.name}
             </Text>
             <PencilIcon />
           </View>
@@ -60,12 +61,14 @@ function UserInfo() {
         >
           <View style={Styles.Tag}>
             <Text style={Styles.TagText}>
-              {myInfo.gender ? "남자" : "여자"}
+              {/* {myInfo.gender ? "남자" : "여자"} */}
+              여자
             </Text>
           </View>
           <View style={Styles.Tag}>
             <Text style={Styles.TagText}>
-              {myInfo.age != null ? `${ages(myInfo.age)}대` : "나이 미입력"}
+              {/* {myInfo.age != null ? `${ages(myInfo.age)}대` : "나이 미입력"} */}
+              20대
             </Text>
           </View>
           <View style={Styles.Tag}>

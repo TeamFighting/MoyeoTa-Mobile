@@ -76,6 +76,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName={token.length == 0 ? "Slogan" : "Slogan"}
+          screenOptions={{ gestureEnabled: false }}
         >
           <Stack.Screen
             name="Slogan"

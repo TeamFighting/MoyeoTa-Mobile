@@ -23,7 +23,6 @@ async function requestToken(
         if (response.data && response.data.data.accessToken) {
           const token = response.data.data.accessToken;
           console.log("get token", token);
-
           useAuthStore.getState().setToken(token);
           AsyncStorage.setItem("accessToken", token);
           navigation.navigate("SchoolLogin" as never);

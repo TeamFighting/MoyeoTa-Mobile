@@ -106,7 +106,9 @@ export default function Guide() {
         </Text>
         <Pressable
           onPress={() => {
-            navigation.navigate("UpdateProfilePage", { from: "Guide" });
+            navigation.navigate("UpdateProfilePage", {
+              from: "Guide",
+            });
           }}
         >
           <View style={styles.button}>

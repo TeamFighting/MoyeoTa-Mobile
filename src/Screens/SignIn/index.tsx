@@ -116,7 +116,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
               </Text>
             </View>
           </Pressable>
-          <Text
+          {/* <Text
             style={{
               fontFamily: "Pretendard",
               textDecorationLine: "underline",
@@ -124,7 +124,7 @@ function SignIn({ route, navigation }: { route: any; navigation: any }) {
             }}
           >
             이미 계정이 있으신가요?
-          </Text>
+          </Text> */}
         </View>
       </View>
     </View>

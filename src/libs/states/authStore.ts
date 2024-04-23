@@ -6,6 +6,7 @@ type AuthStore = {
 };
 
 export const useAuthStore = create<AuthStore>((set) => ({
-  token: null,
+  token:
+    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNSIsImV4cCI6MTcxMjg1MTEwMX0.q8Rnc5XAkVWDjbV5nMwurC1HOilol_BKVYPM_wvmnOI",
   setToken: (token) => set({ token }),
 }));

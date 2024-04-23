@@ -107,7 +107,7 @@ function SchoolLoginGuide({ navigation }: { navigation: any }) {
             },
           ]}
         >
-          <Pressable onPress={() => navigation.goBack()}>
+          <Pressable onPress={() => navigation.navigate("Guide" as never)}>
             <Text
               style={{
                 color: "#5d5d5d",
