@@ -19,7 +19,6 @@ import SchoolLoginSelect from "./Screens/SignIn/SchoolLogin/schoolLoginSelect";
 import InputLogin from "./Screens/SignIn/SchoolLogin/InputLogin";
 import EmailAuth from "./Screens/SignIn/SchoolLogin/EmailAuth";
 import EmailSuccess from "./Screens/SignIn/SchoolLogin/EmailSuccess";
-import SchoolList from "./Screens/SignIn/SchoolLogin/SchoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import UpdateProfilePage from "./Screens/MyPage/UpdateProfilePage";
@@ -29,6 +28,7 @@ import FavoritePot from "./Screens/MyPage/Components/FavoritePot";
 import UserInfo from "./Screens/MyPage/Components/UserInfo";
 import ManagementLists from "./Screens/MyPage/Components/ManagementLists";
 import SetProfile from "./Screens/SignIn/SetProfile/SetProfile";
+import SchoolList from "./Screens/SignIn/SchoolLogin/schoolList";
 
 const loadFonts = async () => {
   await Font.loadAsync({
