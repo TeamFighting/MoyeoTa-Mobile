@@ -3,30 +3,40 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 import WebView from "react-native-webview";
-import CreatePotModal from "../CreatePot/CreatePotModal";
-import { useModalVisibleStore } from "../../../zustand/setModalVisible";
-import { useSelectedTimeStore } from "../../../zustand/selectedTime";
+import CreatePotModal from "../CreatePotPage/CreatePotModal";
+import { useModalVisibleStore } from "../../libs/states/setModalVisible";
+import { useSelectedTimeStore } from "../../libs/states/selectedTime";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BottomTab from "../BottomTab/BottomTab";
+import { useAuthStore } from "../../libs/states/authStore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 function MainPage() {
-  const navigation = useNavigation();
   const { modalVisible, setModalVisible } = useModalVisibleStore();
   const WebViewRef = React.useRef<WebView | null>(null);
-  const selectedTimeStore = useSelectedTimeStore();
-
+  const { selectedTime } = useSelectedTimeStore();
+  const { token } = useAuthStore();
+  console.log("index.ts", token);
   useEffect(() => {
-    const timestamp = selectedTimeStore.selectedTime;
+    const timestamp = selectedTime;
     if (timestamp) {
       const timestampJson = JSON.stringify({
         selectedTime: timestamp.toISOString(),
       });
       if (WebViewRef.current) {
         WebViewRef.current.postMessage(timestampJson);
-        console.log("timestamp", timestamp.toISOString());
+        console.log("sent", timestamp.toISOString());
       }
     }
-  }, [selectedTimeStore.selectedTime]);
+    if (token && WebViewRef.current) {
+      const accessTokenJson = JSON.stringify({
+        token: token,
+      });
+
+      WebViewRef.current.postMessage(accessTokenJson);
+      console.log("sent", token);
+    }
+  }, [selectedTime, token]);
 
   const onMessage = (event: any) => {
     setModalVisible(true);
@@ -41,6 +51,7 @@ function MainPage() {
             uri: `https://moyeota-webview.netlify.app/mainpage`,
           }}
           onMessage={onMessage}
+          style={{ overflow: "scroll", height: "100%" }}
         />
         {modalVisible && <CreatePotModal />}
       </View>

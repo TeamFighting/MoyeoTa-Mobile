@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, Text, View, Pressable } from "react-native";
+<<<<<<< HEAD:src/Screens/SignIn/SignIn.tsx
 import Kakaotalk from "../../../assets/svg/Kakaotalk.svg";
 import Naver from "../../../assets/svg/Naver.svg";
 import Google from "../../../assets/svg/Google.svg";
 import { colors } from "../../styles/color";
+=======
+import Kakaotalk from "../../../assets/svg/KakaotalkIcon.svg";
+import Naver from "../../../assets/svg/NaverIcon.svg";
+import Google from "../../../assets/svg/GoogleIcon.svg";
+import { colors } from "../../libs/styles/color";
+>>>>>>> 0a2ad75fd78bd8b570ccc025aa0bec5682aa2eed:src/Screens/SignIn/index.tsx
 
 export type RootStackParamList = {
   LoginScreen: undefined;

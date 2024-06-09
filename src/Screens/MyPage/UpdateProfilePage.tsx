@@ -5,25 +5,57 @@ import {
   Pressable,
   useWindowDimensions,
   TextInput,
-  TouchableOpacity,
   Image,
 } from "react-native";
 import React, { useState } from "react";
+<<<<<<< HEAD:src/Screens/MyPage/UpdateProfile.tsx
 import LeftArrow from "../../../assets/svg/LeftArrow.svg";
 import Ximage from "../../../assets/svg/X_image.svg";
 // import ProfileImage from "../../../assets/profileImage.png";
+=======
+import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
+import Ximage from "../../../assets/svg/X_imageIcon.svg";
+>>>>>>> 0a2ad75fd78bd8b570ccc025aa0bec5682aa2eed:src/Screens/MyPage/UpdateProfilePage.tsx
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useMyInfoStore } from "../../../zustand/myInfoStore";
+import { useMyInfoStore } from "../../libs/states/myInfoStore";
+import { defaultProfile } from "../../libs/styles/imgUrl";
+import axios from "axios";
+import { useAuthStore } from "../../libs/states/authStore";
 
 function UpdateProfile() {
-  const { width } = useWindowDimensions();
   const navigation = useNavigation();
-  const [name, setName] = React.useState("");
+  const [name, setName] = useState("");
   const { myInfo, setMyInfo } = useMyInfoStore();
+  const { token } = useAuthStore();
+
   const onChangeName = (inputName: string) => {
     setName(inputName);
   };
+
+  async function setNickName() {
+    setMyInfo({ ...myInfo, nickName: name });
+    try {
+      const response = await axios.put(
+        "https://moyeota.shop/api/users/nickname",
+        {
+          nickName: name,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data.data);
+      if (response.status === 200) {
+        alert("닉네임이 변경되었습니다.");
+        navigation.goBack();
+      }
+    } catch (e) {
+      console.log("Nickname", e);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -44,6 +76,24 @@ function UpdateProfile() {
         {"\n"}합승할 파티원에게 보여줄 프로필을 설정해보세요
       </Text>
       <View style={styles.middle}>
+<<<<<<< HEAD:src/Screens/MyPage/UpdateProfile.tsx
+=======
+        <Image
+          source={{
+            uri:
+              myInfo.profileImage != null
+                ? myInfo.profileImage
+                : defaultProfile,
+          }}
+          style={{
+            borderRadius: 50,
+            marginTop: 26,
+            width: 100,
+            height: 100,
+          }}
+        />
+
+>>>>>>> 0a2ad75fd78bd8b570ccc025aa0bec5682aa2eed:src/Screens/MyPage/UpdateProfilePage.tsx
         <View
           style={{
             marginTop: 4,
@@ -67,20 +117,19 @@ function UpdateProfile() {
         <TextInput
           style={styles.input}
           onChangeText={onChangeName}
-          value="모연두" //닉네임
+          defaultValue={
+            myInfo.nickName == undefined ? myInfo.name : myInfo.nickName
+          }
+          placeholder="닉네임을 입력해주세요"
           clearButtonMode="always"
         />
       </View>
       <View style={styles.buttonBottom}>
-        <View style={styles.button}>
-          <Pressable
-            onPress={() => {
-              // navigation.navigate("CreatePot" as never, { id: "CreatePot" });
-            }}
-          >
+        <Pressable onPress={setNickName}>
+          <View style={styles.button}>
             <Text style={styles.buttonText}>저장하기</Text>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

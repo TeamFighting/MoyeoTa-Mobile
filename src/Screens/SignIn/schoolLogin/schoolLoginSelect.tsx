@@ -8,17 +8,11 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
-import Ximage from "../../../../assets/svg/X_image.svg";
-import { colors } from "../../../styles/color";
+import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
+import Ximage from "../../../../assets/svg/X_imageIcon.svg";
+import { colors } from "../../../libs/styles/color";
 
-function SchoolLoginSelect({
-  route,
-  navigation,
-}: {
-  route: any;
-  navigation: any;
-}) {
+function SchoolLoginSelect({ navigation }: { route: any; navigation: any }) {
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
       <View

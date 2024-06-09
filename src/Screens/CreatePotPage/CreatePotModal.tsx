@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { useSelectedTimeStore } from "../../../zustand/selectedTime";
-import { useModalVisibleStore } from "../../../zustand/setModalVisible";
+import { useSelectedTimeStore } from "../../libs/states/selectedTime";
+import { useModalVisibleStore } from "../../libs/states/setModalVisible";
 import { SafeAreaFrameContext } from "react-native-safe-area-context";
 
 declare global {
@@ -32,10 +32,12 @@ function CreatePotModal() {
     // 선택한 시간이 있으면 그 시간으로 설정, 없으면 현재 시간으로 설정
     const currentDate = selectedDate || today;
     //모달에서 선택한 시간을 timestamp로 변환
-    setTimestamp(new Date(currentDate.getTime() + KR_TIME_DIFF));
+    setTimestamp(new Date(currentDate.getTime()));
   };
   const onPress = () => {
-    setSelectedTime(timestamp);
+    const selectedTime = new Date(timestamp.getTime() + KR_TIME_DIFF);
+    console.log(selectedTime);
+    setSelectedTime(selectedTime);
     setModalVisible(false);
   };
 
@@ -43,15 +45,17 @@ function CreatePotModal() {
     <View style={styles.modalWrapper}>
       <View style={styles.modal}>
         <Text style={styles.startText}>출발시간</Text>
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={today}
-          mode="datetime"
-          display="spinner"
-          onChange={onChange}
-          textColor="black"
-          locale="ko"
-        />
+        <View style={{ marginTop: 20 }}>
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={timestamp}
+            mode="datetime"
+            display="spinner"
+            onChange={onChange}
+            textColor="black"
+            locale="ko"
+          />
+        </View>
         <Pressable
           style={{
             height: 48,
@@ -97,18 +101,17 @@ const styles = StyleSheet.create({
   modal: {
     position: "absolute",
     width: "79%",
-    height: "44%",
+    height: "50%",
     backgroundColor: "white",
     zIndex: 11,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
-    gap: 20,
+    gap: 10,
   },
   startText: {
     fontSize: 19,
     fontWeight: "700",
-    marginTop: 20,
   },
   selectedText: {
     color: "#FFF",

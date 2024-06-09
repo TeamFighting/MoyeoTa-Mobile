@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MainPage from "../MainPage/MainPage";
+import MainPage from "../MainPage";
+import HomeIcon from "../../../assets/svg/HomeIcon.svg";
+import UserIcon from "../../../assets/svg/UserIcon.svg";
 import MyPage from "../MyPage/MyPage";
-import Home from "../../../assets/svg/Home.svg";
-import User from "../../../assets/svg/User.svg";
 const Tab = createBottomTabNavigator();
 
 function BottomTab() {
@@ -15,7 +15,7 @@ function BottomTab() {
           title: "홈",
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Home width={size} height={size} fill={color} />
+            <HomeIcon width={size} height={size} fill={color} />
           ),
         }}
         component={MainPage}
@@ -27,7 +27,7 @@ function BottomTab() {
           headerShown: false,
           title: "내정보",
           tabBarIcon: ({ color, size }) => (
-            <User width={size} height={size} fill={color} />
+            <UserIcon width={size} height={size} fill={color} />
           ),
         }}
         component={MyPage}

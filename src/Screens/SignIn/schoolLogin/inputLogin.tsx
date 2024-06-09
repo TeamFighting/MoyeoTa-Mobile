@@ -7,20 +7,19 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
-import LeftArrow from "../../../../assets/svg/LeftArrow.svg";
-import QuestionMark from "../../../../assets/svg/QuestionMark.svg";
-import { colors } from "../../../styles/color";
-import { useAuthStore } from "../../../../zustand/authStore";
+import LeftArrow from "../../../../assets/svg/LeftArrowIcon.svg";
+import QuestionMark from "../../../../assets/svg/QuestionMarkIcon.svg";
+import { colors } from "../../../libs/styles/color";
+import { useAuthStore } from "../../../libs/states/authStore";
 
 function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const [email, setEmail] = useState("");
   const [year, setYear] = useState("");
   const [univName, setUnivName] = useState("");
-
+  const { token } = useAuthStore((state) => state);
   const selectedSchool = route.params.selectedSchool || "";
 
   const authToken = useAuthStore((state) => state.token);
-  console.log("authToken", authToken);
 
   const handleNextButtonPress = async () => {
     try {
@@ -38,11 +37,13 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
       }
 
       const headers = {
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       };
       const response = await sendVerificationCodeToEmail(email, headers);
-
+      if (response.status === 200) {
+        alert("메일 발송 완료");
+      }
       if (response.status === "ERROR") {
         alert(response.message);
       } else {
@@ -61,7 +62,7 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
   const sendVerificationCodeToEmail = async (email: string, headers: any) => {
     try {
       const response = await fetch(
-        "https://54.180.20.255:80/api/users/school-email",
+        "https://moyeota.shop/api/users/school-email",
         {
           method: "POST",
           headers: headers,
@@ -127,20 +128,28 @@ function InputLogin({ route, navigation }: { route: any; navigation: any }) {
           />
         </View>
       </View>
-      <View style={[styles.signInBottom, styles.button]}>
-        <Pressable onPress={handleNextButtonPress}>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 18,
-              fontFamily: "PretendardBold",
-              fontWeight: "700",
-            }}
-          >
-            다음
-          </Text>
-        </Pressable>
-      </View>
+      <Pressable onPress={handleNextButtonPress}>
+        <View
+          style={{
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <View style={[styles.signInBottom, styles.button]}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                fontFamily: "PretendardBold",
+                fontWeight: "700",
+              }}
+            >
+              다음
+            </Text>
+          </View>
+        </View>
+      </Pressable>
     </View>
   );
 }
@@ -181,15 +190,17 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.green,
-    width: windowWidth,
     height: 48,
     flexShrink: 0,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10,
+    width: 335,
+    borderRadius: 12,
   },
   signInBottom: {
     alignItems: "center",
+    backgroundColor: "#000",
   },
   description: {
     fontSize: 14,
