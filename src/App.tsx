@@ -7,8 +7,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Kakao from "./Screens/SignIn/SocialLogin/Kakao";
 import SignIn from "./Screens/SignIn";
 import Naver from "./Screens/SignIn/SocialLogin/Naver";
+// import "react-native-reanimated";
 import Guide from "./Screens/Guide";
-import { SplashScreen } from "expo-router";
+// import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
 import Google from "./Screens/SignIn/SocialLogin/Google";
@@ -43,20 +44,20 @@ const loadFonts = async () => {
 };
 
 export default function App() {
-  const [isReady, setIsReady] = useState(false);
+  const [isReady, setIsReady] = useState(true);
   const [token, setToken] = useState("");
-  const [isTokenReady, setIsTokenReady] = useState(false);
+  const [isTokenReady, setIsTokenReady] = useState(true);
 
   useEffect(() => {
-    const initialize = async () => {
-      await SplashScreen.preventAutoHideAsync();
-      await loadFonts();
-      setTimeout(() => {
-        SplashScreen.hideAsync();
-      }, 3000);
-      setIsReady(true);
-    };
-    initialize();
+    // const initialize = async () => {
+    //   await SplashScreen.preventAutoHideAsync();
+    //   await loadFonts();
+    //   setTimeout(() => {
+    //     SplashScreen.hideAsync();
+    //   }, 3000);
+    //   setIsReady(true);
+    // };
+    // initialize();
 
     AsyncStorage.getItem("accessToken")
       .then((result) => {

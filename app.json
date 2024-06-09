@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.moyeota.app"
@@ -37,7 +39,8 @@
           "isAndroidBackgroundLocationEnabled": "Allow Moyeota use your location.",
           "isAndroidForegroundServiceEnabled": "Allow Moyeota use your location."
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }
