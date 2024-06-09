@@ -4,7 +4,9 @@
     "slug": "moyeota",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/png/MoyeotaLogoPNG.png",
     "userInterfaceStyle": "light",
+    "sdkVersion": "51.0.11",
     "splash": {
       "image": "./assets/moyeotaSplash.png",
       "resizeMode": "contain",
@@ -18,11 +20,20 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.moyeota.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-router"]
+    "plugins": ["expo-router"],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b183fb7b-d5d2-4deb-be36-2d67782390d7"
+      }
+    }
   }
 }
