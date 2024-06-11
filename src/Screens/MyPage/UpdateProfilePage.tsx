@@ -8,14 +8,8 @@ import {
   Image,
 } from "react-native";
 import React, { useState } from "react";
-<<<<<<< HEAD:src/Screens/MyPage/UpdateProfile.tsx
-import LeftArrow from "../../../assets/svg/LeftArrow.svg";
-import Ximage from "../../../assets/svg/X_image.svg";
-// import ProfileImage from "../../../assets/profileImage.png";
-=======
 import LeftArrow from "../../../assets/svg/LeftArrowIcon.svg";
 import Ximage from "../../../assets/svg/X_imageIcon.svg";
->>>>>>> 0a2ad75fd78bd8b570ccc025aa0bec5682aa2eed:src/Screens/MyPage/UpdateProfilePage.tsx
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useMyInfoStore } from "../../libs/states/myInfoStore";
@@ -76,8 +70,6 @@ function UpdateProfile() {
         {"\n"}합승할 파티원에게 보여줄 프로필을 설정해보세요
       </Text>
       <View style={styles.middle}>
-<<<<<<< HEAD:src/Screens/MyPage/UpdateProfile.tsx
-=======
         <Image
           source={{
             uri:
@@ -93,7 +85,6 @@ function UpdateProfile() {
           }}
         />
 
->>>>>>> 0a2ad75fd78bd8b570ccc025aa0bec5682aa2eed:src/Screens/MyPage/UpdateProfilePage.tsx
         <View
           style={{
             marginTop: 4,
