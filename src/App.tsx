@@ -58,11 +58,11 @@ export default function App() {
     initialize();
 
     AsyncStorage.getItem("accessToken")
-      .then((result) => {
+      .then((result: any) => {
         if (result) setToken(result);
         setIsTokenReady(true);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.error(err);
       });
   }, []);
