@@ -11,15 +11,16 @@ import Naver from "./Screens/SignIn/SocialLogin/Naver";
 import Guide from "./Screens/Guide";
 // import { SplashScreen } from "expo-router";
 import { useEffect, useState } from "react";
-import * as Font from "expo-font";
+// import * as Font from "expo-font";
 import Google from "./Screens/SignIn/SocialLogin/Google";
 import CreateProfile from "./Screens/CreatePotPage/CreateProfile";
 import CreatePot from "./Screens/CreatePotPage/CreatePot";
-import SchoolLogin from "./Screens/SignIn/SchoolLogin/SchoolLoginGuide";
+import SchoolLogin from "./Screens/SignIn/SchoolLogin/schoolLoginGuide";
 import SchoolLoginSelect from "./Screens/SignIn/SchoolLogin/schoolLoginSelect";
-import InputLogin from "./Screens/SignIn/SchoolLogin/InputLogin";
-import EmailAuth from "./Screens/SignIn/SchoolLogin/EmailAuth";
-import EmailSuccess from "./Screens/SignIn/SchoolLogin/EmailSuccess";
+import InputLogin from "./Screens/SignIn/SchoolLogin/inputLogin";
+import EmailAuth from "./Screens/SignIn/SchoolLogin/emailAuth";
+import EmailSuccess from "./Screens/SignIn/SchoolLogin/emailSuccess";
+import SchoolList from "./Screens/SignIn/SchoolLogin/schoolList";
 import BottomTab from "./Screens/BottomTab/BottomTab";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import UpdateProfilePage from "./Screens/MyPage/UpdateProfilePage";
@@ -29,19 +30,19 @@ import FavoritePot from "./Screens/MyPage/Components/FavoritePot";
 import UserInfo from "./Screens/MyPage/Components/UserInfo";
 import ManagementLists from "./Screens/MyPage/Components/ManagementLists";
 import SetProfile from "./Screens/SignIn/SetProfile/SetProfile";
-import SchoolList from "./Screens/SignIn/SchoolLogin/schoolList";
 
-const loadFonts = async () => {
-  await Font.loadAsync({
-    Pretendard: require("../assets/font/Pretendard-Medium.otf"),
-    PretedardBlack: require("../assets/font/Pretendard-Black.otf"),
-    PretendardBold: require("../assets/font/Pretendard-Bold.otf"),
-    PretendardExtraBold: require("../assets/font/Pretendard-ExtraBold.otf"),
-    PretendardLight: require("../assets/font/Pretendard-Light.otf"),
-    PretendardRegular: require("../assets/font/Pretendard-Regular.otf"),
-    PretendardSemiBold: require("../assets/font/Pretendard-SemiBold.otf"),
-  });
-};
+
+// const loadFonts = async () => {
+//   await Font.loadAsync({
+//     Pretendard: require("../assets/font/Pretendard-Medium.otf"),
+//     PretedardBlack: require("../assets/font/Pretendard-Black.otf"),
+//     PretendardBold: require("../assets/font/Pretendard-Bold.otf"),
+//     PretendardExtraBold: require("../assets/font/Pretendard-ExtraBold.otf"),
+//     PretendardLight: require("../assets/font/Pretendard-Light.otf"),
+//     PretendardRegular: require("../assets/font/Pretendard-Regular.otf"),
+//     PretendardSemiBold: require("../assets/font/Pretendard-SemiBold.otf"),
+//   });
+// };
 
 export default function App() {
   const [isReady, setIsReady] = useState(true);
